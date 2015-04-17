@@ -1,0 +1,12 @@
+
+0.0012  	UPDATE `ci_sessions` SET `last_activity` = 1424095053, `user_data` = 'a:10:{s:9:\"user_data\";s:0:\"\";s:2:\"id\";s:1:\"1\";s:8:\"username\";s:19:\"southblue@gmail.com\";s:5:\"email\";s:19:\"southblue@gmail.com\";s:13:\"is_user_login\";b:1;s:9:\"user_type\";s:1:\"0\";s:20:\"manufacture_selected\";N;s:22:\"search_string_selected\";N;s:5:\"order\";N;s:10:\"order_type\";N;}' WHERE `session_id` =  '9a9aeed68ce0035ccd27ff28fb0fd393' 
+0.0010  	SELECT *
+FROM (`ms_patient`)
+ORDER BY `id` Asc 
+0.0017  	SELECT `ms_patient`.`id`, `ms_patient`.`name`, `ms_patient`.`address`, `ms_patient`.`phone`, `ms_patient`.`mr_code`, `ms_patient`.`gender`, `ms_patient`.`occupation`, `ms_patient`.`dob`
+FROM (`ms_patient`)
+WHERE `client_id` =  '1'
+GROUP BY `ms_patient`.`id`
+ORDER BY `id` Asc
+LIMIT 1 
+  HTTP HEADERS  (Show)
