@@ -2,9 +2,8 @@
     <div class="col-md-12">
         <h2>Formulir Aplikasi SKCK</h2>
         <?php  $attributes = array('id' => 'wizard_form');
-          echo form_open_multipart('apply/docs_upload', $attributes);
+          echo form_open_multipart('apply/register', $attributes);
         ?>
-        <!--s
            <fieldset>
                 <legend>Data Pribadi</legend>
                 <div class="row">
@@ -92,7 +91,8 @@
                 </div>
             
             </fieldset>
-            <fieldset>
+
+           <!--<fieldset>
                 <legend>Keluarga</legend>
                 <div class="row">
                     <div class="col-lg-12">
@@ -521,7 +521,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="files[]" id="idfile">
+                                        <input type="file" name="userfiles[]" id="idfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -538,7 +538,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="files[]" id="birthcertfile">
+                                        <input type="file" name="userfiles[]" id="birthcertfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -557,7 +557,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="files[]" id="familycardfile">
+                                        <input type="file" name="userfiles[]" id="familycardfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -574,7 +574,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="files[]" id="fingerprintfile">
+                                        <input type="file" name="userfiles[]" id="fingerprintfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -593,7 +593,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="files[]" id="passportfile">
+                                        <input type="file" name="userfiles[]" id="passportfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -610,7 +610,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="files[]" id="corp_sponsorfile">
+                                        <input type="file" name="userfiles[]" id="corp_sponsorfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -631,7 +631,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="files[]" id="marital_letterfile">
+                                        <input type="file" name="userfiles[]" id="marital_letterfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -650,7 +650,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="files[]" id="report_evidencefile">
+                                        <input type="file" name="userfiles[]" id="report_evidencefile" multiple>
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>

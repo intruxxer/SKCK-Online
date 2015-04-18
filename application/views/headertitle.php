@@ -5,7 +5,7 @@
     </h1>
 	</div>
   <div class="col-md-8">
-    <h1 style="text-align:right;">Polresta Tulung Agung<br/><small>Sistem Aplikasi SKCK Online Terpadu</small></h1>
+    <h1 style="text-align:right;">Polres Tulung Agung<br/><small>Sistem Aplikasi SKCK Online Terpadu</small></h1>
   </div>
 </div>
 

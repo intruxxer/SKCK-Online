@@ -519,7 +519,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="idfile" id="idfile">
+                                        <input type="file" name="userfiles[]" id="idfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -536,7 +536,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="birthcertfile" id="birthcertfile">
+                                        <input type="file" name="userfiles[]" id="birthcertfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -555,7 +555,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="familycardfile" id="familycardfile">
+                                        <input type="file" name="userfiles[]" id="familycardfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -572,7 +572,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="fingerprintfile" id="fingerprintfile">
+                                        <input type="file" name="userfiles[]" id="fingerprintfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -591,7 +591,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="passportfile" id="passportfile">
+                                        <input type="file" name="userfiles[]" id="passportfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -608,7 +608,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="corp_sponsorfile" id="corp_sponsorfile">
+                                        <input type="file" name="userfiles[]" id="corp_sponsorfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -629,7 +629,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="marital_letterfile" id="marital_letterfile">
+                                        <input type="file" name="userfiles[]" id="marital_letterfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
@@ -648,7 +648,7 @@
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="report_evidencefile" id="report_evidencefile">
+                                        <input type="file" name="userfiles[]" id="report_evidencefile" multiple>
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>

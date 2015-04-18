@@ -18,7 +18,7 @@ class Apply extends CI_Controller {
 		$this->load->view('header');
 		$this->load->view('headertitle');
 		$this->load->view('navigation');
-		$this->load->view('skckformexperiment');
+		$this->load->view('skckform');
 		$this->load->view('footer');
 	}
 
@@ -42,31 +42,107 @@ class Apply extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function docs_upload()
+	function rearrange( $arr ){
+	    foreach( $arr as $key => $all ){
+	        foreach( $all as $i => $val ){
+	            $new[$i][$key] = $val;    
+	        }    
+	    }
+	    return $new;
+	}
+
+	private function upload_multiple_files($field='userfiles'){
+	    $files = array();
+	    foreach( $_FILES[$field] as $key => $all )
+	    	if($key == 'name')
+	    	{
+	    		print_r($all);
+		        foreach( $all as $i => $val )
+		        {
+		        	switch ($i) {
+				    case 0:
+				    	$filename = "ktp_".$val;
+				        $files[$i][$key] = $filename;
+				        break;
+				    case 1:
+				        $filename = "akte_".$val;
+				        $files[$i][$key] = $filename;
+				        break;
+				    case 2:
+				        $filename = "kk_".$val;
+				        $files[$i][$key] = $filename;
+				        break;
+				    case 3:
+				    	$filename = "sidikjari_".$val;
+				        $files[$i][$key] = $filename;
+				        break;
+				    case 4:
+				        $filename = "paspor_".$val;
+				        $files[$i][$key] = $filename;
+				        break;
+				    case 5:
+				        $filename = "sponsor_".$val;
+				        $files[$i][$key] = $filename;
+				        break;
+				    case 6:
+				        $filename = "nikah_".$val;
+				        $files[$i][$key] = $filename;
+				        break;
+				    case 7:
+				        $filename = "lapordiri_".$val;
+				        $files[$i][$key] = $filename;
+				        break;
+				    default:
+				    	break;
+					}
+		        }
+		    }
+		    else{
+		    	foreach( $all as $i => $val )
+		        {
+		    		$files[$i][$key] = $val;
+		    	}
+		    }
+
+	    $files_uploaded = array();
+	    for ($i=0; $i < count($files); $i++) { 
+	        $_FILES[$field] = $files[$i];
+	        if ($this->upload->do_upload($field))
+	            $files_uploaded[$i] = $this->upload->data($files);
+	        else
+	            $files_uploaded[$i] = null;
+	    }
+	    return $files_uploaded;
+	}
+
+	private function docs_upload($files, $skck_id=0)
 	{
-		//Configure upload.
-		/*
+		$docs_uploaded_path = array();
 		$config = array();
-        $config['upload_path'] = './images/add';
+		//$files = $_FILES['userfiles'];
+		if($skck_id == 0)
+			$skck_id = 'ND'.date("dm").rand(1000, 9999).rand(10, 99);
+		$path = './uploads/'.$skck_id;
+		//Configure upload.
+		if(!is_dir($path))
+		{
+		    mkdir($path, 0777, true);
+		}
+        $config['upload_path'] = $path;
 		$config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = '100';
-        $config['max_width'] = '1024';
-        $config['max_height'] = '768';
+        $config['max_size'] = '500000';
+        $config['max_width'] = '5120';
+        $config['max_height'] = '3840';
         $config['max_filename'] = '100';
+        $config['overwrite'] = 1;
         
         $this->load->library('upload', $config);
-		*/
-		$this->load->library('upload');
-        $this->upload->initialize(array(
-            "upload_path"   => "./uploads",
-            "allowed_types" => "gif|jpg|png"
-        ));
 
-        //Perform upload.
-        if($this->upload->do_multi_upload("files")) {
-            //Code to run upon successful upload.
-            print_r($this->upload->get_multi_upload_data());
-        }
+        if ($files) {
+        	$docs_uploaded_path = $this->upload_multiple_files('userfiles');
+        	return $docs_uploaded_path;
+    	}
+    	else {	return $docs_uploaded_path;	}
 	}
 
 	public function register()
@@ -187,23 +263,28 @@ class Apply extends CI_Controller {
 				'applicant_rumussidikjari' => $this->input->post('rumussidikjari1')."-".$this->input->post('rumussidikjari2')
 			);
 			$cirifisik = $this->skck->add_skck_cirifisik($data['skck_cirifisik']);
+			
+			
+			if(!empty($_FILES['userfiles']))
+			{
+				//$files = $_FILES['userfiles'];
+				$docs_uploaded_path = $this->docs_upload($_FILES['userfiles'], $skck_id);
+				$data['skck_documents'] = array(
+					'id' => $skck_id,
+					'applicant_id' => $this->input->post('id'),
+					'skck_ktp' => $docs_uploaded_path[0]['file_name'],
+					'skck_passport' => $docs_uploaded_path[4]['file_name'],
+					'skck_familycard' => $docs_uploaded_path[2]['file_name'],
+					'skck_birthcert' => $docs_uploaded_path[1]['file_name'],
+					'skck_fingerprint' => $docs_uploaded_path[3]['file_name'],
+					'skck_corp_sponsor' => $docs_uploaded_path[5]['file_name'],
+					'skck_marital_letter' => $docs_uploaded_path[6]['file_name'],
+					'skck_report_evidence' => $docs_uploaded_path[7]['file_name']
+				);
+			}
+			$documents = $this->skck->add_skck_documents($data['skck_documents']);
 
-			/*
-			$data['skck_documents'] = array(
-				'id' => $skck_id,
-				'applicant_id' => $this->input->post('id'),
-				'skck_ktp' => $this->input->post('idfile'),
-				'skck_passport' => $this->input->post('passportfile'),
-				'skck_familycard' => $this->input->post('familycardfile'),
-				'skck_birthcert' => $this->input->post('birthcertfile'),
-				'skck_fingerprint' => $this->input->post('fingerprintfile'),
-				'skck_corp_sponsor' => $this->input->post('corp_sponsorfile'),
-				'skck_marital_letter' => $this->input->post('marital_letterfile'),
-				'skck_report_evidence' => $this->input->post('report_evidencefile')
-			);
-			*/
-
-
+			
 			$data['skck_keterangan'] = array(
 				'id' => $skck_id,
 				'applicant_id' => $this->input->post('id'),
@@ -220,11 +301,12 @@ class Apply extends CI_Controller {
 			
 
 			//JSON Method as RESTful Style
-			/*$this->output->set_content_type('application/json')
+			/*
+				$this->output->set_content_type('application/json')
 						 ->set_output(json_encode(array(
 						 	'response' => 'success',
 						 	'data' => $data
-						 	)));
+					)));
 			
 			*/
 			$data['skck_registration_no'] = $regNo;
