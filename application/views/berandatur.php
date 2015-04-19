@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default"  id="step1">
   <div class="container-fluid">
 
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -29,8 +29,8 @@
         </li>
          <li>
            <a href="<?php echo base_url('beranda/tentangskck') ?>">
-              <span class="glyphicon glyphicon-bullhorn"></span> &nbsp;
-              Tentang SKCK
+             <span class="glyphicon glyphicon-bullhorn"></span> &nbsp;
+             Tentang SKCK
            </a>
          </li>
          <li>
@@ -40,7 +40,7 @@
            </a>
          </li>
       </ul>
-       <?php  $attributes = array('class' => 'navbar-form navbar-right', 'role' => 'search');
+       <?php  $attributes = array('class' => 'navbar-form navbar-right', 'role' => 'search', 'id' => 'step2');
           echo form_open('apply/cariskck', $attributes);
         ?>
             <div class="form-group">
@@ -52,3 +52,10 @@
 
   </div><!-- /.container-fluid -->
 </nav>
+
+<div class="jumbotron">
+        <h1 id="step1">Panduan SKCK Online</h1>
+        <p id="step4" class="lead">Melalui petunjuk dari kami, anda akan semakin memahami fitur dan cara penggunaan sistem SKCK Online.</p>
+        <a class="btn btn-large btn-primary" href="javascript:void(0);" onclick="startIntro();">Pelajari SKCK Online</a>
+</div>
+<hr>

@@ -15,6 +15,15 @@
 		  		</tr>
 		  	</thead>
 		  	<tbody>
+		  	<?php if($single_skck == NULL) { ?>
+		  	<tr>
+		  		<td colspan="5"> Mohon Maaf. Data anda tidak ditemukan di sistem. Silakan Ajukan Permohonan Kembali atau hubungi kami melalui media di bawah ini.
+		  		<br/><br/>
+		  										 <b>Telpon:</b> +6281217294454 <b>Email:</b> polrestulungagung01@gmail.com <br/><b>PIN BB:</b> 7EB44BC6, <b>FB:</b> fb.com/restulungagung,
+		  										 <b>Twiter:</b> @Polres_TA, <b>LINE</b>  polres_tulungagung, <b>WECHAT:</b> polres_tulungagung
+		  		</td>
+		  	</tr>
+		  	<?php } else { ?>
 		  		<?php foreach($single_skck as $skck) { ?>
 				<tr>
 			  		<td><?= $skck->application_id; ?></td>
@@ -28,6 +37,7 @@
 			  		<td><?= date('d F Y',strtotime($skck->timestamps)); ?></td>
 		  		</tr>
 		  		<?php } ?>
+		  	<?php } ?>
 		  	</tbody>
 		  </table>
 	    </div>

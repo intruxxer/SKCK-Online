@@ -11,6 +11,7 @@
     <link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/font-awesome.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap-datetimepicker.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/css/introjs.css'); ?>" rel="stylesheet" >
 
     <link href="<?php echo base_url('assets/css/step-form-wizard.css'); ?>" rel="stylesheet" type="text/css" media="screen, projection">
     <link href="<?php echo base_url('assets/css/jquery.mCustomScrollbar.css'); ?>" rel="stylesheet" >
@@ -21,6 +22,7 @@
     <script src="<?php echo base_url('assets/js/moment.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap-datetimepicker.min.js') ?>"></script>
+    <script src="<?php echo base_url('assets/js/intro.js'); ?>"></script>
 
     <script src="<?php echo base_url('assets/js/stepwizardjs/step-form-wizard.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>

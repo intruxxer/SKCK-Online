@@ -32,7 +32,7 @@
 							</ul>
 						</blockquote>
 
-						
+
 						<p style="text-align:justify">2. Pemohon Warga Negara Asing (WNA):</p>
 						<blockquote>
 							<ul>
@@ -44,8 +44,10 @@
 							</ul>
 						</blockquote>
 						<p style="margin-left:20px; text-align:justify">Pada saat pengambilan SKCK di loket pelayanan, pemohon WAJIB menunjukkan dokumen asli yang dipersyaratkan di atas kepada petugas loket guna keperluan verifikasi.</p>
-			  			
-			  			<a style="margin-left:20px; text-align:right" href="#" class="btn btn-success" onClick="window.print()">Print Halaman Ini</a>
+
+			  			<a style="margin-left:20px; text-align:right" href="#" class="btn btn-success" onClick="window.print()">
+			  				 <span class="glyphicon glyphicon-pencil"></span> Print Halaman Ini
+			  			</a>
 			  		</td>
 		  		</tr>
 		  	</tbody>
@@ -69,7 +71,7 @@
 	<div class="col-md-12">
 		<div class="alert alert-dismissible alert-danger">
 		  <button type="button" class="close" data-dismiss="alert">×</button>
-		  <strong>Mohon Maaf, </strong> <u>terdapat kegagalan proses penyimpanan.</u> 
+		  <strong>Mohon Maaf, </strong> <u>terdapat kegagalan proses penyimpanan.</u>
 		  Silakan coba mendaftarkan permohonan SKCK anda sekali lagi.
 		</div>
 	</div>

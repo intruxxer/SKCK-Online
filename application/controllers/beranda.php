@@ -6,33 +6,28 @@ class Beranda extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->database();
-		$this->load->library('session');
-		$this->load->library('pagination');
+		$this->load->library('session', 'pagination');
 		$this->load->model('skckmodel', 'skck');
-		$this->load->helper('url');
-		$this->load->helper('date');
-		error_reporting(E_ALL);
-		ini_set('display_errors', 1);
+		$this->load->helper('url', 'date');
 		date_default_timezone_set('Asia/Jakarta');
 	}
+
 	public function index()
 	{
-		/* 
+		/*
 			GET SESSION DATA
 			$this->session->userdata('userid');
 			$this->session->userdata('username');
-			$this->session->userdata('role');
-			$this->session->userdata('loggedin');
-		*/	
+		*/
 		//Check Logged in
-		//if($this->session->userdata('loggedin')==NULL) 
+		//if($this->session->userdata('loggedin')==NULL)
 		//{
 		//	redirect('login');
 		//}
 		$this->load->view('header');
 		$this->load->view('headertitle');
 		$this->load->view('navigation');
-		$this->load->view('dashboard');
+		$this->load->view('beranda');
 		$this->load->view('footer');
 	}
 
@@ -44,4 +39,14 @@ class Beranda extends CI_Controller {
 		$this->load->view('infoskck');
 		$this->load->view('footer');
 	}
+
+public function penggunaansitus()
+	{
+		$this->load->view('header');
+		$this->load->view('headertitle');
+		$this->load->view('berandatur');
+		$this->load->view('berandajs');
+		$this->load->view('footer');
+	}
+
 }
