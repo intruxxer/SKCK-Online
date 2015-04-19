@@ -60,7 +60,7 @@
                         <div class="form-group">
                             <label for="birthdate">Tanggal Lahir<font color="red">*</font></label>
                             <div class='input-group date'>
-                                <input type="text" class="form-control" id="datetimepicker1" name="birthdate" placeholder="" required data-parsley-group="block0">
+                                <input type="text" class="form-control" id="datetimepicker1" name="birthdate" placeholder="<?php echo date("d-m-Y"); ?>" required data-parsley-group="block0">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-            
+
             </fieldset>
             <fieldset>
                 <legend>Keluarga</legend>
@@ -394,7 +394,7 @@
                                 <option value="TP">Tidak Pernah</option>
                                 <option value="PH">Pernah</option>
                             </select>
-                        </div> 
+                        </div>
                         <div class="form-group">
                             <label for="pidana_apa">Bila pernah, dalam perkara apa?</label>
                             <input type="text" class="form-control" id="pidana_apa" name="pidana_apa" placeholder="Cth: Pencurian/Penipuan">
@@ -438,11 +438,11 @@
                                 <option value="TP">Tidak Pernah</option>
                                 <option value="PH">Pernah</option>
                             </select>
-                        </div> 
+                        </div>
                         <div class="form-group">
                             <label for="pelanggaran_apa">Bila pernah, dalam perkara apa?</label>
                             <input type="text" class="form-control" id="pelanggaran_apa" name="pelanggaran_apa" placeholder="Cth: Pelanggaran hukum adat">
-                        </div>  
+                        </div>
                         <div class="form-group">
                             <label for="pelanggaran_sampaimana1">Bagaimana proses hukumnya sejauh ini?</label>
                             <input type="text" class="form-control" id="pelanggaran_sampaimana" name="pelanggaran_sampaimana" placeholder="Cth: Dinyatakan tidak melanggar hukum adat">
@@ -676,7 +676,7 @@
                         </div>
                         <div class="form-group">
                             <p style="text-align:justify;">
-                                Keterangan diatas saya buat dengan sebenarnya atas sumpah menurut kepercayaan saya, apabila dikemudian hari ternyata keterangan ini tidak benar maka saya sanggup dituntut 
+                                Keterangan diatas saya buat dengan sebenarnya atas sumpah menurut kepercayaan saya, apabila dikemudian hari ternyata keterangan ini tidak benar maka saya sanggup dituntut
                                 berdasarkan hukum yang berlaku.
                             </p>
                         </div>
@@ -685,7 +685,7 @@
                         <div class="col-lg-9"></div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <p style="">Tulungagung, 
+                                <p style="">Tulungagung,
                                 <?php  echo date("d F Y"); ?></p>
                             </div>
                         </div>

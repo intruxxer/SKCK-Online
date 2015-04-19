@@ -45,8 +45,8 @@ class Apply extends CI_Controller {
 	function rearrange( $arr ){
 	    foreach( $arr as $key => $all ){
 	        foreach( $all as $i => $val ){
-	            $new[$i][$key] = $val;    
-	        }    
+	            $new[$i][$key] = $val;
+	        }
 	    }
 	    return $new;
 	}
@@ -105,7 +105,7 @@ class Apply extends CI_Controller {
 		    }
 
 	    $files_uploaded = array();
-	    for ($i=0; $i < count($files); $i++) { 
+	    for ($i=0; $i < count($files); $i++) {
 	        $_FILES[$field] = $files[$i];
 	        if ($this->upload->do_upload($field))
 	            $files_uploaded[$i] = $this->upload->data($files);
@@ -122,7 +122,7 @@ class Apply extends CI_Controller {
 		//$files = $_FILES['userfiles'];
 		if($skck_id == 0)
 			$skck_id = 'ND'.date("dm").rand(1000, 9999).rand(10, 99);
-		$path = './uploads/'.$skck_id;
+		$path = './staff/uploads/'.$skck_id;
 		//Configure upload.
 		if(!is_dir($path))
 		{
@@ -135,7 +135,7 @@ class Apply extends CI_Controller {
         $config['max_height'] = '3840';
         $config['max_filename'] = '100';
         $config['overwrite'] = 1;
-        
+
         $this->load->library('upload', $config);
 
         if ($files) {
@@ -162,7 +162,7 @@ class Apply extends CI_Controller {
 				'application_id' => $regNo
 			);
 			$skck_id = $this->skck->create_skck_registration($data['skck_registration']);
-			
+
 			$data['skck_personaldata'] = array(
 				'id' => $skck_id,
 				'applicant_id' => $this->input->post('id'),
@@ -177,11 +177,11 @@ class Apply extends CI_Controller {
 				'applicant_address_doc' => $this->input->post('address_doc'),
 				'applicant_address_now' => $this->input->post('address_now'),
 				'applicant_passport' => $this->input->post('passport'),
-				'applicant_phone' => $this->input->post('phone')			
+				'applicant_phone' => $this->input->post('phone')
 			);
 			$personaldata = $this->skck->add_skck_personaldata($data['skck_personaldata']);
 
-			
+
 			$data['skck_family'] = array(
 				'id' => $skck_id,
 				'applicant_id' => $this->input->post('id'),
@@ -233,7 +233,7 @@ class Apply extends CI_Controller {
 				'applicant_edu_doctoral_year' => $this->input->post('edu_doctoral_year')
 			);
 			$education = $this->skck->add_skck_education($data['skck_education']);
-			
+
 			$data['skck_pelanggaran'] = array(
 				'id' => $skck_id,
 				'applicant_id' => $this->input->post('id'),
@@ -263,8 +263,8 @@ class Apply extends CI_Controller {
 				'applicant_rumussidikjari' => $this->input->post('rumussidikjari1')."-".$this->input->post('rumussidikjari2')
 			);
 			$cirifisik = $this->skck->add_skck_cirifisik($data['skck_cirifisik']);
-			
-			
+
+
 			if(!empty($_FILES['userfiles']))
 			{
 				//$files = $_FILES['userfiles'];
@@ -284,7 +284,7 @@ class Apply extends CI_Controller {
 			}
 			$documents = $this->skck->add_skck_documents($data['skck_documents']);
 
-			
+
 			$data['skck_keterangan'] = array(
 				'id' => $skck_id,
 				'applicant_id' => $this->input->post('id'),
@@ -295,10 +295,10 @@ class Apply extends CI_Controller {
 				'applicant_wna_sponsor' => $this->input->post('wna_sponsor'),
 				'applicant_wna_sponsor_address' => $this->input->post('wna_sponsor_address'),
 				'applicant_wna_sponsor_occupation' => $this->input->post('wna_sponsor_occupation'),
-				'applicant_wna_sponsor_phone' => $this->input->post('wna_sponsor_phone')	
+				'applicant_wna_sponsor_phone' => $this->input->post('wna_sponsor_phone')
 			);
 			$keterangan = $this->skck->add_skck_keterangan($data['skck_keterangan']);
-			
+
 
 			//JSON Method as RESTful Style
 			/*
@@ -307,7 +307,7 @@ class Apply extends CI_Controller {
 						 	'response' => 'success',
 						 	'data' => $data
 					)));
-			
+
 			*/
 			$data['skck_registration_no'] = $regNo;
 			$data['success'] = 'true';
