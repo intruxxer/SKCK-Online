@@ -1,17 +1,15 @@
 <div class="row">
-  <div class="col-md-4">
-  	<h1>
-      <img class="text-right" src="<?php echo base_url('assets/img/logo.png'); ?>">
+  <div class="col-md-12">
+  	<h1 class="text-center">
+      <p><img src="<?php echo base_url('assets/img/logo-one.png'); ?>"></p>
+      <p>Polres Tulung Agung<br/><small>Sistem SKCK Online</small></p>
     </h1>
-	</div>
-  <div class="col-md-8">
-    <h1 style="text-align:right;">Polres Tulung Agung<br/><small>Sistem Aplikasi SKCK Online Terpadu</small></h1>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-8">
-  		
+
   </div>
     <div class="col-md-4">
   </div>
