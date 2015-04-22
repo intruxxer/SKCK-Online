@@ -17,15 +17,21 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li>
-            <a href="<?php echo base_url('apply') ?>">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               <span class="glyphicon glyphicon-list-alt"></span> &nbsp;
-              Aplikasi SKCK Baru<!--<span class="caret"></span>-->
+              Aplikasi SKCK<span class="caret"></span>
             </a>
-            <!--<ul class="dropdown-menu" role="menu">
-            <li><a href="<?php echo base_url('apply') ?>">Ajukan Aplikasi SKCK Baru</a></li>
-            <li class="divider"></li>
-            <li><a href="<?php echo base_url('apply/perpanjangan') ?>">Ajukan Aplikasi Perpanjangan SKCK</a></li>
-            </ul>-->
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="<?php echo base_url('apply') ?>">
+                  <span class="glyphicon glyphicon-import"></span> &nbsp;Aplikasi SKCK Baru</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="<?php echo base_url('apply/perpanjangan') ?>">
+                  <span class="glyphicon glyphicon-export"></span> &nbsp;Aplikasi Perpanjangan SKCK</a>
+              </li>
+            </ul>
         </li>
          <li>
            <a href="<?php echo base_url('beranda/tentangskck') ?>">
