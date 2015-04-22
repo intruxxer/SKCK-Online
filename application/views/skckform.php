@@ -60,7 +60,7 @@
                         <div class="form-group">
                             <label for="birthdate">Tanggal Lahir<font color="red">*</font></label>
                             <div class='input-group date'>
-                                <input type="text" class="form-control" id="datetimepicker1" name="birthdate" placeholder="<?php echo date("d-m-Y"); ?>" required data-parsley-group="block0">
+                                <input type="text" class="form-control" id="datetimepicker1" name="birthdate" placeholder="" required data-parsley-group="block0">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                             </div>
                         </div>
@@ -73,11 +73,12 @@
                                 <option value="Hindu">Hindu</option>
                                 <option value="Buddha">Buddha</option>
                                 <option value="Konghucu">Konghucu</option>
+                                <option value="Aliran">Aliran Kepercayaan</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="passport">No. Passport</label>
-                            <input type="text" class="form-control" id="passport" name="passport" placeholder="No Passport" data-parsley-group="block0">
+                            <input type="text" class="form-control" id="passport" name="passport" placeholder="No Passport">
                         </div>
                         <div class="form-group">
                             <label for="address_now">Alamat Domisili Sekarang</label>
@@ -91,7 +92,8 @@
                 </div>
 
             </fieldset>
-            <fieldset>
+
+           <fieldset>
                 <legend>Keluarga</legend>
                 <div class="row">
                     <div class="col-lg-12">
@@ -130,6 +132,7 @@
                                 <option value="Hindu">Hindu</option>
                                 <option value="Buddha">Buddha</option>
                                 <option value="Konghucu">Konghucu</option>
+                                <option value="Aliran">Aliran Kepercayaan</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -174,6 +177,7 @@
                                 <option value="Hindu">Hindu</option>
                                 <option value="Buddha">Buddha</option>
                                 <option value="Konghucu">Konghucu</option>
+                                <option value="Aliran">Aliran Kepercayaan</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -218,6 +222,7 @@
                                 <option value="Hindu">Hindu</option>
                                 <option value="Buddha">Buddha</option>
                                 <option value="Konghucu">Konghucu</option>
+                                <option value="Aliran">Aliran Kepercayaan</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -252,6 +257,18 @@
                             <label for="siblings_names_3">Nama Saudara 3</label>
                             <input type="text" class="form-control" id="siblings_names_3" name="siblings_names_3" placeholder="Saudara Kandung/Tiri">
                         </div>
+                        <div class="form-group">
+                            <label for="siblings_names_4">Nama Saudara 4</label>
+                            <input type="text" class="form-control" id="siblings_names_4" name="siblings_names_4" placeholder="Saudara Kandung/Tiri">
+                        </div>
+                        <div class="form-group">
+                            <label for="siblings_names_5">Nama Saudara 5</label>
+                            <input type="text" class="form-control" id="siblings_names_5" name="siblings_names_5" placeholder="Saudara Kandung/Tiri">
+                        </div>
+                        <div class="form-group">
+                            <label for="siblings_names_6">Nama Saudara 6</label>
+                            <input type="text" class="form-control" id="siblings_names_6" name="siblings_names_6" placeholder="Saudara Kandung/Tiri">
+                        </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="form-group">
@@ -278,6 +295,30 @@
                                 <?php } ?>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="siblings_ages_4">Umur Saudara 4</label>
+                            <select class="form-control" name="siblings_ages_4">
+                                <?php for($i=17; $i<66; $i++){ ?>
+                                <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="siblings_ages_5">Umur Saudara 5</label>
+                            <select class="form-control" name="siblings_ages_5">
+                                <?php for($i=17; $i<66; $i++){ ?>
+                                <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="siblings_ages_6">Umur Saudara 6</label>
+                            <select class="form-control" name="siblings_ages_6">
+                                <?php for($i=17; $i<66; $i++){ ?>
+                                <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
+                                <?php } ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="col-lg-7">
                         <div class="form-group">
@@ -292,11 +333,34 @@
                             <label for="siblings_addresses_3">Alamat Saudara 3</label>
                             <textarea class="form-control" rows="1" id="siblings_addresses_3" name="siblings_addresses_3" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos."></textarea>
                         </div>
+                        <div class="form-group">
+                            <label for="siblings_addresses_1">Alamat Saudara 4</label>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_4" name="siblings_addresses_4" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="siblings_addresses_2">Alamat Saudara 5</label>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_5" name="siblings_addresses_5" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="siblings_addresses_3">Alamat Saudara 6</label>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_6" name="siblings_addresses_6" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos."></textarea>
+                        </div>
                     </div>
                 </div>
             </fieldset>
             <fieldset>
                 <legend>Pendidikan</legend>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="hist_school">Ada Riwayat Sekolah?<font color="red">*</font></label>
+                            <select class="form-control" name="hist_school" data-parsley-group="block2" required>
+                                <option value="Y" selected="selected">Ada</option>
+                                <option value="N">Tidak</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="form-group">
@@ -458,6 +522,12 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-lg-12">
+                        <p style="text-align:justify">Perhatikan, Bagian yg ditandai <font color="red">*</font> harus diisi dengan lengkap & jelas.</p>
+                        <hr/>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="rambut">Rambut Anda?<font color="red">*</font></label>
@@ -494,7 +564,7 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label for="rumussidikjari1">Rumus Sidik Jari 1? (Abaikan ini bila belum ada/belum mengurus di Polres)</label>
-                            <input type="text" class="form-control" id="rumussidikjari1" name="rumussidikjari2" placeholder="Cth:9 I 2 4">
+                            <input type="text" class="form-control" id="rumussidikjari1" name="rumussidikjari1" placeholder="Cth:9 I 2 4">
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -508,11 +578,30 @@
             <fieldset>
                 <legend>Lampiran</legend>
                 <div class="row">
+                    <div class="col-lg-12">
+                        <p style="text-align:justify">Bila ada, silakan upload di sini.Bila tidak ada/tidak bisa upload saat ini, pada saat verifikasi
+                        & pengambilan SKCK, selain membawa yg asli (untuk verifikasi), bawa juga soft copy/file/scan dokumen-dokumen anda pada saat pengambilan SKCK.
+                        Anda juga baiknya membawa hasil print/fotocopy dokumen pada saat verifikasi bila tidak mengupload saat ini untuk mempercepat proses penerbitan SKCK.
+                        <hr/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="docs_exist">Ada File/Soft Copy/Scan Dokumen?<font color="red">*</font></label>
+                            <select class="form-control" name="docs_exist" data-parsley-group="block5" required>
+                                <option value="Y" selected="selected">Ada</option>
+                                <option value="N">Tidak</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="http://placehold.it/150x150&text=4x6">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=4x6.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
@@ -529,7 +618,7 @@
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="http://placehold.it/150x150&text=Akte Lahir">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=Akte Lahir.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
@@ -548,7 +637,7 @@
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="http://placehold.it/150x150&text=KK">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=KK.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
@@ -565,7 +654,7 @@
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="http://placehold.it/150x150&text=Sidik Jari">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=Sidik Jari.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
@@ -584,7 +673,7 @@
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="http://placehold.it/150x150&text=Paspor">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=Paspor.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
@@ -601,7 +690,7 @@
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="http://placehold.it/150x150&text=Surat Sponsor">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=Surat Sponsor.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
@@ -622,7 +711,7 @@
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="http://placehold.it/150x150&text=Surat Nikah">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=Surat Nikah.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
@@ -641,7 +730,7 @@
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="http://placehold.it/150x150&text=Tanda Lapor">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=Tanda Lapor.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
@@ -672,7 +761,7 @@
                         </div>
                         <div class="form-group">
                             <label for="purpose_desc">Apakah tujuan/keperluan Saudara membuat aplikasi SKCK?<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="purpose_desc" name="purpose_desc" placeholder="Cth: Melamar kerja, Mendaftar CPNS, dsb." required data-parsley-group="block5">
+                            <input type="text" class="form-control" id="purpose_desc" name="purpose_desc" placeholder="Cth: Melamar kerja, Mendaftar CPNS, dsb." required data-parsley-group="block6">
                         </div>
                         <div class="form-group">
                             <p style="text-align:justify;">
@@ -709,6 +798,8 @@
                 finishBtn: $('<input class="finish-btn sf-right sf-btn" type="submit" name="submitSKCK" value="AJUKAN SKCK"/>'),
                 onNext: function(i, wizard) {
                     var valid = $('form', wizard).parsley().validate('block' + i);
+                    /*console.log ( 'it is now form no' + (i + 1) + " & ");
+                      console.log ( 'block' + i + " is " + valid );*/
                     height: 'auto';
                     sfw.refresh();
                     return valid;

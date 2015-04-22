@@ -10,15 +10,15 @@ $(document).ready( function() {
 		url: BASE_URL + 'registration/loadData',
 		mtype : "post",             
 		datatype: "json",            
-		colNames:['No.', 'ID', 'No. KTP','Nama Lengkap','Tgl. Lahir','Jenis Kelamin','Alamat'],
+		colNames:['No.', 'App ID', 'No. KTP','Nama Lengkap','Tgl. Lahir','Jenis Kelamin','Alamat'],
 		colModel:[
-			{name:'no',index:'no', width:2, align:"center"},
-			{name:'id',index:'id', hidden:true},
+			{name:'no',index:'no', width:2, align:"center",search : false},
+			{name:'id',index:'id', width:4, align:"center", hidden:false},
 			{name:'applicant_id',index:'applicant_id', width:5, align:"center"},
 			{name:'applicant_name',index:'applicant_name', width:7, align:"left"},
-			{name:'applicant_birthdate',index:'applicant_birthdate', width:7, align:"center"},
-			{name:'applicant_sex',index:'applicant_sex', width:5, align:"center"},
-			{name:'applicant_address_doc',index:'applicant_address_doc', width:7, align:"left"},
+			{name:'applicant_birthdate',index:'applicant_birthdate', width:7, align:"center",search : false},
+			{name:'applicant_sex',index:'applicant_sex', width:5, align:"center",search : false},
+			{name:'applicant_address_doc',index:'applicant_address_doc', width:7, align:"left",search : false},
 		],
 		rowNum:20,
 		width: 850,
@@ -30,9 +30,12 @@ $(document).ready( function() {
 		caption:"Pendaftaran",
 		
 		
-	}).navGrid('#pager1',{edit:false,add:false,del:false, view:false}
+	}).navGrid('#pager1',{edit:false,add:false,del:false, view:false},{},{},{},{sopt:['eq']}
 		
-	);
+	)
+	;
+	
+	$(".selectopts").hide();
 	
 	$('#file_type').on('change', function() {
 		$('#progress .progress-bar').css('width', '0%');
@@ -241,8 +244,8 @@ $("#btn_add").click(function(){
 	$("#btn_del_passport").hide();
 	$("#btn_download_kk").hide();
 	$("#btn_del_kk").hide();
-	$("#btn_download_kk").show();
-	$("#btn_del_kk").show();
+	$("#btn_download_kk").hide();
+	$("#btn_del_kk").hide();
 	$("#btn_download_akta").hide();
 	$("#btn_del_akta").hide();
 	$("#btn_download_finger").hide();
@@ -567,6 +570,8 @@ $("#btn_edit").click(function(){
 		}
 		
 	});
+	
+	
 
 });//end
 

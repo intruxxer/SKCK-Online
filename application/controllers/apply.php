@@ -42,7 +42,7 @@ class Apply extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	function rearrange( $arr ){
+	private function rearrange( $arr ){
 	    foreach( $arr as $key => $all ){
 	        foreach( $all as $i => $val ){
 	            $new[$i][$key] = $val;
@@ -51,12 +51,49 @@ class Apply extends CI_Controller {
 	    return $new;
 	}
 
+	private function indonesian_date($timestamp = '', $date_format = 'j F Y', $suffix = '')
+	{
+    if (trim ($timestamp) == '')
+    {
+            $timestamp = time ();
+    }
+    elseif (!ctype_digit ($timestamp))
+    {
+        $timestamp = strtotime ($timestamp);
+    }
+    # remove S (st,nd,rd,th) there are no such things in indonesia :p
+    $date_format = preg_replace ("/S/", "", $date_format);
+
+    $pattern = array (
+        '/Mon[^day]/','/Tue[^sday]/','/Wed[^nesday]/','/Thu[^rsday]/',
+        '/Fri[^day]/','/Sat[^urday]/','/Sun[^day]/','/Monday/','/Tuesday/',
+        '/Wednesday/','/Thursday/','/Friday/','/Saturday/','/Sunday/',
+        '/Jan[^uary]/','/Feb[^ruary]/','/Mar[^ch]/','/Apr[^il]/','/May/',
+        '/Jun[^e]/','/Jul[^y]/','/Aug[^ust]/','/Sep[^tember]/','/Oct[^ober]/',
+        '/Nov[^ember]/','/Dec[^ember]/','/January/','/February/','/March/',
+        '/April/','/June/','/July/','/August/','/September/','/October/',
+        '/November/','/December/',
+    );
+
+    $replace = array ( 'Sen','Sel','Rab','Kam','Jum','Sab','Min',
+        'Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu',
+        'Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des',
+        'Januari','Februari','Maret','April','Juni','Juli','Agustus','Sepember',
+        'Oktober','November','Desember',
+    );
+
+    $date = date ($date_format, $timestamp);
+    $date = preg_replace ($pattern, $replace, $date);
+    $date = "{$date} {$suffix}";
+    return $date;
+	}
+
 	private function upload_multiple_files($field='userfiles'){
 	    $files = array();
 	    foreach( $_FILES[$field] as $key => $all )
 	    	if($key == 'name')
 	    	{
-	    		print_r($all);
+	    		//print_r($all);
 		        foreach( $all as $i => $val )
 		        {
 		        	switch ($i) {
@@ -168,7 +205,7 @@ class Apply extends CI_Controller {
 				'applicant_id' => $this->input->post('id'),
 				'applicant_name' => $this->input->post('name'),
 				'applicant_birthplace' => $this->input->post('birthplace'),
-				'applicant_birthdate' => $this->input->post('birthdate'),
+				'applicant_birthdate' => $this->indonesian_date($this->input->post('birthdate')),
 				'applicant_religion' => $this->input->post('religion'),
 				'applicant_citizenship' => $this->input->post('citizenship'),
 				'applicant_sex' => $this->input->post('sex'),
@@ -204,15 +241,31 @@ class Apply extends CI_Controller {
 				'applicant_mother_citizenship' => $this->input->post('mother_citizenship'),
 				'applicant_mother_occupation' => $this->input->post('mother_occupation'),
 				'applicant_mother_address' => $this->input->post('mother_address'),
-				'applicant_siblings_names' => $this->input->post('siblings_names_1')."|".$this->input->post('siblings_names_2')."|".$this->input->post('siblings_names_3'),
-				'applicant_siblings_ages' => $this->input->post('siblings_ages_1')."|".$this->input->post('siblings_ages_2')."|".$this->input->post('siblings_ages_3'),
-				'applicant_siblings_addresses' => $this->input->post('siblings_addresses_1')."|".$this->input->post('siblings_addresses_2')."|".$this->input->post('siblings_addresses_3')
+				'applicant_siblings_names' => $this->input->post('siblings_names_1')."|"
+																			.$this->input->post('siblings_names_2')."|"
+																			.$this->input->post('siblings_names_3')."|"
+																			.$this->input->post('siblings_names_4')."|"
+																			.$this->input->post('siblings_names_5')."|"
+																			.$this->input->post('siblings_names_6'),
+				'applicant_siblings_ages' => $this->input->post('siblings_ages_1')."|"
+																		 .$this->input->post('siblings_ages_2')."|"
+																		 .$this->input->post('siblings_ages_3')."|"
+																		 .$this->input->post('siblings_ages_4')."|"
+																		 .$this->input->post('siblings_ages_5')."|"
+																		 .$this->input->post('siblings_ages_6'),
+				'applicant_siblings_addresses' => $this->input->post('siblings_addresses_1')."|"
+																					.$this->input->post('siblings_addresses_2')."|"
+																					.$this->input->post('siblings_addresses_3')."|"
+																					.$this->input->post('siblings_addresses_4')."|"
+																					.$this->input->post('siblings_addresses_5')."|"
+																					.$this->input->post('siblings_addresses_6')
 			);
 			$family = $this->skck->add_skck_family($data['skck_family']);
 
 			$data['skck_education'] = array(
 				'id' => $skck_id,
 				'applicant_id' => $this->input->post('id'),
+				'applicant_hist_school' => $this->input->post('hist_school'),
 				'applicant_edu_primary' => $this->input->post('edu_primary'),
 				'applicant_edu_primary_city' => $this->input->post('edu_primary_city'),
 				'applicant_edu_primary_year' => $this->input->post('edu_primary_year'),
@@ -272,6 +325,7 @@ class Apply extends CI_Controller {
 				$data['skck_documents'] = array(
 					'id' => $skck_id,
 					'applicant_id' => $this->input->post('id'),
+					'applicant_docs_exist' => $this->input->post('docs_exist'),
 					'skck_ktp' => $docs_uploaded_path[0]['file_name'],
 					'skck_passport' => $docs_uploaded_path[4]['file_name'],
 					'skck_familycard' => $docs_uploaded_path[2]['file_name'],
