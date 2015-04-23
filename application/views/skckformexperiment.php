@@ -73,7 +73,7 @@
                                 <option value="Hindu">Hindu</option>
                                 <option value="Buddha">Buddha</option>
                                 <option value="Konghucu">Konghucu</option>
-                                <option value="Aliran">Aliran Kepercayaan</option>
+                                <option value="-">Aliran Kepercayaan</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -132,7 +132,7 @@
                                 <option value="Hindu">Hindu</option>
                                 <option value="Buddha">Buddha</option>
                                 <option value="Konghucu">Konghucu</option>
-                                <option value="Aliran">Aliran Kepercayaan</option>
+                                <option value="-">Aliran Kepercayaan</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -177,7 +177,7 @@
                                 <option value="Hindu">Hindu</option>
                                 <option value="Buddha">Buddha</option>
                                 <option value="Konghucu">Konghucu</option>
-                                <option value="Aliran">Aliran Kepercayaan</option>
+                                <option value="-">Aliran Kepercayaan</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -222,7 +222,7 @@
                                 <option value="Hindu">Hindu</option>
                                 <option value="Buddha">Buddha</option>
                                 <option value="Konghucu">Konghucu</option>
-                                <option value="Aliran">Aliran Kepercayaan</option>
+                                <option value="-">Aliran Kepercayaan</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -522,12 +522,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <p style="text-align:justify">Perhatikan, Bagian yg ditandai <font color="red">*</font> harus diisi dengan lengkap & jelas.</p>
-                        <hr/>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="rambut">Rambut Anda?<font color="red">*</font></label>
@@ -579,9 +573,10 @@
                 <legend>Lampiran</legend>
                 <div class="row">
                     <div class="col-lg-12">
-                        <p style="text-align:justify">Bila ada, silakan upload di sini.Bila tidak ada/tidak bisa upload saat ini, pada saat verifikasi
-                        & pengambilan SKCK, selain membawa yg asli (untuk verifikasi), bawa juga soft copy/file/scan dokumen-dokumen anda pada saat pengambilan SKCK.
-                        Anda juga baiknya membawa hasil print/fotocopy dokumen pada saat verifikasi bila tidak mengupload saat ini untuk mempercepat proses penerbitan SKCK.
+                        <p style="text-align:justify">Bila <b>ada</b>, silakan upload di sini.Bila <b>tidak ada/tidak bisa upload</b> saat ini, pada saat <u>verifikasi
+                        & pengambilan SKCK</u>, selain membawa <b>yg asli (untuk verifikasi)</b>, bawa juga <u>soft copy/file/scan dokumen-dokumen</u> anda pada saat pengambilan SKCK.
+                        Anda juga baiknya membawa <u>hasil print/fotocopy dokumen</u> pada saat verifikasi, bila tidak mengupload saat ini, untuk mempercepat proses penerbitan SKCK.
+                        </p>
                         <hr/>
                     </div>
                 </div>

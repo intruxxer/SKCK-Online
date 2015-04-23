@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Skckmodel extends CI_Model {
 
@@ -20,6 +20,16 @@ class Skckmodel extends CI_Model {
         $skck_id = $this->db->insert_id();
         $this->db->trans_complete();
         return $skck_id;
+    }
+
+    function get_skck_registration_id_by_applicant_or_application_id($applicantid=null, $applicationid=null)
+    {
+            $this->db->select('id');
+            $this->db->from('skck_registration');
+            $this->db->where('applicant_id', $applicantid);
+            $this->db->or_where('application_id', $applicationid);
+            $query = $this->db->get();
+            return $query->result_array();
     }
 
     function add_skck_personaldata($data=array())
