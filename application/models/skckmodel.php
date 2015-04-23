@@ -33,7 +33,7 @@ class Skckmodel extends CI_Model {
             $this->db->from('skck_registration');
             $this->db->where('applicant_id', $applicantid);
             $this->db->or_where('application_id', $applicationid);
-            return $this->db->get()->row()->id;
+            return $this->db->get()->row();
     }
 
     function update_skck_registration($id, $data=array())

@@ -36,26 +36,27 @@ class Apply extends CI_Controller {
 		//TO DO:
 		//Get Data for A Single e-SKCK -> Check Model. Functions ready?
 		//Then ,populated the form
-		if($this->input->post('submitSKCKextendingSearch'))
+		//if($this->input->post('submitSKCKextendingSearch'))
+		if(true)
 		{
 			$ktp = $this->input->post('applicantid');
 			$noReg = $this->input->post('applicationid');
 			$skck_id = $this->skck->get_skck_registration_id_by_applicant_or_application_id($ktp, $noReg);
-
-				if($skck_id < 1)
+			//var_dump($skck_id);
+				if($skck_id == null)
 							$data['success'] = 'false';
 				else
 				{
 							$data['success'] = 'true';
-							$data['skck_id'] = $skck_id;
-							$data['skck_registration'] = $this->skck->get_skck_registration($skck_id);
-							$data['skck_personaldata'] = $this->skck->get_skck_personaldata($skck_id);
-							$data['skck_family'] = $this->skck->get_skck_family($skck_id);
-							$data['skck_education'] = $this->skck->get_skck_education($skck_id);
-							$data['skck_pelanggaran'] = $this->skck->get_skck_pelanggaran($skck_id);
-							$data['skck_cirifisik'] = $this->skck->get_skck_cirifisik($skck_id);
-							$data['skck_documents'] = $this->skck->get_skck_documents($skck_id);
-							$data['skck_keterangan'] = $this->skck->get_skck_keterangan($skck_id);
+							$data['skck_id'] = $skck_id->id;
+							$data['skck_registration'] = $this->skck->get_skck_registration($skck_id->id);
+							$data['skck_personaldata'] = $this->skck->get_skck_personaldata($skck_id->id);
+							$data['skck_family'] = $this->skck->get_skck_family($skck_id->id);
+							$data['skck_education'] = $this->skck->get_skck_education($skck_id->id);
+							$data['skck_pelanggaran'] = $this->skck->get_skck_pelanggaran($skck_id->id);
+							$data['skck_cirifisik'] = $this->skck->get_skck_cirifisik($skck_id->id);
+							$data['skck_documents'] = $this->skck->get_skck_documents($skck_id->id);
+							$data['skck_keterangan'] = $this->skck->get_skck_keterangan($skck_id->id);
 				}
 				$this->load->view('header');
 				$this->load->view('headertitle');
