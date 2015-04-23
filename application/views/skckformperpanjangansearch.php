@@ -32,7 +32,9 @@
         <div class="col-lg-2">
             <div class="form-group">
               <label for="submitSKCKextendingSearch">Cari e-SKCK Sebelumnya</label>
-              <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> &nbsp;Cari e-SKCK Anda</button>
+              <button type="submit" class="btn btn-default" name="submitSKCKextendingSearch">
+                <span class="glyphicon glyphicon-search"></span> &nbsp;Cari e-SKCK Anda
+              </button>
             </div>
         </div>
     </div>

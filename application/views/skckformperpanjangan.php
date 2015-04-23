@@ -2,8 +2,9 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Formulir Aplikasi Perpanjangan SKCK</h2>
-        <?php  $attributes = array('id' => 'wizard_form');
-          echo form_open_multipart('apply/extend', $attributes);
+        <?php  $hidden = array('serialNumber' => $skck_id);
+               $attributes = array('id' => 'wizard_form');
+               echo form_open_multipart('apply/extend', $attributes, $hidden);
         ?>
            <fieldset>
                 <legend>Data Pribadi</legend>
@@ -794,7 +795,7 @@
                         </div>
                     </div>
                     <noscript>
-                        <input class="nocsript-finish-btn sf-right nocsript-sf-btn" type="submit" name="submitSKCK" value="Perpanjangan SKCK"/>
+                        <input class="nocsript-finish-btn sf-right nocsript-sf-btn" type="submit" name="submitSKCKextend" value="Perpanjangan SKCK"/>
                     </noscript>
                 </div>
             </fieldset>

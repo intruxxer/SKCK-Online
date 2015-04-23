@@ -33,13 +33,44 @@ class Apply extends CI_Controller {
 
 	public function cariskckperpanjangan()
 	{
-		$data['success'] = 'false';
-		//TO DO Get Data
-		$this->load->view('header');
-		$this->load->view('headertitle');
-		$this->load->view('navigation');
-		$this->load->view('skckformperpanjangan', $data);
-		$this->load->view('footer');
+		//TO DO:
+		//Get Data for A Single e-SKCK -> Check Model. Functions ready?
+		//Then ,populated the form
+		if($this->input->post('submitSKCKextendingSearch'))
+		{
+			$ktp = $this->input->post('applicantid');
+			$noReg = $this->input->post('applicationid');
+			$skck_id = $this->skck->get_skck_registration_id_by_applicant_or_application_id($ktp, $noReg);
+
+				if($skck_id < 1)
+							$data['success'] = 'false';
+				else
+				{
+							$data['success'] = 'true';
+							$data['skck_id'] = $skck_id;
+							$data['skck_registration'] = $this->skck->get_skck_registration($skck_id);
+							$data['skck_personaldata'] = $this->skck->get_skck_personaldata($skck_id);
+							$data['skck_family'] = $this->skck->get_skck_family($skck_id);
+							$data['skck_education'] = $this->skck->get_skck_education($skck_id);
+							$data['skck_pelanggaran'] = $this->skck->get_skck_pelanggaran($skck_id);
+							$data['skck_cirifisik'] = $this->skck->get_skck_cirifisik($skck_id);
+							$data['skck_documents'] = $this->skck->get_skck_documents($skck_id);
+							$data['skck_keterangan'] = $this->skck->get_skck_keterangan($skck_id);
+				}
+				$this->load->view('header');
+				$this->load->view('headertitle');
+				$this->load->view('navigation');
+				$this->load->view('skckformperpanjangan', $data);
+				$this->load->view('footer');
+		}
+		else
+		{
+				$this->load->view('header');
+				$this->load->view('headertitle');
+				$this->load->view('navigation');
+				$this->load->view('skckformperpanjangansearch');
+				$this->load->view('footer');
+		}
 	}
 
 	public function cariskck()
@@ -398,7 +429,7 @@ class Apply extends CI_Controller {
 		if($this->input->post('submitSKCKextend'))
 		{
 			$regNo = 'ND'.date("dm").rand(1000, 9999).rand(10, 99);
-			$success = true;
+			$skck_id = $this->input->post('serialNumber');
 			$data['skck_registration'] = array(
 				'applicant_id' => $this->input->post('id'),
 				'applicant_name' => $this->input->post('name'),
@@ -409,7 +440,7 @@ class Apply extends CI_Controller {
 				'staff_id' => NULL,
 				'application_id' => $regNo
 			);
-			$skck_id = $this->skck->create_skck_registration($data['skck_registration']);
+			$registration = $this->skck->update_skck_registration($skck_id, $data['skck_registration']);
 
 			$data['skck_personaldata'] = array(
 				'id' => $skck_id,
@@ -427,7 +458,7 @@ class Apply extends CI_Controller {
 				'applicant_passport' => $this->input->post('passport'),
 				'applicant_phone' => $this->input->post('phone')
 			);
-			$personaldata = $this->skck->add_skck_personaldata($data['skck_personaldata']);
+			$personaldata = $this->skck->update_skck_personaldata($skck_id, $data['skck_personaldata']);
 
 
 			$data['skck_family'] = array(
@@ -471,7 +502,7 @@ class Apply extends CI_Controller {
 																					.$this->input->post('siblings_addresses_5')."|"
 																					.$this->input->post('siblings_addresses_6')
 			);
-			$family = $this->skck->add_skck_family($data['skck_family']);
+			$family = $this->skck->update_skck_family($skck_id, $data['skck_family']);
 
 			$data['skck_education'] = array(
 				'id' => $skck_id,
@@ -496,7 +527,7 @@ class Apply extends CI_Controller {
 				'applicant_edu_doctoral_city' => $this->input->post('edu_doctoral_city'),
 				'applicant_edu_doctoral_year' => $this->input->post('edu_doctoral_year')
 			);
-			$education = $this->skck->add_skck_education($data['skck_education']);
+			$education = $this->skck->update_skck_education($skck_id, $data['skck_education']);
 
 			$data['skck_pelanggaran'] = array(
 				'id' => $skck_id,
@@ -513,7 +544,7 @@ class Apply extends CI_Controller {
 				'applicant_pelanggaran_proses' => $this->input->post('pelanggaran_proses'),
 				'applicant_pelanggaran_sampaimana' => $this->input->post('pelanggaran_sampaimana')
 			);
-			$pelanggaran = $this->skck->add_skck_pelanggaran($data['skck_pelanggaran']);
+			$pelanggaran = $this->skck->update_skck_pelanggaran($skck_id, $data['skck_pelanggaran']);
 
 			$data['skck_cirifisik'] = array(
 				'id' => $skck_id,
@@ -526,7 +557,7 @@ class Apply extends CI_Controller {
 				'applicant_tandakhusus' => $this->input->post('tandakhusus'),
 				'applicant_rumussidikjari' => $this->input->post('rumussidikjari1')."-".$this->input->post('rumussidikjari2')
 			);
-			$cirifisik = $this->skck->add_skck_cirifisik($data['skck_cirifisik']);
+			$cirifisik = $this->skck->update_skck_cirifisik($skck_id, $data['skck_cirifisik']);
 
 
 			if(!empty($_FILES['userfiles']))
@@ -547,7 +578,7 @@ class Apply extends CI_Controller {
 					'skck_report_evidence' => $docs_uploaded_path[7]['file_name']
 				);
 			}
-			$documents = $this->skck->add_skck_documents($data['skck_documents']);
+			$documents = $this->skck->update_skck_documents($skck_id, $data['skck_documents']);
 
 
 			$data['skck_keterangan'] = array(
@@ -562,7 +593,7 @@ class Apply extends CI_Controller {
 				'applicant_wna_sponsor_occupation' => $this->input->post('wna_sponsor_occupation'),
 				'applicant_wna_sponsor_phone' => $this->input->post('wna_sponsor_phone')
 			);
-			$keterangan = $this->skck->add_skck_keterangan($data['skck_keterangan']);
+			$keterangan = $this->skck->update_skck_keterangan($skck_id, $data['skck_keterangan']);
 
 
 			//JSON Method as RESTful Style
