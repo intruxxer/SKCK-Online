@@ -286,19 +286,19 @@ class Apply extends CI_Controller {
 				'applicant_mother_citizenship' => $this->input->post('mother_citizenship'),
 				'applicant_mother_occupation' => ucwords($this->input->post('mother_occupation')),
 				'applicant_mother_address' => ucwords($this->input->post('mother_address')),
-				'applicant_siblings_names' => ucwords($this->input->post('siblings_names_1'))."|"
+				'applicant_siblings_names' => ucwords($this->input->post('siblings_names_1'))."#"
 																			.ucwords($this->input->post('siblings_names_2'))."#"
 																			.ucwords($this->input->post('siblings_names_3'))."#"
 																			.ucwords($this->input->post('siblings_names_4'))."#"
 																			.ucwords($this->input->post('siblings_names_5'))."#"
 																			.ucwords($this->input->post('siblings_names_6')),
-				'applicant_siblings_ages' => $this->input->post('siblings_ages_1')."|"
+				'applicant_siblings_ages' => $this->input->post('siblings_ages_1')."#"
 																		 .$this->input->post('siblings_ages_2')."#"
 																		 .$this->input->post('siblings_ages_3')."#"
 																		 .$this->input->post('siblings_ages_4')."#"
 																		 .$this->input->post('siblings_ages_5')."#"
 																		 .$this->input->post('siblings_ages_6'),
-				'applicant_siblings_addresses' => ucwords($this->input->post('siblings_addresses_1'))."|"
+				'applicant_siblings_addresses' => ucwords($this->input->post('siblings_addresses_1'))."#"
 																					.ucwords($this->input->post('siblings_addresses_2'))."#"
 																					.ucwords($this->input->post('siblings_addresses_3'))."#"
 																					.ucwords($this->input->post('siblings_addresses_4'))."#"
