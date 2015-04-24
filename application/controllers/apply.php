@@ -243,12 +243,14 @@ class Apply extends CI_Controller {
 			);
 			$skck_id = $this->skck->create_skck_registration($data['skck_registration']);
 
+			$mysql_bdate = explode("-", $this->input->post('birthdate'));
+			$mysql_bdate = $mysql_bdate[2].'-'.$mysql_bdate[1].'-'.$mysql_bdate[0];
 			$data['skck_personaldata'] = array(
 				'id' => $skck_id,
 				'applicant_id' => $this->input->post('id'),
 				'applicant_name' => $this->input->post('name'),
 				'applicant_birthplace' => $this->input->post('birthplace'),
-				'applicant_birthdate' => $this->indonesian_date($this->input->post('birthdate')),
+				'applicant_birthdate' => $mysql_bdate,
 				'applicant_religion' => $this->input->post('religion'),
 				'applicant_citizenship' => $this->input->post('citizenship'),
 				'applicant_sex' => $this->input->post('sex'),
@@ -285,22 +287,22 @@ class Apply extends CI_Controller {
 				'applicant_mother_occupation' => $this->input->post('mother_occupation'),
 				'applicant_mother_address' => $this->input->post('mother_address'),
 				'applicant_siblings_names' => $this->input->post('siblings_names_1')."|"
-																			.$this->input->post('siblings_names_2')."|"
-																			.$this->input->post('siblings_names_3')."|"
-																			.$this->input->post('siblings_names_4')."|"
-																			.$this->input->post('siblings_names_5')."|"
+																			.$this->input->post('siblings_names_2')."#"
+																			.$this->input->post('siblings_names_3')."#"
+																			.$this->input->post('siblings_names_4')."#"
+																			.$this->input->post('siblings_names_5')."#"
 																			.$this->input->post('siblings_names_6'),
 				'applicant_siblings_ages' => $this->input->post('siblings_ages_1')."|"
-																		 .$this->input->post('siblings_ages_2')."|"
-																		 .$this->input->post('siblings_ages_3')."|"
-																		 .$this->input->post('siblings_ages_4')."|"
-																		 .$this->input->post('siblings_ages_5')."|"
+																		 .$this->input->post('siblings_ages_2')."#"
+																		 .$this->input->post('siblings_ages_3')."#"
+																		 .$this->input->post('siblings_ages_4')."#"
+																		 .$this->input->post('siblings_ages_5')."#"
 																		 .$this->input->post('siblings_ages_6'),
 				'applicant_siblings_addresses' => $this->input->post('siblings_addresses_1')."|"
-																					.$this->input->post('siblings_addresses_2')."|"
-																					.$this->input->post('siblings_addresses_3')."|"
-																					.$this->input->post('siblings_addresses_4')."|"
-																					.$this->input->post('siblings_addresses_5')."|"
+																					.$this->input->post('siblings_addresses_2')."#"
+																					.$this->input->post('siblings_addresses_3')."#"
+																					.$this->input->post('siblings_addresses_4')."#"
+																					.$this->input->post('siblings_addresses_5')."#"
 																					.$this->input->post('siblings_addresses_6')
 			);
 			$family = $this->skck->add_skck_family($data['skck_family']);
@@ -356,7 +358,7 @@ class Apply extends CI_Controller {
 				'applicant_tinggibadan' => $this->input->post('tinggibadan'),
 				'applicant_beratbadan' => $this->input->post('beratbadan'),
 				'applicant_tandakhusus' => $this->input->post('tandakhusus'),
-				'applicant_rumussidikjari' => $this->input->post('rumussidikjari1')."-".$this->input->post('rumussidikjari2')
+				'applicant_rumussidikjari' => $this->input->post('rumussidikjari1')."#".$this->input->post('rumussidikjari2')
 			);
 			$cirifisik = $this->skck->add_skck_cirifisik($data['skck_cirifisik']);
 

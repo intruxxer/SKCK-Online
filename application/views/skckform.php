@@ -118,7 +118,7 @@
                         <div class="form-group">
                             <label for="spouse_age">Umur</label>
                             <select class="form-control" name="spouse_age">
-                                <?php for($i=17; $i<66; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -163,7 +163,7 @@
                         <div class="form-group">
                             <label for="father_age">Umur<font color="red">*</font></label>
                             <select class="form-control" name="father_age" data-parsley-group="block1" required>
-                                <?php for($i=17; $i<66; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -208,7 +208,7 @@
                         <div class="form-group">
                             <label for="mother_age">Umur<font color="red">*</font></label>
                             <select class="form-control" name="mother_age" data-parsley-group="block1" required>
-                                <?php for($i=17; $i<66; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -274,7 +274,7 @@
                         <div class="form-group">
                             <label for="siblings_ages_1">Umur Saudara 1</label>
                             <select class="form-control" name="siblings_ages_1">
-                                <?php for($i=17; $i<66; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -282,7 +282,7 @@
                         <div class="form-group">
                             <label for="siblings_ages_2">Umur Saudara 2</label>
                             <select class="form-control" name="siblings_ages_2">
-                                <?php for($i=17; $i<66; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -290,7 +290,7 @@
                         <div class="form-group">
                             <label for="siblings_ages_3">Umur Saudara 3</label>
                             <select class="form-control" name="siblings_ages_3">
-                                <?php for($i=17; $i<66; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -298,7 +298,7 @@
                         <div class="form-group">
                             <label for="siblings_ages_4">Umur Saudara 4</label>
                             <select class="form-control" name="siblings_ages_4">
-                                <?php for($i=17; $i<66; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -306,7 +306,7 @@
                         <div class="form-group">
                             <label for="siblings_ages_5">Umur Saudara 5</label>
                             <select class="form-control" name="siblings_ages_5">
-                                <?php for($i=17; $i<66; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -314,7 +314,7 @@
                         <div class="form-group">
                             <label for="siblings_ages_6">Umur Saudara 6</label>
                             <select class="form-control" name="siblings_ages_6">
-                                <?php for($i=17; $i<66; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>

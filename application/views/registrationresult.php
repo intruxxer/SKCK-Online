@@ -8,15 +8,15 @@
 	      <table class="table table-bordered">
 		  	<thead>
 			  	<tr>
-			  		<th>No. Aplikasi</th>
-			  		<th>Petunjuk</th>
+			  		<th>No. e-SKCK</th>
+			  		<th>Petunjuk Selanjutnya</th>
 		  		</tr>
 		  	</thead>
 		  	<tbody>
 				<tr>
 			  		<td><span class="label label-primary"><?= $skck_registration_no; ?></span></td>
 			  		<td>
-				  		Selamat, anda telah berhasil melakukan pendaftaran permohonan SKCK di Polres Tulung Agung. Silakan catat No. Pendaftaran
+				  		Selamat, anda telah berhasil melakukan pendaftaran permohonan SKCK di Polres Tulung Agung. Silakan catat No. Aplikasi/Registrasi e-SKCK
 				  		anda: <h3><b><?= $skck_registration_no; ?></b></h3><div id="qrcode"></div><br/> atau silakan print halaman ini. Selanjutnya silakan lengkapi persyaratan yg belum
 				  		ada seperti pengambilan sidik jari di Polres. Bila sudah ada, silakan bawa: <br/>
 				  		<p style="text-align:justify"><strong>Dokumen yang dipersyaratkan untuk permohonan SKCK secara <em>online</em> adalah sebagai berikut :</strong></p>
@@ -46,7 +46,7 @@
 						<p style="margin-left:20px; text-align:justify">Pada saat pengambilan SKCK di loket pelayanan, pemohon WAJIB menunjukkan dokumen asli yang dipersyaratkan di atas kepada petugas loket guna keperluan verifikasi.</p>
 
 			  			<a style="margin-left:20px; text-align:right" href="#" class="btn btn-success" onClick="window.print()">
-			  				 <span class="glyphicon glyphicon-pencil"></span> Print Halaman Ini
+			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Tanda Terima
 			  			</a>
 			  		</td>
 		  		</tr>
