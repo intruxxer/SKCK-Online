@@ -31,8 +31,6 @@
 								<li style="text-align:justify"><em>Copy </em> Paspor bagi WNI yang akan keluar negeri dalam rangka sekolah/kunjungan/penerbitan VISA;</li>
 							</ul>
 						</blockquote>
-
-
 						<p style="text-align:justify">2. Pemohon Warga Negara Asing (WNA):</p>
 						<blockquote>
 							<ul>
@@ -44,7 +42,6 @@
 							</ul>
 						</blockquote>
 						<p style="margin-left:20px; text-align:justify">Pada saat pengambilan SKCK di loket pelayanan, pemohon WAJIB menunjukkan dokumen asli yang dipersyaratkan di atas kepada petugas loket guna keperluan verifikasi.</p>
-
 			  			<a style="margin-left:20px; text-align:right" href="#" class="btn btn-success" onClick="window.print()">
 			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Tanda Terima
 			  			</a>
@@ -58,7 +55,7 @@
 <script type="text/javascript">
 	var qrcode = new QRCode(document.getElementById("qrcode"), {
 	    text: <?= '"'.$skck_registration_no.'"' ?>,
-	    width: 160,
+	    width: 180,
 	    height: 160,
 	    colorDark : "#000000",
 	    colorLight : "#ffffff",
