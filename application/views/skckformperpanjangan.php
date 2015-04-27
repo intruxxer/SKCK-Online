@@ -1,5 +1,5 @@
 <?php if($success == 'true') { ?>
-<?php var_dump($skck_registration); ?>
+<?php //var_dump($skck_registration); ?>
 <div class="row">
     <div class="col-md-12">
         <h2>Formulir Aplikasi Perpanjangan SKCK</h2>
@@ -40,49 +40,52 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="name">Nama Lengkap<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="name" name="name" value="<?php echo ""; ?>" required data-parsley-group="block0">
+                            <input type="text" class="form-control" id="name" name="name" value="<?php echo $skck_personaldata[0]->applicant_name; ?>" required data-parsley-group="block0">
                         </div>
                         <div class="form-group">
                             <label for="birthplace">Tempat Lahir<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="birthplace" name="birthplace" value="<?php echo ""; ?>" required data-parsley-group="block0">
+                            <input type="text" class="form-control" id="birthplace" name="birthplace" value="<?php echo $skck_personaldata[0]->applicant_birthplace; ?>" required data-parsley-group="block0">
                         </div>
                         <div class="form-group">
                             <label for="citizenship">Kewarganegaraan<font color="red">*</font></label>
                             <select class="form-control" name="citizenship" data-parsley-group="block0" required>
-                                <?php echo '<option value="I" '; if(false) echo 'selected="selected"'; echo '>Warga Negara Indonesia</option>';
-                                      echo '<option value="A" '; if(false) echo 'selected="selected"'; echo '>Warga Negara Asing</option>';
+                                <?php echo '<option value="I" '; if($skck_personaldata[0]->applicant_citizenship == 'I') { echo 'selected="selected"'; } echo '>Warga Negara Indonesia</option>';
+                                      echo '<option value="A" '; if($skck_personaldata[0]->applicant_citizenship == 'A') { echo 'selected="selected"'; } echo '>Warga Negara Asing</option>';
                                 ?>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="id">No. KTP/KITAP/KITAS<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="id" name="id" value="<?php echo ""; ?>" required data-parsley-group="block0">
+                            <label for="id">No. KTP<font color="red">*</font></label>
+                            <input type="text" class="form-control" id="id" name="id" value="<?php echo $skck_personaldata[0]->applicant_id; ?>" required data-parsley-group="block0">
                         </div>
                         <div class="form-group">
                             <label for="address_doc">Alamat sesuai KTP<font color="red">*</font></label>
-                            <textarea class="form-control" name="address_doc" value="<?php echo ""; ?>" required rows="2" data-parsley-group="block0"></textarea>
+                            <textarea class="form-control" name="address_doc" value="<?php echo $skck_personaldata[0]->applicant_address_doc; ?>" required rows="2" data-parsley-group="block0">
+                                <?php echo $skck_personaldata[0]->applicant_address_doc; ?>
+                            </textarea>
                         </div>
                         <div class="form-group">
                             <label for="phone">No. Telpon/Handphone<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="phone" name="phone" value="<?php echo ""; ?>" required data-parsley-group="block0" data-parsley-type="number">
+                            <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $skck_personaldata[0]->applicant_phone; ?>" required data-parsley-group="block0" data-parsley-type="number">
                         </div>
                         <div class="form-group">
                             <label for="email">Alamat E-mail</label>
-                            <input type="text" class="form-control" id="email" name="email" value="<?php echo ""; ?>" required data-parsley-group="block0" data-parsley-type="email">
+                            <input type="text" class="form-control" id="email" name="email" value="<?php echo $skck_registration[0]->applicant_email; ?>" required data-parsley-group="block0" data-parsley-type="email">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="sex">Jenis Kelamin<font color="red">*</font></label>
                             <select class="form-control" name="sex" data-parsley-group="block0" required>
-                                <?php echo '<option value="M"'; if(false) echo 'selected="selected"'; echo '>Laki-Laki</option>';
-                                      echo '<option value="F"'; if(false) echo 'selected="selected"'; echo '>Perempuan</option>' ?>
+                                <?php echo '<option value="M"'; if($skck_personaldata[0]->applicant_sex == 'M') echo 'selected="selected"'; echo '>Laki-Laki</option>';
+                                      echo '<option value="F"'; if($skck_personaldata[0]->applicant_sex == 'F') echo 'selected="selected"'; echo '>Perempuan</option>' ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="birthdate">Tanggal Lahir<font color="red">*</font></label>
                             <div class='input-group date'>
-                                <input type="text" class="form-control" id="datetimepicker1" name="birthdate" value="<?php echo ""; ?>" required data-parsley-group="block0">
+                                <?php $bdate = explode("-", $skck_personaldata[0]->applicant_birthdate); ?>
+                                <input type="text" class="form-control" id="datetimepicker1" name="birthdate" value="<?php echo $bdate[2].'-'.$bdate[1].'-'.$bdate[0]; ?>" required data-parsley-group="block0">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                             </div>
                         </div>
@@ -90,43 +93,46 @@
                             <label for="religion">Agama<font color="red">*</font></label>
                             <select class="form-control" name="religion" data-parsley-group="block0" required>
                                <?php
-                                echo '<option value="Islam" '; if(false) echo 'selected="selected"'; echo '>Islam</option>';
-                                echo '<option value="Katolik" '; if(false) echo 'selected="selected"'; echo '>Katolik</option>';
-                                echo '<option value="Protestan" '; if(false) echo 'selected="selected"'; echo '>Protestan</option>';
-                                echo '<option value="Hindu" '; if(false) echo 'selected="selected"'; echo '>Hindu</option>';
-                                echo '<option value="Buddha" '; if(false) echo 'selected="selected"'; echo '>Buddha</option>';
-                                echo '<option value="Konghucu" '; if(false) echo 'selected="selected"'; echo '>Konghucu</option>';
-                                echo '<option value="-" '; if(false) echo 'selected="selected"'; echo '>Aliran Kepercayaan</option>';
+                                echo '<option value="Islam" '; if($skck_personaldata[0]->applicant_religion == "Islam") echo 'selected="selected"'; echo '>Islam</option>';
+                                echo '<option value="Katolik" '; if($skck_personaldata[0]->applicant_religion == "Katolik") echo 'selected="selected"'; echo '>Katolik</option>';
+                                echo '<option value="Protestan" '; if($skck_personaldata[0]->applicant_religion == "Protestan") echo 'selected="selected"'; echo '>Protestan</option>';
+                                echo '<option value="Hindu" '; if($skck_personaldata[0]->applicant_religion == "Hindu") echo 'selected="selected"'; echo '>Hindu</option>';
+                                echo '<option value="Buddha" '; if($skck_personaldata[0]->applicant_religion == "Buddha") echo 'selected="selected"'; echo '>Buddha</option>';
+                                echo '<option value="Konghucu" '; if($skck_personaldata[0]->applicant_religion == "Konghucu") echo 'selected="selected"'; echo '>Konghucu</option>';
+                                echo '<option value="-" '; if($skck_personaldata[0]->applicant_religion == "-") echo 'selected="selected"'; echo '>Aliran Kepercayaan</option>';
                                 ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="passport">No. Passport</label>
-                            <input type="text" class="form-control" id="passport" name="passport" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="passport" name="passport" value="<?php echo $skck_personaldata[0]->applicant_passport; ?>">
                         </div>
                         <div class="form-group">
                             <label for="address_now">Alamat Domisili Sekarang</label>
-                            <textarea class="form-control" name="address_now" value="<?php echo ""; ?>" rows="2"></textarea>
+                            <textarea class="form-control" name="address_now" value="<?php echo $skck_personaldata[0]->applicant_address_now; ?>" rows="2">
+                                <?php echo $skck_personaldata[0]->applicant_address_now; ?>
+                            </textarea>
                         </div>
                         <div class="form-group">
                             <label for="occupation">Pekerjaan<font color="red">*</font></label>
                             <select class="form-control" name="occupation" data-parsley-group="block0" required>
-                                <?php echo '<option value="Tani"'; if(false) echo 'selected="selected"'; echo '>Petani/Peternak/Pekebun</option>';
-                                      echo '<option value="Swasta"'; if(false) echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>'; 
-                                      echo '<option value="Tentara Nasional Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota TNI</option>';
-                                      echo '<option value="Polisi Republik Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota POLRI</option>';
-                                      echo '<option value="Guru"'; if(false) echo 'selected="selected"'; echo '>Guru</option>';
-                                      echo '<option value="Pegawai Negeri Sipil"'; if(false) echo 'selected="selected"'; echo '>PNS Pemerintahan</option>'; 
-                                      echo '<option value="Ibu Rumah Tangga"'; if(false) echo 'selected="selected"'; echo '>Ibu Rumah Tangga</option>'; ?>
+                                <?php echo '<option value="Tani"'; if( $skck_personaldata[0]->applicant_occupation == 'Tani') echo 'selected="selected"'; echo '>Petani/Peternak/Pekebun</option>';
+                                      echo '<option value="Swasta"'; if( $skck_personaldata[0]->applicant_occupation == 'Swasta') echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>'; 
+                                      echo '<option value="Tentara Nasional Indonesia"'; if( $skck_personaldata[0]->applicant_occupation == "Tentara Nasional Indonesia") echo 'selected="selected"'; echo '>Anggota TNI</option>';
+                                      echo '<option value="Polisi Republik Indonesia"'; if( $skck_personaldata[0]->applicant_occupation == 'Polisi Republik indonesia') echo 'selected="selected"'; echo '>Anggota POLRI</option>';
+                                      echo '<option value="Guru"'; if( $skck_personaldata[0]->applicant_occupation == 'Guru') echo 'selected="selected"'; echo '>Guru</option>';
+                                      echo '<option value="Pegawai Negeri Sipil"'; if( $skck_personaldata[0]->applicant_occupation == 'Pegawai Negeri Sipil') echo 'selected="selected"'; echo '>PNS Pemerintahan</option>'; 
+                                      echo '<option value="Ibu Rumah Tangga"'; if( $skck_personaldata[0]->applicant_occupation == "Ibu Rumah Tangga") echo 'selected="selected"'; echo '>Ibu Rumah Tangga</option>';
+                                      echo '<option value="Pelajar/Mahasiswa"'; if( $skck_personaldata[0]->applicant_occupation == "Pelajar/Mahasiswa") echo 'selected="selected"'; echo '>Pelajar/Mahasiswa</option>'; ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="marital_status">Status Perkawinan<font color="red">*</font></label>
                             <select class="form-control" name="marital_status" data-parsley-group="block0" required>
-                                <?php echo '<option value="K"'; if(false) echo 'selected="selected"'; echo '>Kawin</option>';
-                                      echo '<option value="T"'; if(false) echo 'selected="selected"'; echo '>Tidak Kawin</option>'; 
-                                      echo '<option value="CH"'; if(false) echo 'selected="selected"'; echo '>Cerai Hidup</option>';
-                                      echo '<option value="CM"'; if(false) echo 'selected="selected"'; echo '>Cerai Mati</option>'; ?>
+                                <?php echo '<option value="K"'; if($skck_personaldata[0]->applicant_marital_status == 'K') echo 'selected="selected"'; echo '>Kawin</option>';
+                                      echo '<option value="T"'; if($skck_personaldata[0]->applicant_marital_status == 'T') echo 'selected="selected"'; echo '>Tidak Kawin</option>'; 
+                                      echo '<option value="CH"'; if($skck_personaldata[0]->applicant_marital_status == 'CH') echo 'selected="selected"'; echo '>Cerai Hidup</option>';
+                                      echo '<option value="CM"'; if($skck_personaldata[0]->applicant_marital_status == 'CM') echo 'selected="selected"'; echo '>Cerai Mati</option>'; ?>
                             </select>
                         </div>
                     </div>
@@ -148,20 +154,20 @@
                             <label for="spouse_type">Pasangan<font color="red">*</font></label>
                             <select class="form-control" name="spouse_type" data-parsley-group="block1" required>
                                 <?php
-                                echo '<option value="I" '; if(false) echo 'selected="selected"'; echo '>Istri</option>';
-                                echo '<option value="S" '; if(false) echo 'selected="selected"'; echo '>Suami</option>';
-                                echo '<option value="N" '; if(false) echo 'selected="selected"'; echo '>Tidak Ada Pasangan</option>'; ?>
+                                echo '<option value="I" '; if($skck_family[0]->applicant_spouse_type == 'I') echo 'selected="selected"'; echo '>Istri</option>';
+                                echo '<option value="S" '; if($skck_family[0]->applicant_spouse_type == 'S') echo 'selected="selected"'; echo '>Suami</option>';
+                                echo '<option value="N" '; if($skck_family[0]->applicant_spouse_type == 'N') echo 'selected="selected"'; echo '>Tidak Ada Pasangan</option>'; ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="spouse_name">Nama</label>
-                            <input type="text" class="form-control" id="spouse_name" name="spouse_name" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="spouse_name" name="spouse_name" value="<?php echo $skck_family[0]->applicant_spouse_name; ?>">
                         </div>
                         <div class="form-group">
                             <label for="spouse_age">Umur</label>
                             <select class="form-control" name="spouse_age">
                                 <?php for($i=17; $i<66; $i++){ ?>
-                                <?php echo '<option value="'.$i.'"'; if(false) echo 'selected="selected"'; echo '>'.$i.'</option>'; ?>
+                                <?php echo '<option value="'.$i.'"'; if($skck_family[0]->applicant_spouse_age == $i) echo 'selected="selected"'; echo '>'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
                         </div>
@@ -169,39 +175,42 @@
                             <label for="spouse_religion">Agama</label>
                             <select class="form-control" name="spouse_religion">
                                 <?php
-                                echo '<option value="Islam" '; if(false) echo 'selected="selected"'; echo '>Islam</option>';
-                                echo '<option value="Katolik" '; if(false) echo 'selected="selected"'; echo '>Katolik</option>';
-                                echo '<option value="Protestan" '; if(false) echo 'selected="selected"'; echo '>Protestan</option>';
-                                echo '<option value="Hindu" '; if(false) echo 'selected="selected"'; echo '>Hindu</option>';
-                                echo '<option value="Buddha" '; if(false) echo 'selected="selected"'; echo '>Buddha</option>';
-                                echo '<option value="Konghucu" '; if(false) echo 'selected="selected"'; echo '>Konghucu</option>';
-                                echo '<option value="-" '; if(false) echo 'selected="selected"'; echo '>Aliran Kepercayaan</option>';
+                                echo '<option value="Islam" '; if($skck_family[0]->applicant_spouse_religion == "Islam") echo 'selected="selected"'; echo '>Islam</option>';
+                                echo '<option value="Katolik" '; if($skck_family[0]->applicant_spouse_religion == "Katolik") echo 'selected="selected"'; echo '>Katolik</option>';
+                                echo '<option value="Protestan" '; if($skck_family[0]->applicant_spouse_religion == "Protestan") echo 'selected="selected"'; echo '>Protestan</option>';
+                                echo '<option value="Hindu" '; if($skck_family[0]->applicant_spouse_religion == "Hindu") echo 'selected="selected"'; echo '>Hindu</option>';
+                                echo '<option value="Buddha" '; if($skck_family[0]->applicant_spouse_religion == "Buddha") echo 'selected="selected"'; echo '>Buddha</option>';
+                                echo '<option value="Konghucu" '; if($skck_family[0]->applicant_spouse_religion == "Konghucu") echo 'selected="selected"'; echo '>Konghucu</option>';
+                                echo '<option value="-" '; if($skck_family[0]->applicant_spouse_religion == "-") echo 'selected="selected"'; echo '>Aliran Kepercayaan</option>';
                                 ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="spouse_citizenship">Kewarganegaraan</label>
                             <select class="form-control" name="spouse_citizenship">
-                                <?php echo '<option value="I" '; if(false) echo 'selected="selected"'; echo '>Warga Negara Indonesia</option>';
-                                      echo '<option value="A" '; if(false) echo 'selected="selected"'; echo '>Warga Negara Asing</option>';
+                                <?php echo '<option value="I" '; if($skck_family[0]->applicant_spouse_citizenship == "I") echo 'selected="selected"'; echo '>Warga Negara Indonesia</option>';
+                                      echo '<option value="A" '; if($skck_family[0]->applicant_spouse_citizenship == "A") echo 'selected="selected"'; echo '>Warga Negara Asing</option>';
                                 ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="spouse_occupation">Pekerjaan</label>
                             <select class="form-control" name="spouse_occupation">
-                                <?php echo '<option value="Tani"'; if(false) echo 'selected="selected"'; echo '>Petani/Peternak/Pekebun</option>';
-                                      echo '<option value="Swasta"'; if(false) echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>'; 
-                                      echo '<option value="Tentara Nasional Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota TNI</option>';
-                                      echo '<option value="Polisi Republik Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota POLRI</option>';
-                                      echo '<option value="Guru"'; if(false) echo 'selected="selected"'; echo '>Guru</option>';
-                                      echo '<option value="Pegawai Negeri Sipil"'; if(false) echo 'selected="selected"'; echo '>PNS Pemerintahan</option>'; 
-                                      echo '<option value="Ibu Rumah Tangga"'; if(false) echo 'selected="selected"'; echo '>Ibu Rumah Tangga</option>'; ?>
+                                <?php echo '<option value="Tani"'; if($skck_family[0]->applicant_spouse_occupation == "Tani") echo 'selected="selected"'; echo '>Petani/Peternak/Pekebun</option>';
+                                      echo '<option value="Swasta"'; if($skck_family[0]->applicant_spouse_occupation == "Swasta") echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>'; 
+                                      echo '<option value="Tentara Nasional Indonesia"'; if($skck_family[0]->applicant_spouse_occupation == "Tentara Nasional Indonesia") echo 'selected="selected"'; echo '>Anggota TNI</option>';
+                                      echo '<option value="Polisi Republik Indonesia"'; if($skck_family[0]->applicant_spouse_occupation == "Polisi Republik Indonesia") echo 'selected="selected"'; echo '>Anggota POLRI</option>';
+                                      echo '<option value="Guru"'; if($skck_family[0]->applicant_spouse_occupation == "Guru") echo 'selected="selected"'; echo '>Guru</option>';
+                                      echo '<option value="Pegawai Negeri Sipil"'; if($skck_family[0]->applicant_spouse_occupation == "Pegawai Negeri Sipil") echo 'selected="selected"'; echo '>PNS Pemerintahan</option>'; 
+                                      echo '<option value="Pelajar/Mahasiswa"'; if($skck_family[0]->applicant_spouse_occupation == "Pelajar/Mahasiswa") echo 'selected="selected"'; echo '>Pelajar/Mahasiswa</option>'; 
+                                      echo '<option value="Ibu Rumah Tangga"'; if($skck_family[0]->applicant_spouse_occupation == "Ibu Rumah Tangga") echo 'selected="selected"'; echo '>Ibu Rumah Tangga</option>'; ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="spouse_address">Alamat Domisili Sekarang</label>
-                            <textarea class="form-control" name="spouse_address" value="<?php echo ""; ?>" rows="2"></textarea>
+                            <textarea class="form-control" name="spouse_address" value="<?php echo $skck_family[0]->applicant_spouse_address; ?>" rows="2">
+                                <?php echo $skck_family[0]->applicant_spouse_address; ?>
+                            </textarea>
                         </div>
                     </div>
                     <div class="col-lg-4">
