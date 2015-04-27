@@ -117,11 +117,11 @@
                             <label for="occupation">Pekerjaan<font color="red">*</font></label>
                             <select class="form-control" name="occupation" data-parsley-group="block0" required>
                                 <?php echo '<option value="Tani"'; if( $skck_personaldata[0]->applicant_occupation == 'Tani') echo 'selected="selected"'; echo '>Petani/Peternak/Pekebun</option>';
-                                      echo '<option value="Swasta"'; if( $skck_personaldata[0]->applicant_occupation == 'Swasta') echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>'; 
+                                      echo '<option value="Swasta"'; if( $skck_personaldata[0]->applicant_occupation == 'Swasta') echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>';
                                       echo '<option value="Tentara Nasional Indonesia"'; if( $skck_personaldata[0]->applicant_occupation == "Tentara Nasional Indonesia") echo 'selected="selected"'; echo '>Anggota TNI</option>';
                                       echo '<option value="Polisi Republik Indonesia"'; if( $skck_personaldata[0]->applicant_occupation == 'Polisi Republik indonesia') echo 'selected="selected"'; echo '>Anggota POLRI</option>';
                                       echo '<option value="Guru"'; if( $skck_personaldata[0]->applicant_occupation == 'Guru') echo 'selected="selected"'; echo '>Guru</option>';
-                                      echo '<option value="Pegawai Negeri Sipil"'; if( $skck_personaldata[0]->applicant_occupation == 'Pegawai Negeri Sipil') echo 'selected="selected"'; echo '>PNS Pemerintahan</option>'; 
+                                      echo '<option value="Pegawai Negeri Sipil"'; if( $skck_personaldata[0]->applicant_occupation == 'Pegawai Negeri Sipil') echo 'selected="selected"'; echo '>PNS Pemerintahan</option>';
                                       echo '<option value="Ibu Rumah Tangga"'; if( $skck_personaldata[0]->applicant_occupation == "Ibu Rumah Tangga") echo 'selected="selected"'; echo '>Ibu Rumah Tangga</option>';
                                       echo '<option value="Pelajar/Mahasiswa"'; if( $skck_personaldata[0]->applicant_occupation == "Pelajar/Mahasiswa") echo 'selected="selected"'; echo '>Pelajar/Mahasiswa</option>'; ?>
                             </select>
@@ -130,7 +130,7 @@
                             <label for="marital_status">Status Perkawinan<font color="red">*</font></label>
                             <select class="form-control" name="marital_status" data-parsley-group="block0" required>
                                 <?php echo '<option value="K"'; if($skck_personaldata[0]->applicant_marital_status == 'K') echo 'selected="selected"'; echo '>Kawin</option>';
-                                      echo '<option value="T"'; if($skck_personaldata[0]->applicant_marital_status == 'T') echo 'selected="selected"'; echo '>Tidak Kawin</option>'; 
+                                      echo '<option value="T"'; if($skck_personaldata[0]->applicant_marital_status == 'T') echo 'selected="selected"'; echo '>Tidak Kawin</option>';
                                       echo '<option value="CH"'; if($skck_personaldata[0]->applicant_marital_status == 'CH') echo 'selected="selected"'; echo '>Cerai Hidup</option>';
                                       echo '<option value="CM"'; if($skck_personaldata[0]->applicant_marital_status == 'CM') echo 'selected="selected"'; echo '>Cerai Mati</option>'; ?>
                             </select>
@@ -197,12 +197,12 @@
                             <label for="spouse_occupation">Pekerjaan</label>
                             <select class="form-control" name="spouse_occupation">
                                 <?php echo '<option value="Tani"'; if($skck_family[0]->applicant_spouse_occupation == "Tani") echo 'selected="selected"'; echo '>Petani/Peternak/Pekebun</option>';
-                                      echo '<option value="Swasta"'; if($skck_family[0]->applicant_spouse_occupation == "Swasta") echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>'; 
+                                      echo '<option value="Swasta"'; if($skck_family[0]->applicant_spouse_occupation == "Swasta") echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>';
                                       echo '<option value="Tentara Nasional Indonesia"'; if($skck_family[0]->applicant_spouse_occupation == "Tentara Nasional Indonesia") echo 'selected="selected"'; echo '>Anggota TNI</option>';
                                       echo '<option value="Polisi Republik Indonesia"'; if($skck_family[0]->applicant_spouse_occupation == "Polisi Republik Indonesia") echo 'selected="selected"'; echo '>Anggota POLRI</option>';
                                       echo '<option value="Guru"'; if($skck_family[0]->applicant_spouse_occupation == "Guru") echo 'selected="selected"'; echo '>Guru</option>';
-                                      echo '<option value="Pegawai Negeri Sipil"'; if($skck_family[0]->applicant_spouse_occupation == "Pegawai Negeri Sipil") echo 'selected="selected"'; echo '>PNS Pemerintahan</option>'; 
-                                      echo '<option value="Pelajar/Mahasiswa"'; if($skck_family[0]->applicant_spouse_occupation == "Pelajar/Mahasiswa") echo 'selected="selected"'; echo '>Pelajar/Mahasiswa</option>'; 
+                                      echo '<option value="Pegawai Negeri Sipil"'; if($skck_family[0]->applicant_spouse_occupation == "Pegawai Negeri Sipil") echo 'selected="selected"'; echo '>PNS Pemerintahan</option>';
+                                      echo '<option value="Pelajar/Mahasiswa"'; if($skck_family[0]->applicant_spouse_occupation == "Pelajar/Mahasiswa") echo 'selected="selected"'; echo '>Pelajar/Mahasiswa</option>';
                                       echo '<option value="Ibu Rumah Tangga"'; if($skck_family[0]->applicant_spouse_occupation == "Ibu Rumah Tangga") echo 'selected="selected"'; echo '>Ibu Rumah Tangga</option>'; ?>
                             </select>
                         </div>
@@ -220,11 +220,12 @@
                         </div>
                         <div class="form-group">
                             <label for="father_name">Nama<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="father_name" name="father_name" value="<?php echo ""; ?>" data-parsley-group="block1" required>
+                            <input type="text" class="form-control" id="father_name" name="father_name" value="<?php echo $skck_family[0]->applicant_father_name; ?>" data-parsley-group="block1" required>
                         </div>
                         <div class="form-group">
                             <label for="father_age">Umur<font color="red">*</font></label>
                             <select class="form-control" name="father_age" data-parsley-group="block1" required>
+                                <?php echo '<option value="0"'; if(false) echo 'selected="selected"'; echo '>0 - Sudah Meninggal</option>'; ?>
                                 <?php for($i=17; $i<66; $i++){ ?>
                                 <?php echo '<option value="'.$i.'"'; if(false) echo 'selected="selected"'; echo '>'.$i.'</option>'; ?>
                                 <?php } ?>
@@ -256,17 +257,17 @@
                             <label for="father_occupation">Pekerjaan<font color="red">*</font></label>
                             <select class="form-control" name="father_occupation" data-parsley-group="block1" required>
                                 <?php echo '<option value="Tani"'; if(false) echo 'selected="selected"'; echo '>Petani/Peternak/Pekebun</option>';
-                                      echo '<option value="Swasta"'; if(false) echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>'; 
+                                      echo '<option value="Swasta"'; if(false) echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>';
                                       echo '<option value="Tentara Nasional Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota TNI</option>';
                                       echo '<option value="Polisi Republik Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota POLRI</option>';
                                       echo '<option value="Guru"'; if(false) echo 'selected="selected"'; echo '>Guru</option>';
-                                      echo '<option value="Pegawai Negeri Sipil"'; if(false) echo 'selected="selected"'; echo '>PNS Pemerintahan</option>'; 
+                                      echo '<option value="Pegawai Negeri Sipil"'; if(false) echo 'selected="selected"'; echo '>PNS Pemerintahan</option>';
                                       echo '<option value="Ibu Rumah Tangga"'; if(false) echo 'selected="selected"'; echo '>Ibu Rumah Tangga</option>'; ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="father_address">Alamat Domisili Sekarang<font color="red">*</font></label>
-                            <textarea class="form-control" name="father_address" value="<?php echo ""; ?>" rows="2" data-parsley-group="block1" required></textarea>
+                            <textarea class="form-control" name="father_address" value="<?php echo $skck_family[0]->applicant_father_address; ?>" rows="2" data-parsley-group="block1" required></textarea>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -276,11 +277,12 @@
                         </div>
                         <div class="form-group">
                             <label for="mother_name">Nama<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="mother_name" name="mother_name" value="<?php echo ""; ?>" required data-parsley-group="block1">
+                            <input type="text" class="form-control" id="mother_name" name="mother_name" value="<?php echo $skck_family[0]->applicant_mother_name; ?>" required data-parsley-group="block1">
                         </div>
                         <div class="form-group">
                             <label for="mother_age">Umur<font color="red">*</font></label>
                             <select class="form-control" name="mother_age" data-parsley-group="block1" required>
+                                 <?php echo '<option value="0"'; if(false) echo 'selected="selected"'; echo '>0 - Sudah Meninggal</option>'; ?>
                                 <?php for($i=17; $i<66; $i++){ ?>
                                 <?php echo '<option value="'.$i.'"'; if(false) echo 'selected="selected"'; echo '>'.$i.'</option>'; ?>
                                 <?php } ?>
@@ -312,46 +314,49 @@
                             <label for="mother_occupation">Pekerjaan<font color="red">*</font></label>
                             <select class="form-control" name="mother_occupation" data-parsley-group="block1" required>
                                 <?php echo '<option value="Tani"'; if(false) echo 'selected="selected"'; echo '>Petani/Peternak/Pekebun</option>';
-                                      echo '<option value="Swasta"'; if(false) echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>'; 
+                                      echo '<option value="Swasta"'; if(false) echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>';
                                       echo '<option value="Tentara Nasional Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota TNI</option>';
                                       echo '<option value="Polisi Republik Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota POLRI</option>';
                                       echo '<option value="Guru"'; if(false) echo 'selected="selected"'; echo '>Guru</option>';
-                                      echo '<option value="Pegawai Negeri Sipil"'; if(false) echo 'selected="selected"'; echo '>PNS Pemerintahan</option>'; 
+                                      echo '<option value="Pegawai Negeri Sipil"'; if(false) echo 'selected="selected"'; echo '>PNS Pemerintahan</option>';
                                       echo '<option value="Ibu Rumah Tangga"'; if(false) echo 'selected="selected"'; echo '>Ibu Rumah Tangga</option>'; ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="mother_address">Alamat Domisili Sekarang<font color="red">*</font></label>
-                            <textarea class="form-control" name="mother_address" value="<?php echo ""; ?>" rows="2" data-parsley-group="block1" required></textarea>
+                            <textarea class="form-control" name="mother_address" value="<?php echo $skck_family[0]->applicant_mother_address; ?>" rows="2" data-parsley-group="block1" required></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row"><hr><p style="text-align:center;font-size:16px"><b><u>Saudara Terdekat</u><font color="red">*</font></b></p></div>
                 <div class="row">
+                    <?php $siblings_names = explode("#", $skck_family[0]->applicant_siblings_names); ?>
+                    <?php $siblings_ages = explode("#", $skck_family[0]->applicant_siblings_ages); ?>
+                    <?php $siblings_addresses = explode("#", $skck_family[0]->applicant_siblings_addresses); ?>
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label for="siblings_names_1">Nama Saudara 1</label>
-                            <input type="text" class="form-control" id="siblings_names_1" name="siblings_names_1" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="siblings_names_1" name="siblings_names_1" value="<?php echo $siblings_names[0]; ?>">
                         </div>
                         <div class="form-group">
                             <label for="siblings_names_2">Nama Saudara 2</label>
-                            <input type="text" class="form-control" id="siblings_names_2" name="siblings_names_2" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="siblings_names_2" name="siblings_names_2" value="<?php echo $siblings_names[1]; ?>">
                         </div>
                         <div class="form-group">
                             <label for="siblings_names_3">Nama Saudara 3</label>
-                            <input type="text" class="form-control" id="siblings_names_3" name="siblings_names_3" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="siblings_names_3" name="siblings_names_3" value="<?php echo $siblings_names[2]; ?>">
                         </div>
                         <div class="form-group">
                             <label for="siblings_names_4">Nama Saudara 4</label>
-                            <input type="text" class="form-control" id="siblings_names_4" name="siblings_names_4" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="siblings_names_4" name="siblings_names_4" value="<?php echo $siblings_names[3]; ?>">
                         </div>
                         <div class="form-group">
                             <label for="siblings_names_5">Nama Saudara 5</label>
-                            <input type="text" class="form-control" id="siblings_names_5" name="siblings_names_5" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="siblings_names_5" name="siblings_names_5" value="<?php echo $siblings_names[4]; ?>">
                         </div>
                         <div class="form-group">
                             <label for="siblings_names_6">Nama Saudara 6</label>
-                            <input type="text" class="form-control" id="siblings_names_6" name="siblings_names_6" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="siblings_names_6" name="siblings_names_6" value="<?php echo $siblings_names[5]; ?>">
                         </div>
                     </div>
                     <div class="col-lg-2">
@@ -407,27 +412,27 @@
                     <div class="col-lg-7">
                         <div class="form-group">
                             <label for="siblings_addresses_1">Alamat Saudara 1</label>
-                            <textarea class="form-control" rows="1" id="siblings_addresses_1" name="siblings_addresses_1" value="<?php echo ""; ?>"></textarea>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_1" name="siblings_addresses_1" value="<?php echo $siblings_addresses[0]; ?>"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="siblings_addresses_2">Alamat Saudara 2</label>
-                            <textarea class="form-control" rows="1" id="siblings_addresses_2" name="siblings_addresses_2" value="<?php echo ""; ?>"></textarea>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_2" name="siblings_addresses_2" value="<?php echo $siblings_addresses[1]; ?>"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="siblings_addresses_3">Alamat Saudara 3</label>
-                            <textarea class="form-control" rows="1" id="siblings_addresses_3" name="siblings_addresses_3" value="<?php echo ""; ?>"></textarea>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_3" name="siblings_addresses_3" value="<?php echo $siblings_addresses[2]; ?>"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="siblings_addresses_1">Alamat Saudara 4</label>
-                            <textarea class="form-control" rows="1" id="siblings_addresses_4" name="siblings_addresses_4" value="<?php echo ""; ?>"></textarea>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_4" name="siblings_addresses_4" value="<?php echo $siblings_addresses[3]; ?>"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="siblings_addresses_2">Alamat Saudara 5</label>
-                            <textarea class="form-control" rows="1" id="siblings_addresses_5" name="siblings_addresses_5" value="<?php echo ""; ?>"></textarea>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_5" name="siblings_addresses_5" value="<?php echo $siblings_addresses[4]; ?>"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="siblings_addresses_3">Alamat Saudara 6</label>
-                            <textarea class="form-control" rows="1" id="siblings_addresses_6" name="siblings_addresses_6" value="<?php echo ""; ?>"></textarea>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_6" name="siblings_addresses_6" value="<?php echo $siblings_addresses[5]; ?>"></textarea>
                         </div>
                     </div>
                 </div>
@@ -451,79 +456,79 @@
                     <div class="col-lg-5">
                         <div class="form-group">
                             <label for="edu_primary">Sekolah Dasar</label>
-                            <input type="text" class="form-control" id="edu_primary" name="edu_primary" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_primary" name="edu_primary" value="<?php echo $skck_family[0]->applicant_edu_primary; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_secondary">Sekolah Menengah Pertama</label>
-                            <input type="text" class="form-control" id="edu_secondary" name="edu_secondary" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_secondary" name="edu_secondary" value="<?php echo $skck_family[0]->applicant_edu_secondary; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_tertiary">Sekolah Menengah Atas</label>
-                            <input type="text" class="form-control" id="edu_tertiary" name="edu_tertiary" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_tertiary" name="edu_tertiary" value="<?php echo $skck_family[0]->applicant_edu_tertiary; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_bachelor">Sarjana (S1)</label>
-                            <input type="text" class="form-control" id="edu_bachelor" name="edu_bachelor" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_bachelor" name="edu_bachelor" value="<?php echo $skck_family[0]->applicant_edu_bachelor; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_master">Master (S2)</label>
-                            <input type="text" class="form-control" id="edu_master" name="edu_master" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_master" name="edu_master" value="<?php echo $skck_family[0]->applicant_edu_master; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_doctoral">Doktoral (S3)</label>
-                            <input type="text" class="form-control" id="edu_doctoral" name="edu_doctoral" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_doctoral" name="edu_doctoral" value="<?php echo $skck_family[0]->applicant_edu_doctoral; ?>">
                         </div>
                     </div>
                      <div class="col-lg-3">
                         <div class="form-group">
                             <label for="edu_primary_year">Tahun Lulus</label>
-                            <input type="text" class="form-control" id="edu_primary_year" name="edu_primary_year" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_primary_year" name="edu_primary_year" value="<?php echo $skck_family[0]->applicant_edu_primary_year; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_secondary_year">Tahun Lulus</label>
-                            <input type="text" class="form-control" id="edu_secondary_year" name="edu_secondary_year" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_secondary_year" name="edu_secondary_year" value="<?php echo $skck_family[0]->applicant_edu_secondary_year; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_tertiary_year">Tahun Lulus</label>
-                            <input type="text" class="form-control" id="edu_tertiary_year" name="edu_tertiary_year" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_tertiary_year" name="edu_tertiary_year" value="<?php echo $skck_family[0]->applicant_edu_tertiary_year; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_bachelor_year">Tahun Lulus</label>
-                            <input type="text" class="form-control" id="edu_bachelor_year" name="edu_bachelor_year" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_bachelor_year" name="edu_bachelor_year" value="<?php echo $skck_family[0]->applicant_edu_bachelor_year;  ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_maste_yearr">Tahun Lulus</label>
-                            <input type="text" class="form-control" id="edu_master_year" name="edu_master_year" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_master_year" name="edu_master_year" value="<?php echo $skck_family[0]->applicant_edu_master_year;  ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_doctoral_year">Tahun Lulus</label>
-                            <input type="text" class="form-control" id="edu_doctoral_year" name="edu_doctoral_year" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_doctoral_year" name="edu_doctoral_year" value="<?php echo $skck_family[0]->applicant_edu_doctoral_year; ?>">
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label for="edu_primary_city">Kota/Negara</label>
-                            <input type="text" class="form-control" id="edu_primary_city" name="edu_primary_city" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_primary_city" name="edu_primary_city" value="<?php echo $skck_family[0]->applicant_edu_primary_city; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_secondary_city">Kota/Negara</label>
-                            <input type="text" class="form-control" id="edu_secondary_city" name="edu_secondary_city" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_secondary_city" name="edu_secondary_city" value="<?php echo  $skck_family[0]->applicant_edu_secondary_city; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_tertiary_city">Kota/Negara</label>
-                            <input type="text" class="form-control" id="edu_tertiary_city" name="edu_tertiary_city" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_tertiary_city" name="edu_tertiary_city" value="<?php echo $skck_family[0]->applicant_edu_tertiary_city; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_bachelor_city">Kota/Negara</label>
-                            <input type="text" class="form-control" id="edu_bachelor_city" name="edu_bachelor_city" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_bachelor_city" name="edu_bachelor_city" value="<?php echo $skck_family[0]->applicant_edu_bachelor_city; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_master_city">Kota/Negara</label>
-                            <input type="text" class="form-control" id="edu_master_city" name="edu_master_city" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_master_city" name="edu_master_city" value="<?php echo $skck_family[0]->applicant_edu_master_city; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edu_doctoral_city">Kota/Negara</label>
-                            <input type="text" class="form-control" id="edu_doctoral_city" name="edu_doctoral_city" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="edu_doctoral_city" name="edu_doctoral_city" value="<?php echo $skck_family[0]->applicant_edu_doctoral_city ?>">
                         </div>
                     </div>
                 </div>
@@ -548,11 +553,11 @@
                         </div>
                         <div class="form-group">
                             <label for="pidana_apa">Bila pernah, dalam perkara apa?</label>
-                            <input type="text" class="form-control" id="pidana_apa" name="pidana_apa" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="pidana_apa" name="pidana_apa" value="<?php echo $skck_pelanggaran[0]->applicant_pidana_apa; ?>">
                         </div>
                         <div class="form-group">
                             <label for="pidana_putusanakhir">Bila pernah, Bagaimana putusannya/vonis hakim?</label>
-                            <input type="text" class="form-control" id="pidana_putusanakhir" name="pidana_putusanakhir" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="pidana_putusanakhir" name="pidana_putusanakhir" value="<?php echo $skck_pelanggaran[0]->applicant_pidana_putusanakhir; ?>">
                         </div>
                         <div class="form-group">
                             <label for="pidana_proses">Apakah Saudara saat ini sedang dalam proses perkara pidana?</label>
@@ -566,15 +571,15 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="pidana_kasus">Bila pernah, dalam perkara apa?</label>
-                            <input type="text" class="form-control" id="pidana_kasus" name="pidana_kasus" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="pidana_kasus" name="pidana_kasus" value="<?php echo $skck_pelanggaran[0]->applicant_pidana_kasus; ?>">
                         </div>
                         <div class="form-group">
                             <label for="pidana_sampaimana">Bila pernah, sampai sejauh mana proses hukumnya?</label>
-                            <input type="text" class="form-control" id="pidana_sampaimana" name="pidana_sampaimana" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="pidana_sampaimana" name="pidana_sampaimana" value="<?php echo $skck_pelanggaran[0]->applicant_pidana_sampaimana; ?>">
                         </div>
                         <div class="form-group">
                             <label for="pidana_putusansementara">Bila pernah, Bagaimana hasil/putusan sementara hingga kini?</label>
-                            <input type="text" class="form-control" id="pidana_putusansementara" name="pidana_putusansementara" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="pidana_putusansementara" name="pidana_putusansementara" value="<?php echo $skck_pelanggaran[0]->applicant_pidana_putusansementara; ?>">
                         </div>
                     </div>
                 </div>
@@ -594,11 +599,11 @@
                         </div>
                         <div class="form-group">
                             <label for="pelanggaran_apa">Bila pernah, dalam perkara apa?</label>
-                            <input type="text" class="form-control" id="pelanggaran_apa" name="pelanggaran_apa" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="pelanggaran_apa" name="pelanggaran_apa" value="<?php echo $skck_pelanggaran[0]->applicant_pelanggaran_apa; ?>">
                         </div>
                         <div class="form-group">
                             <label for="pelanggaran_sampaimana1">Bagaimana proses hukumnya sejauh ini?</label>
-                            <input type="text" class="form-control" id="pelanggaran_sampaimana" name="pelanggaran_sampaimana" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="pelanggaran_sampaimana" name="pelanggaran_sampaimana" value="<?php echo $skck_pelanggaran[0]->applicant_pelanggaran_sampaimana; ?>">
                         </div>
                 </div>
             </fieldset>
@@ -614,29 +619,29 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="rambut">Rambut Anda?<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="rambut" name="rambut" value="<?php echo ""; ?>" required data-parsley-group="block4">
+                            <input type="text" class="form-control" id="rambut" name="rambut" value="<?php echo echo $skck_cirifisik[0]->applicant_rambut; ?>" required data-parsley-group="block4">
                         </div>
                         <div class="form-group">
                             <label for="wajah">Bentuk Wajah Anda?<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="wajah" name="wajah" value="<?php echo ""; ?>" required data-parsley-group="block4">
+                            <input type="text" class="form-control" id="wajah" name="wajah" value="<?php echo $skck_cirifisik[0]->applicant_wajah; ?>" required data-parsley-group="block4">
                         </div>
                         <div class="form-group">
                             <label for="kulit">Tipe Warna Kulit?<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="kulit" name="kulit" value="<?php echo ""; ?>" required data-parsley-group="block4">
+                            <input type="text" class="form-control" id="kulit" name="kulit" value="<?php echo $skck_cirifisik[0]->applicant_kulit; ?>" required data-parsley-group="block4">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="tinggibadan">Tinggi Badan Anda?<font color="red">*</font> (cm)</label>
-                            <input type="text" class="form-control" id="tinggibadan" name="tinggibadan" value="<?php echo ""; ?>" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[0, 3]">
+                            <input type="text" class="form-control" id="tinggibadan" name="tinggibadan" value="<?php echo $skck_cirifisik[0]->applicant_tinggibadan; ?>" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[0, 3]">
                         </div>
                         <div class="form-group">
                             <label for="beratbadan">Berat Badan Anda?<font color="red">*</font> (kg)</label>
-                            <input type="text" class="form-control" id="beratbadan" name="beratbadan" value="<?php echo ""; ?>" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[0, 3]">
+                            <input type="text" class="form-control" id="beratbadan" name="beratbadan" value="<?php echo $skck_cirifisik[0]->applicant_beratbadan; ?>" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[0, 3]">
                         </div>
                         <div class="form-group">
                             <label for="tandakhusus">Tanda Khusus di Badan Anda?</label>
-                            <input type="text" class="form-control" id="tandakhusus" name="tandakhusus" value="<?php echo ""; ?>">
+                            <input type="text" class="form-control" id="tandakhusus" name="tandakhusus" value="<?php echo $skck_cirifisik[0]->applicant_tandakhusus; ?>">
                         </div>
                     </div>
                 </div>
@@ -685,7 +690,7 @@
                 <legend>Lampiran</legend>
                 <div class="row">
                     <div class="col-lg-12">
-                        <p style="text-align:justify">Bila ada, silakan upload di sini.Bila tidak ada/tidak bisa upload saat ini, pada saat verifikasi
+                        <p style="text-align:justify">Silakan upload ulang di sini.Bila tidak ada/tidak bisa upload saat ini, pada saat verifikasi
                         & pengambilan SKCK, selain membawa yg asli (untuk verifikasi), bawa juga soft copy/file/scan dokumen-dokumen anda pada saat pengambilan SKCK.
                         Anda juga baiknya membawa hasil print/fotocopy dokumen pada saat verifikasi bila tidak mengupload saat ini untuk mempercepat proses penerbitan SKCK.
                         </p>
@@ -708,7 +713,7 @@
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=4x6.gif'); ?>">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=KTP_ID.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
@@ -719,7 +724,7 @@
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
-                                <p class="help-block" style="text-align:justify;">Unggah Gambar KTP/KITAP/KITAS</p>
+                                <p class="help-block" style="text-align:justify;">Unggah Gambar KTP/ID Lain</p>
                             </div>
                         </div>
                         <div class="form-group">

@@ -38,6 +38,7 @@
 				  <div id="tabs-1">
 					<div class="row">
 					   <div class="col-xs-5">
+						 
 						  <div class="form-group">
 							<label for="ktp">No. KTP:</label>
 							<input type="text" class="form-control" id="applicant_id" name="applicant_id">
@@ -57,8 +58,12 @@
 									<option value="P">P - Print</option>
 								</select>
 						  </div>
-						   
+						   <div class="form-group">
+							<label for="applicant_name">Email:</label>
+							<input type="text" class="form-control" id="applicant_email" name="applicant_email">
+						  </div>
 					  </div>
+					  
 					</div>
 				  </div>
 				  <div id="tabs-2">
@@ -80,13 +85,22 @@
 								<label for="text">Jenis Kelamin:</label>
 								
 								<select class="form-control" id="applicant_sex" name="applicant_sex">
-									<option value="M">Laki-laki</option>
+									<option value="M">Laki-Laki</option>
 									<option value="F">Perempuan</option>
 								</select>
 							  </div>
 							 <div class="form-group">
 								<label for="text">Agama:</label>
-								<input type="text" class="form-control" id="applicant_religion" name="applicant_religion">
+								
+								<select class="form-control" id="applicant_religion" name="applicant_religion">
+									<option value="Islam">Islam</option>
+									<option value="Katolik">Katolik</option>
+									<option value="Protestan">Protestan</option>
+									<option value="Hindu">Hindu</option>
+									<option value="Buddha">Buddha</option>
+									<option value="Konghucu">Konghucu</option>
+									<option value="-">Aliran Kepercayaan</option>
+								</select>
 							  </div>
 						 </div>
 						 <div class="col-xs-4">
@@ -95,8 +109,8 @@
 								<label for="text">Kewarganegaraan:</label>
 								
 								<select class="form-control" id="applicant_citizenship" name="applicant_citizenship">
-									<option value="I">Indonesia</option>
-									<option value="A">Asing</option>
+									<option value="I">Warga Negara Indonesia</option>
+									<option value="A">Warga Negara Asing</option>
 								</select>
 							  </div>
 							<div class="form-group">
@@ -124,10 +138,10 @@
 								<label for="text">No. Passport:</label>
 								<input type="text" class="form-control" id="applicant_passport" name="applicant_passport">
 							  </div>
-							 <div class="form-group">
+							 <!--<div class="form-group">
 								<label for="text">No. Kitaps:</label>
 								<input type="text" class="form-control" id="applicant_kitaps" name="applicant_kitaps">
-							  </div>
+							  </div>-->
 							
 							
 						 </div>
@@ -318,10 +332,13 @@
 								<input type="text" class="form-control" id="applicant_tandakhusus" name="applicant_tandakhusus">
 							  </div>
 							<div class="form-group">
-								<label for="text">Rumus Sidik Jari:</label>
+								<label for="text">Rumus Sidik Jari 1:</label>
 								<input type="text" class="form-control" id="applicant_rumussidikjari" name="applicant_rumussidikjari">
 							  </div>
-							
+							<div class="form-group">
+								<label for="text">Rumus Sidik Jari 2:</label>
+								<input type="text" class="form-control" id="applicant_rumussidikjari2" name="applicant_rumussidikjari2">
+							  </div>
 						 </div>
 					 </div>
 				  </div>
@@ -334,6 +351,9 @@
 						<li><a href="#tb-4">Saudara 1</a></li>
 						<li><a href="#tb-5">Saudara 2</a></li>
 						<li><a href="#tb-6">Saudara 3</a></li>
+						<li><a href="#tb-7">Saudara 4</a></li>
+						<li><a href="#tb-8">Saudara 5</a></li>
+						<li><a href="#tb-9">Saudara 6</a></li>
 					  </ul>
 					  <div id="tb-1">
 						<div class="row">
@@ -360,7 +380,16 @@
 								  <div class="col-xs-6">
 									  <div class="form-group">
 										<label for="text">Agama:</label>
-										<input type="text" class="form-control" id="applicant_spouse_religion" name="applicant_spouse_religion">
+										
+										<select class="form-control" id="applicant_spouse_religion" name="applicant_spouse_religion">
+											<option value="Islam">Islam</option>
+											<option value="Katolik">Katolik</option>
+											<option value="Protestan">Protestan</option>
+											<option value="Hindu">Hindu</option>
+											<option value="Buddha">Buddha</option>
+											<option value="Konghucu">Konghucu</option>
+											<option value="-">Aliran Kepercayaan</option>
+										</select>
 									  </div>
 								  </div>
 							  </div>
@@ -369,7 +398,11 @@
 						 <div class="col-xs-5">
 							<div class="form-group">
 								<label for="text">Kewarganegaraan:</label>
-								<input type="text" class="form-control" id="applicant_spouse_citizenship" name="applicant_spouse_citizenship">
+								
+								<select class="form-control" id="applicant_spouse_citizenship" name="applicant_spouse_citizenship">
+									<option value="I">Warga Negara Indonesia</option>
+									<option value="A">Warga Negara Asing</option>
+								</select>
 							  </div>
 							   <div class="form-group">
 								<label for="text">Pekerjaan:</label>
@@ -403,13 +436,26 @@
 								  <div class="col-xs-6">
 									  <div class="form-group">
 										<label for="text">Agama:</label>
-										<input type="text" class="form-control" id="applicant_father_religion" name="applicant_father_religion">
+										
+										<select class="form-control" id="applicant_father_religion" name="applicant_father_religion">
+											<option value="Islam">Islam</option>
+											<option value="Katolik">Katolik</option>
+											<option value="Protestan">Protestan</option>
+											<option value="Hindu">Hindu</option>
+											<option value="Buddha">Buddha</option>
+											<option value="Konghucu">Konghucu</option>
+											<option value="-">Aliran Kepercayaan</option>
+										</select>
 									  </div>
 								  </div>
 							  </div>
 							  <div class="form-group">
 								<label for="text">Kewarganegaraan:</label>
-								<input type="text" class="form-control" id="applicant_father_citizenship" name="applicant_father_citizenship">
+								
+								<select class="form-control" id="applicant_father_citizenship" name="applicant_father_citizenship">
+									<option value="I">Warga Negara Indonesia</option>
+									<option value="A">Warga Negara Asing</option>
+								</select>
 							  </div>
 						</div>
 						<div class="col-xs-5">
@@ -443,13 +489,26 @@
 								  <div class="col-xs-6">
 									  <div class="form-group">
 										<label for="text">Agama:</label>
-										<input type="text" class="form-control" id="applicant_mother_religion" name="applicant_mother_religion">
+										
+										<select class="form-control" id="applicant_mother_religion" name="applicant_mother_religion">
+											<option value="Islam">Islam</option>
+											<option value="Katolik">Katolik</option>
+											<option value="Protestan">Protestan</option>
+											<option value="Hindu">Hindu</option>
+											<option value="Buddha">Buddha</option>
+											<option value="Konghucu">Konghucu</option>
+											<option value="-">Aliran Kepercayaan</option>
+										</select>
 									  </div>
 								  </div>
 							  </div>
 							  <div class="form-group">
 								<label for="text">Kewarganegaraan:</label>
-								<input type="text" class="form-control" id="applicant_mother_citizenship" name="applicant_mother_citizenship">
+								
+								<select class="form-control" id="applicant_mother_citizenship" name="applicant_mother_citizenship">
+									<option value="I">Warga Negara Indonesia</option>
+									<option value="A">Warga Negara Asing</option>
+								</select>
 							  </div>
 						  </div>
 						  <div class="col-xs-5">
@@ -555,7 +614,91 @@
 						 </div>
 						 
 					 </div>
-					</div>
+					 </div>
+					 <div id="tb-7">
+					   <div class="row">
+						<div class="col-xs-5">
+							<div class="form-group">
+								<label for="text">Nama Saudara 4:</label>
+								<input type="text" class="form-control" id="applicant_sibling4_name" name="applicant_sibling4_name">
+							  </div>
+							  <div class="row">
+								  <div class="col-xs-4">
+									<div class="form-group">
+									<label for="text">Umur:</label>
+									<input type="text" class="form-control" id="applicant_sibling4_age"  name="applicant_sibling4_age">
+									</div>
+								</div>
+							  
+								  <div class="col-xs-6">
+									  
+								  </div>
+							  </div>
+							  
+							   <div class="form-group">
+								<label for="text">Alamat:</label>
+								<textarea class="form-control" rows="3" id="applicant_sibling4_address" name="applicant_sibling4_address"></textarea>
+							  </div>
+						 </div>
+						 
+					 </div>
+					 </div>
+					 <div id="tb-8">
+					   <div class="row">
+						<div class="col-xs-5">
+							<div class="form-group">
+								<label for="text">Nama Saudara 5:</label>
+								<input type="text" class="form-control" id="applicant_sibling5_name" name="applicant_sibling5_name">
+							  </div>
+							  <div class="row">
+								  <div class="col-xs-4">
+									<div class="form-group">
+									<label for="text">Umur:</label>
+									<input type="text" class="form-control" id="applicant_sibling5_age"  name="applicant_sibling5_age">
+									</div>
+								</div>
+							  
+								  <div class="col-xs-6">
+									  
+								  </div>
+							  </div>
+							  
+							   <div class="form-group">
+								<label for="text">Alamat:</label>
+								<textarea class="form-control" rows="3" id="applicant_sibling5_address" name="applicant_sibling5_address"></textarea>
+							  </div>
+						 </div>
+						 
+					 </div>
+					 </div>
+					 <div id="tb-9">
+					   <div class="row">
+						<div class="col-xs-5">
+							<div class="form-group">
+								<label for="text">Nama Saudara 6:</label>
+								<input type="text" class="form-control" id="applicant_sibling6_name" name="applicant_sibling6_name">
+							  </div>
+							  <div class="row">
+								  <div class="col-xs-4">
+									<div class="form-group">
+									<label for="text">Umur:</label>
+									<input type="text" class="form-control" id="applicant_sibling6_age"  name="applicant_sibling6_age">
+									</div>
+								</div>
+							  
+								  <div class="col-xs-6">
+									  
+								  </div>
+							  </div>
+							  
+							   <div class="form-group">
+								<label for="text">Alamat:</label>
+								<textarea class="form-control" rows="3" id="applicant_sibling6_address" name="applicant_sibling6_address"></textarea>
+							  </div>
+						 </div>
+						 
+					 </div>
+					 </div>
 					</div>
 					</div>
 					
@@ -571,8 +714,8 @@
 							<div class="form-group">
 								<label for="nama_lengkap">Pidana:</label>
 								<select class="form-control" id="applicant_pidana" name="applicant_pidana">
-									<option value="Tidak Pernah">Tidak Pernah</option>
-									<option value="Pernah">Pernah</option>
+									<option value="TP">Tidak Pernah</option>
+									<option value="P">Pernah</option>
 								</select>
 							  </div>
 							   <div class="form-group">
@@ -610,8 +753,8 @@
 							<div class="form-group">
 								<label for="nama_lengkap">Pelanggaran:</label>
 								<select class="form-control" id="applicant_pelanggaran" name="applicant_pelanggaran">
-									<option value="Tidak Pernah">Tidak Pernah</option>
-									<option value="Pernah">Pernah</option>
+									<option value="TP">Tidak Pernah</option>
+									<option value="P">Pernah</option>
 								</select>
 							  </div>
 							   <div class="form-group">
@@ -706,20 +849,21 @@
 									<td class="mytable"><div id="fingerprint_file"></div></td>
 									<td class="mytable"><button class="btn btn-info btn-xs" id="btn_download_finger">Download</button>&nbsp;<button class="btn btn-danger btn-xs" id="btn_del_finger">Hapus</button></td>
 								  </tr>
+								 
 								  <tr>
-									<td class="mytable">Surat Sponsor</td>
-									<td class="mytable"><div id="corp_sponsor_file"></div></td>
-									<td class="mytable"><button class="btn btn-info btn-xs" id="btn_download_corp">Download</button>&nbsp;<button class="btn btn-danger btn-xs" id="btn_del_corp">Hapus</button></td>
+									<td class="mytable">Surat Polsek</td>
+									<td class="mytable"><div id="polsek_file"></div></td>
+									<td class="mytable"><button class="btn btn-info btn-xs" id="btn_download_polsek">Download</button>&nbsp;<button class="btn btn-danger btn-xs" id="btn_del_polsek">Hapus</button></td>
 								  </tr>
 								  <tr>
-									<td class="mytable">Surat Nikah</td>
-									<td class="mytable"><div id="marital_letter_file"></div></td>
-									<td class="mytable"><button class="btn btn-info btn-xs" id="btn_download_marital">Download</button>&nbsp;<button class="btn btn-danger btn-xs" id="btn_del_marital">Hapus</button></td>
+									<td class="mytable">Surat Desa</td>
+									<td class="mytable"><div id="desa_file"></div></td>
+									<td class="mytable"><button class="btn btn-info btn-xs" id="btn_download_desa">Download</button>&nbsp;<button class="btn btn-danger btn-xs" id="btn_del_desa">Hapus</button></td>
 								  </tr>
 								  <tr>
-									<td class="mytable">Report Evidence</td>
-									<td class="mytable"><div id="report_evidence_file"></div></td>
-									<td class="mytable"><button class="btn btn-info btn-xs" id="btn_download_report">Download</button>&nbsp;<button class="btn btn-danger btn-xs" id="btn_del_report">Hapus</button></td>
+									<td class="mytable">Surat Kecamatan</td>
+									<td class="mytable"><div id="kecamatan_file"></div></td>
+									<td class="mytable"><button class="btn btn-info btn-xs" id="btn_download_kecamatan">Download</button>&nbsp;<button class="btn btn-danger btn-xs" id="btn_del_kecamatan">Hapus</button></td>
 								  </tr>
 								 </tbody>
 							</table>
@@ -738,9 +882,9 @@
 										<option value="3">Kartu Keluarga</option>
 										<option value="4">Akta Kelahiran</option>
 										<option value="5">Sidik Jari</option>
-										<option value="6">Surat Sponsor</option>
-										<option value="7">Surat Nikah</option>
-										<option value="8">Report Evidence</option>
+										<option value="6">Surat Polsek</option>
+										<option value="7">Surat Desa</option>
+										<option value="8">Surat Kecamatan</option>
 									</select>
 									<input type="file" class="form-control form-inline" id="myfile" name="myfile" title=" ">
 									<div id="progress" class="progress">
@@ -762,33 +906,37 @@
 		</div>
       
       <div class="row">
-        <div class="col-xs-7">
-			<!--<form class="form-inline role="form">
+        <div class="col-xs-4">
+			<form class="form-inline role="form">
 				<div class="form-group myhead">
-					<label>Pencarian:</label> &nbsp;<input type="text" id="keyword" name="keyword" class="form-control" />
-					<button type="button" class="btn btn-info btn-sm" id="btn_cari">Cari</button>
+					<!--<label>Pencarian</label>&nbsp;<select name="search_col" id="search_col" class="form-control" style="height:30px;font-size:97%;"><option value="1">Nama</option>			<option value="2">KTP</option><option value="3">Application ID</option></select> <input type="text" id="keyword" name="keyword" class="form-control" />&nbsp;<button type="button" class="btn btn-info btn-sm" id="btn_cari">Cari</button>-->
 				</div>
-			</form>-->
+			</form>
+			
 		</div>
-		<div class="col-xs-5">
+		<div class="col-xs-8">
 			<div class="myhead">
 				<button type="button" class="btn btn-info btn-sm" id="btn_add">Add</button>
 				<button type="button" class="btn btn-info btn-sm" id="btn_edit">Edit</button>
-				<button type="button" class="btn btn-info btn-sm" id="btn_print">Print</button>
+				<button type="button" class="btn btn-info btn-sm" id="btn_delete">Hapus</button>
+				<button type="button" class="btn btn-info btn-sm" id="btn_print">Print SKCK</button>
+				<button type="button" class="btn btn-info btn-sm" id="btn_print2">Print Pertanyaan</button>
+				<button type="button" class="btn btn-info btn-sm" id="btn_print3">Print Kartu Tik</button>
 			</div>
 		</div>	
 		 
-		  
-		  
-		  <script type="text/javascript">
-		  
-			  
-        </script>
-        
     </div>
 	  
 	<div class="row">
+		
 		<table id="list1"></table> <!--Grid table-->
 		<div id="pager1"></div>  <!--pagination div-->
 	</div>
-      </div>
+</div>
+<script src="<?php echo HTTP_JS_PATH; ?>jquery.limit-1.2.source.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#applicant_address_doc').limit('100');
+		$('#applicant_address_now').limit('100');
+	});
+</script>

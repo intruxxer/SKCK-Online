@@ -17,7 +17,7 @@ class Pendaftaran_model extends CI_Model {
     */
     public function get_pendaftaran_by_id($id)
     {
-		$this->db->select('*');
+		$this->db->select('*, skck_registration.applicant_id as no_ktp');
 		$this->db->from('skck_registration');
 		$this->db->join('skck_personaldata','skck_registration.id=skck_personaldata.id','left');
 		$this->db->join('skck_education','skck_registration.id=skck_education.id','left');
@@ -25,11 +25,13 @@ class Pendaftaran_model extends CI_Model {
 		$this->db->join('skck_family','skck_registration.id=skck_family.id','left');
 		$this->db->join('skck_pelanggaran','skck_registration.id=skck_pelanggaran.id','left');
 		$this->db->join('skck_documents','skck_registration.id=skck_documents.id','left');
+		$this->db->join('skck_keterangan','skck_registration.id=skck_keterangan.id','left');
 		$this->db->where('skck_registration.id', $id);
 		$query = $this->db->get();
 		return $query->result_array(); 
     }
-
+	
+	
 
     /**
     * Fetch pendaftaran data from the database
@@ -45,19 +47,27 @@ class Pendaftaran_model extends CI_Model {
     public function get_pendaftaran($status_type=null, $searchString=null, $searchField=null, $searchOper = null, $limit_start = null, $limit_end = null)
     {
 	    
-		$this->db->select('*');
+		$this->db->select('skck_registration.*,  applicant_birthdate, applicant_sex, applicant_address_doc');
 		
 		$this->db->from('skck_registration');
 		$this->db->join('skck_personaldata','skck_registration.id=skck_personaldata.id','left');
 		
-		if($status_type != null){
+		/*if($status_type != null){
 			$this->db->where('status_type', $status_type);
-		}
+		}*/
 		if($searchString != null){
-			if($searchOper == 'cn')
+			/*if($searchOper == 'cn')
 				$this->db->like($searchField, $searchString);
 			elseif($searchOper == 'eq')
 				$this->db->where($searchField, $searchString);
+			else
+				$this->db->like($searchField, $searchString);*/
+			if($searchField == 'applicant_name')
+				$this->db->like('skck_registration.applicant_name', $searchString);
+			elseif($searchField == 'applicant_id')
+				$this->db->like('skck_registration.applicant_id', $searchString);
+			elseif($searchField == 'id')
+				$this->db->like('skck_registration.id', $searchString);
 			else
 				$this->db->like($searchField, $searchString);
 		}
@@ -71,6 +81,15 @@ class Pendaftaran_model extends CI_Model {
 		
 		return $query->result_array(); 	
     }
+	
+	/**
+    * Get Print ID
+    * @return int
+    */
+	public function get_print_id()
+	{
+		return $this->db->query("select count(*) + 1 as print_id from skck_registration where status_type='P' ")->row()->print_id;
+	}
 
     /**
     * Count the number of rows
@@ -85,14 +104,22 @@ class Pendaftaran_model extends CI_Model {
 		$this->db->from('skck_registration');
 		$this->db->join('skck_personaldata','skck_registration.id=skck_personaldata.id','left');
 		
-		if($status_type != null){
+		/*if($status_type != null){
 			$this->db->where('status_type', $status_type);
-		}
+		}*/
 		if($searchString != null){
-			if($searchOper == 'cn')
+			/*if($searchOper == 'cn')
 				$this->db->like($searchField, $searchString);
 			elseif($searchOper == 'eq')
 				$this->db->where($searchField, $searchString);
+			else
+				$this->db->like($searchField, $searchString);*/
+			if($searchField == 'applicant_name')
+				$this->db->like('skck_registration.applicant_name', $searchString);
+			elseif($searchField == 'applicant_id')
+				$this->db->like('skck_registration.applicant_id', $searchString);
+			elseif($searchField == 'id')
+				$this->db->like('skck_registration.id', $searchString);
 			else
 				$this->db->like($searchField, $searchString);
 		}
@@ -267,6 +294,41 @@ class Pendaftaran_model extends CI_Model {
 	function delete_registration($id){
 		$this->db->where('id', $id);
 		$this->db->delete('skck_registration'); 
+	}
+	
+	function delete_personaldata($id){
+		$this->db->where('id', $id);
+		$this->db->delete('skck_personaldata'); 
+	}
+	
+	function delete_pelanggaran($id){
+		$this->db->where('id', $id);
+		$this->db->delete('skck_pelanggaran'); 
+	}
+	
+	function delete_keterangan($id){
+		$this->db->where('id', $id);
+		$this->db->delete('skck_keterangan'); 
+	}
+	
+	function delete_family($id){
+		$this->db->where('id', $id);
+		$this->db->delete('skck_family'); 
+	}
+	
+	function delete_education($id){
+		$this->db->where('id', $id);
+		$this->db->delete('skck_education'); 
+	}
+	
+	function delete_documents($id){
+		$this->db->where('id', $id);
+		$this->db->delete('skck_documents'); 
+	}
+	
+	function delete_cirifisik($id){
+		$this->db->where('id', $id);
+		$this->db->delete('skck_cirifisik'); 
 	}
  
 }

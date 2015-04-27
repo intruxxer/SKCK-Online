@@ -8,19 +8,21 @@
 	      <table class="table table-bordered">
 		  	<thead>
 			  	<tr>
-			  		<th>No. e-SKCK</th>
+			  		<th>Tanggal & No. e-SKCK</th>
 			  		<th>Petunjuk Selanjutnya</th>
 		  		</tr>
 		  	</thead>
 		  	<tbody>
 				<tr>
-			  		<td><span class="label label-primary"><?= $skck_registration_no; ?></span></td>
+			  		<td>
+			  			<span><?php  echo date("d F Y"); ?></span><br/>
+			  			<span class="label label-primary"><?= $skck_registration_no; ?></span></td>
 			  		<td>
 				  		<p style="text-align:justify">Selamat <b><?= $skck_registration_name; ?>,</b> anda telah berhasil melakukan pendaftaran permohonan e-SKCK/SKCK Online di Polres Tulung Agung. Silakan <b><u>CATAT No. Aplikasi/Registrasi e-SKCK</u></b>
-				  		anda: <h3 class="text-center"><b><?= $skck_registration_no; ?></b></h3><div id="qrcode"></div><br/> atau silakan <b><u>PRINT halaman ini</u></b>. 
-				  		Selanjutnya silakan lengkapi persyaratan yg belum ada seperti pengambilan sidik jari di Polres, surat keterangan dari RT-RW-Kelurahan, dan sebagainya. 
-				  		Bila sudah ada, silakan bawa saat ingin mendapatkan SKCK anda sebagai syarat verifikasi. Semua dokumen diharap dibawa beserta versi File/Scan/Soft Copy 
-				  		masing-masing apabila belum mengunggah dokumen-dokumen tersebut secara online.</p>
+				  		anda: <h3 class="text-center"><b><?= $skck_registration_no; ?></b></h3><div id="qrcode"></div><br/> atau silakan <b><u>PRINT halaman ini</u></b>.
+				  		Selanjutnya silakan lengkapi persyaratan yg belum ada seperti pengambilan sidik jari di Polres, surat keterangan dari RT-RW-Kelurahan, dan sebagainya.
+				  		Bila sudah ada, silakan bawa saat ingin mendapatkan SKCK anda sebagai syarat verifikasi. Semua dokumen diharap dibawa beserta versi File/Scan/Soft Copy
+				  		masing-masing apabila belum mengunggah dokumen-dokumen tersebut secara online. Apabila semua lengkap & terverifikasi, dalam 1x 24 jam, SKCK anda dapat diterbitkan.</p>
 						<blockquote>
 						<p style="text-align:justify"><strong>Dokumen yang dipersyaratkan untuk verifikasi permohonan SKCK secara <em>online</em> adalah sebagai berikut:</strong></p>
 							<ul>
@@ -41,12 +43,12 @@
 						<p style="margin-left:20px; text-align:justify">(3) Menunjukkan <b>dokumen-dokumen asli yang dipersyaratkan</b>, kepada petugas, guna keperluan verifikasi.</p>
 						<p style="margin-left:20px; text-align:justify">(4) Menyerahkan <b>pas foto 4x6</b> sebanyak <b>6 lembar.</b></p>
 			  			<a style="margin-left:20px; text-align:right" href="#" class="btn btn-success" onClick="window.print()">
-			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Tanda Terima
+			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Tanda Terima e-SKCK
 			  			</a>
-			  			<a style="margin-left:20px; text-align:right" href="<?php echo base_url("apply"); ?>" class="btn btn-success">
+			  			<a style="margin-left:20px; text-align:right" href="<?php echo base_url("apply/print_pertanyaan")."/".$skck_id; ?>" target="_blank" class="btn btn-success">
 			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Daftar Pertanyaan e-SKCK
 			  			</a>
-			  			<a style="margin-left:20px; text-align:right" href="<?php echo base_url("apply"); ?>" class="btn btn-success">
+			  			<a style="margin-left:20px; text-align:right" href="<?php echo base_url("apply/print_kartu")."/".$skck_id; ?>" target="_blank" class="btn btn-success">
 			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Kartu TIK e-SKCK
 			  			</a>
 			  		</td>
@@ -58,14 +60,14 @@
 </div>
 <style>
 	#qrcode img{
-		display: block; 
-		margin-left: auto; 
+		display: block;
+		margin-left: auto;
 		margin-right: auto;
 	}
 </style>
 <script type="text/javascript">
 	var qrcode = new QRCode(document.getElementById("qrcode"), {
-	    text: <?= '"'.$skck_registration_no.'"' ?>,
+	    text: <?= '"'.$skck_registration_name."-".$skck_registration_no."-".date("d F Y").'"' ?>,
 	    width: 170,
 	    height: 160,
 	    colorDark : "#000000",

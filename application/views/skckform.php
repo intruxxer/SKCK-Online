@@ -157,7 +157,7 @@
                         <div class="form-group">
                             <label for="spouse_age">Umur</label>
                             <select class="form-control" name="spouse_age">
-                                ?php echo '<option value="0">0 - Sudah Meninggal Dunia</option>'; ?>
+                                ?php echo '<option value="-">0 - Sudah Meninggal Dunia/Cerai</option>'; ?>
                                 <?php for($i=15; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
@@ -166,6 +166,7 @@
                         <div class="form-group">
                             <label for="spouse_religion">Agama</label>
                             <select class="form-control" name="spouse_religion">
+                                <option value="-">--Silakan Pilih--</option>
                                 <option value="Islam">Islam</option>
                                 <option value="Katolik">Katolik</option>
                                 <option value="Protestan">Protestan</option>
@@ -178,6 +179,7 @@
                         <div class="form-group">
                             <label for="spouse_citizenship">Kewarganegaraan</label>
                             <select class="form-control" name="spouse_citizenship">
+                                <option value="-">--Silakan Pilih--</option>
                                 <option value="I">Warga Negara Indonesia</option>
                                 <option value="A">Warga Negara Asing</option>
                             </select>
@@ -185,6 +187,7 @@
                         <div class="form-group">
                             <label for="spouse_occupation">Pekerjaan</label>
                             <select class="form-control" name="spouse_occupation">
+                                <option value="-">--Silakan Pilih--</option>
                                 <option value="Tani">Petani/Peternak/Pekebun</option>
                                 <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
                                 <option value="Tentara Nasional Indonesia">Anggota TNI</option>
@@ -212,7 +215,7 @@
                         <div class="form-group">
                             <label for="father_age">Umur<font color="red">*</font></label>
                             <select class="form-control" name="father_age" data-parsley-group="block1" required>
-                                <?php echo '<option value="0">0 - Sudah Meninggal Dunia</option>'; ?>
+                                <?php echo '<option value="Alm">0 - Sudah Meninggal Dunia</option>'; ?>
                                 <?php for($i=21; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
@@ -221,6 +224,7 @@
                         <div class="form-group">
                             <label for="father_religion">Agama<font color="red">*</font></label>
                             <select class="form-control" name="father_religion" data-parsley-group="block1" required>
+                                <option value="-">--Silakan Pilih--</option>
                                 <option value="Islam">Islam</option>
                                 <option value="Katolik">Katolik</option>
                                 <option value="Protestan">Protestan</option>
@@ -233,6 +237,7 @@
                         <div class="form-group">
                             <label for="father_citizenship">Kewarganegaraan<font color="red">*</font></label>
                             <select class="form-control" name="father_citizenship" data-parsley-group="block1" required>
+                                <option value="-">--Silakan Pilih--</option>
                                 <option value="I">Warga Negara Indonesia</option>
                                 <option value="A">Warga Negara Asing</option>
                             </select>
@@ -240,6 +245,7 @@
                         <div class="form-group">
                             <label for="father_occupation">Pekerjaan<font color="red">*</font></label>
                             <select class="form-control" name="father_occupation" data-parsley-group="block1" required>
+                                <option value="-">--Silakan Pilih--</option>
                                 <option value="Tani">Petani/Peternak/Pekebun</option>
                                 <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
                                 <option value="Tentara Nasional Indonesia">Anggota TNI</option>
@@ -267,7 +273,7 @@
                         <div class="form-group">
                             <label for="mother_age">Umur<font color="red">*</font></label>
                             <select class="form-control" name="mother_age" data-parsley-group="block1" required>
-                                <?php echo '<option value="0">0 - Sudah Meninggal Dunia</option>'; ?>
+                                <?php echo '<option value="Alm">0 - Sudah Meninggal Dunia</option>'; ?>
                                 <?php for($i=21; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
@@ -276,6 +282,7 @@
                         <div class="form-group">
                             <label for="mother_religion">Agama<font color="red">*</font></label>
                             <select class="form-control" name="mother_religion" data-parsley-group="block1" required>
+                                <option value="-">--Silakan Pilih--</option>
                                 <option value="Islam">Islam</option>
                                 <option value="Katolik">Katolik</option>
                                 <option value="Protestan">Protestan</option>
@@ -288,6 +295,7 @@
                         <div class="form-group">
                             <label for="mother_citizenship">Kewarganegaraan<font color="red">*</font></label>
                             <select class="form-control" name="mother_citizenship" data-parsley-group="block1" required>
+                                <option value="-">--Silakan Pilih--</option>
                                 <option value="I">Warga Negara Indonesia</option>
                                 <option value="A">Warga Negara Asing</option>
                             </select>
@@ -295,6 +303,7 @@
                         <div class="form-group">
                             <label for="mother_occupation">Pekerjaan<font color="red">*</font></label>
                             <select class="form-control" name="mother_occupation" data-parsley-group="block1" required>
+                                <option value="-">--Silakan Pilih--</option>
                                 <option value="Tani">Petani/Peternak/Pekebun</option>
                                 <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
                                 <option value="Tentara Nasional Indonesia">Anggota TNI</option>
@@ -808,7 +817,7 @@
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
-                                <p class="help-block" style="text-align:justify;">Unggah Surat Pengantar Desa/Kelurahan</p>
+                                <p class="help-block" style="text-align:justify;">Unggah Surat Pengantar Desa</p>
                             </div>
                         </div>
                     </div>

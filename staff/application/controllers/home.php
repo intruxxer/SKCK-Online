@@ -4,21 +4,7 @@ if (!defined('BASEPATH'))
 
 class Home extends CI_Controller {
 
-    /**
-     * Index Page for this controller.
-     *
-     * Maps to the following URL
-     * 		http://example.com/index.php/welcome
-     * 	- or -  
-     * 		http://example.com/index.php/welcome/index
-     * 	- or -
-     * Since this controller is set as the default controller in 
-     * config/routes.php, it's displayed at http://example.com/
-     *
-     * So any other public methods not prefixed with an underscore will
-     * map to /index.php/welcome/<method_name>
-     * @see http://codeigniter.com/user_guide/general/urls.html
-     */
+    
     public function __construct() {
         parent::__construct();
         $this->load->library('form_validation');
@@ -70,6 +56,9 @@ class Home extends CI_Controller {
                                 )
                         );
                     }
+					
+					$this->db->query("UPDATE skck_administrators SET staff_last_login = NOW() WHERE id = ".$res['id']);
+					
                     redirect('registration');
                 } else {
                     $err['error'] = '<strong>Access Denied</strong> Invalid Username/Password ';
@@ -81,6 +70,7 @@ class Home extends CI_Controller {
 
         
     public function logout() {
+		$this->db->query("UPDATE skck_administrators SET staff_last_logout = NOW() WHERE id = ".$this->session->userdata('id'));
         $this->session->unset_userdata('id');
         $this->session->unset_userdata('staff_username');
         $this->session->unset_userdata('staff_code');
