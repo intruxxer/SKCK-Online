@@ -35,16 +35,19 @@
 								<li style="text-align:justify"><em>Copy Scan</em> <b>Paspor,</b> bagi WNI yang akan keluar negeri dalam rangka sekolah/kunjungan/penerbitan VISA;</li>
 							</ul>
 						</blockquote>
-						<p style="margin-left:20px; text-align:justify">Pada saat pengambilan SKCK di loket pelayanan, pemohon <b>WAJIB akan 4 Hal:</b></p>
-						<p style="margin-left:20px; text-align:justify">(1) Menunjukkan <b>slip tanda terima/menyebutkan no. registrasi e-SKCK</b> (Print Di sini),</p>
-						<p style="margin-left:20px; text-align:justify">(2) Menyerahkan <b>daftar pertanyaan dan jawaban e-SKCK</b> (sudah ditanda tangani oleh aplikan) yang telah dijawab saat aplikasi (Print Di sini), dan</p>
+						<p style="margin-left:20px; text-align:justify">Pada saat pengambilan SKCK di loket pelayanan, pemohon <b>WAJIB membawa 4 Hal </b> (print (1) & (2) di sini) yaitu:</p>
+						<p style="margin-left:20px; text-align:justify">(1) Menunjukkan <b>slip tanda terima/menyebutkan no. registrasi e-SKCK</b>,</p>
+						<p style="margin-left:20px; text-align:justify">(2) Menyerahkan <b>daftar pertanyaan dan jawaban e-SKCK & Kartu TIK</b> (yg sudah ditanda tangani oleh aplikan) yang telah dijawab saat aplikasi, dan</p>
 						<p style="margin-left:20px; text-align:justify">(3) Menunjukkan <b>dokumen-dokumen asli yang dipersyaratkan</b>, kepada petugas, guna keperluan verifikasi.</p>
 						<p style="margin-left:20px; text-align:justify">(4) Menyerahkan <b>pas foto 4x6</b> sebanyak <b>6 lembar.</b></p>
 			  			<a style="margin-left:20px; text-align:right" href="#" class="btn btn-success" onClick="window.print()">
 			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Tanda Terima
 			  			</a>
-			  			<a style="margin-left:20px; text-align:right" href="#" class="btn btn-success" onClick="window.print()">
+			  			<a style="margin-left:20px; text-align:right" href="<?php echo base_url("apply"); ?>" class="btn btn-success">
 			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Daftar Pertanyaan e-SKCK
+			  			</a>
+			  			<a style="margin-left:20px; text-align:right" href="<?php echo base_url("apply"); ?>" class="btn btn-success">
+			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Kartu TIK e-SKCK
 			  			</a>
 			  		</td>
 		  		</tr>

@@ -37,7 +37,7 @@ class Apply extends CI_Controller {
 		//Get Data for A Single e-SKCK -> Check Model. Functions ready?
 		//Then ,populated the form
 		//if($this->input->post('submitSKCKextendingSearch'))
-		if(true)
+		if( $this->input->post('submitSKCKextendingSearch') == 'Cari e-SKCK Sebelumnya')
 		{
 			$ktp = $this->input->post('applicantid');
 			$noReg = $this->input->post('applicationid');
@@ -389,9 +389,9 @@ class Apply extends CI_Controller {
 					'skck_familycard' => $docs_uploaded_path[2]['file_name'],
 					'skck_birthcert' => $docs_uploaded_path[1]['file_name'],
 					'skck_fingerprint' => $docs_uploaded_path[3]['file_name'],
-					'skck_polsek' => $docs_uploaded_path[5]['file_name'],
-					'skck_desa' => $docs_uploaded_path[6]['file_name'],
-					'skck_kecamatan' => $docs_uploaded_path[7]['file_name']
+					'skck_surat_polsek' => $docs_uploaded_path[5]['file_name'],
+					'skck_surat_desa' => $docs_uploaded_path[6]['file_name'],
+					'skck_surat_kecamatan' => $docs_uploaded_path[7]['file_name']
 				);
 			}
 			$documents = $this->skck->add_skck_documents($data['skck_documents']);
@@ -602,9 +602,9 @@ class Apply extends CI_Controller {
 					'skck_familycard' => $docs_uploaded_path[2]['file_name'],
 					'skck_birthcert' => $docs_uploaded_path[1]['file_name'],
 					'skck_fingerprint' => $docs_uploaded_path[3]['file_name'],
-					'skck_corp_sponsor' => $docs_uploaded_path[5]['file_name'],
-					'skck_marital_letter' => $docs_uploaded_path[6]['file_name'],
-					'skck_report_evidence' => $docs_uploaded_path[7]['file_name']
+					'skck_surat_polsek' => $docs_uploaded_path[5]['file_name'],
+					'skck_surat_desa' => $docs_uploaded_path[6]['file_name'],
+					'skck_surat_kecamatan' => $docs_uploaded_path[7]['file_name']
 				);
 			}
 			$documents = $this->skck->update_skck_documents($skck_id, $data['skck_documents']);
