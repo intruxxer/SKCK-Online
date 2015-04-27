@@ -65,9 +65,9 @@ class Registration extends CI_Controller {
 		{
 			$d->rows[$i]['id'] = $row['id'];
 			
-			$sex = ($row['applicant_sex']=='M')?'Laki-laki':'Perempuan';
+			$sex = ($row['applicant_sex']=='M')?'Laki-Laki':'Perempuan';
 			$no = $i + 1 + $limit_end;
-			$d->rows[$i]['cell'] = array($no, $row['id'], $row['applicant_id'], $row['applicant_name'], 
+			$d->rows[$i]['cell'] = array($no.'.', $row['id'],$row['print_id'],$row['application_id'], $row['applicant_id'], $row['applicant_name'], 
 				$row['applicant_birthdate'], $sex, $row['applicant_address_doc']);	
 			$i++;
 		}
@@ -103,57 +103,123 @@ class Registration extends CI_Controller {
 		$d = $this->pendaftaran_model->get_pendaftaran_by_id($id);
 		if(count($d) > 0)
 		{
-			if($d[0]['applicant_pidana'] == 'Tidak Pernah' && $d[0]['applicant_pelanggaran'] == 'Tidak Pernah')
+			if($d[0]['applicant_pidana'] == 'P' || $d[0]['applicant_pelanggaran'] == 'P')
 			{
-				$doc = $phpWord->loadTemplate(APPPATH.'/templates/SKCK_tanpa_catatan.docx');
+				
+				$doc = $phpWord->loadTemplate(APPPATH.'/templates/SKCK_dengan_catatan.docx');
 			}
 			else
 			{
-				$doc = $phpWord->loadTemplate(APPPATH.'/templates/SKCK_dengan_catatan.docx');
+				$doc = $phpWord->loadTemplate(APPPATH.'/templates/SKCK_tanpa_catatan.docx');
 			}
 				
 		
 			$doc->setValue('NAMA_LENGKAP', strtoupper($d[0]['applicant_name']));
-			$doc->setValue('AGAMA', strtoupper($d[0]['applicant_religion']));
+			$doc->setValue('AGAMA', ucwords($d[0]['applicant_religion']));
 			
 			if($d[0]['applicant_sex']=='M')
-				$doc->setValue('JENIS_KELAMIN', 'LAKI-LAKI');
+				$doc->setValue('JENIS_KELAMIN', 'Laki-Laki');
 			else
-				$doc->setValue('JENIS_KELAMIN', 'PEREMPUAN');
+				$doc->setValue('JENIS_KELAMIN', 'Perempuan');
 				
-			$doc->setValue('BPLACE', strtoupper($d[0]['applicant_birthplace']));
+			$doc->setValue('BPLACE', ucwords($d[0]['applicant_birthplace']));
 			
 			$birthdate = explode("-",$d[0]['applicant_birthdate']);
 			$doc->setValue('BDATE', $birthdate[2].'-'.$birthdate[1].'-'.$birthdate[0]);
-			$doc->setValue('CURR_ADDRESS', strtoupper($d[0]['applicant_address_now']));
-			$doc->setValue('OCCUPATION', strtoupper($d[0]['applicant_occupation']));
-			$doc->setValue('PASSPOR', $d[0]['applicant_passport']);
+			
+			/*if($d[0]['applicant_address_now'] != null || $d[0]['applicant_address_now'] != '')
+			{
+				$doc->setValue('CURR_ADDRESS', strtoupper($d[0]['applicant_address_now']));
+			}
+			else
+			{
+				$doc->setValue('CURR_ADDRESS', strtoupper($d[0]['applicant_address_doc']));
+			}*/
+			$doc->setValue('CURR_ADDRESS', ucowrds($d[0]['applicant_address_doc']));
+			
+			$doc->setValue('OCCUPATION', ucwords($d[0]['applicant_occupation']));
+			if($d[0]['applicant_passport'] == '' || $d[0]['applicant_passport'] == null)
+			{
+				$doc->setValue('PASSPOR', '-');
+			}
+			else
+			{
+				$doc->setValue('PASSPOR', $d[0]['applicant_passport']);
+			}
 			$doc->setValue('NOKTP', $d[0]['no_ktp']);
-			$doc->setValue('CURRADDRESS', $d[0]['applicant_address_now']);
-			$doc->setValue('ISSUINGDATE', date('d F Y'));
-			$doc->setValue('VALIDFROM', date('d F Y'));
-			$effectiveDate = date('d F Y');
-			$effectiveDate = date('d F Y', strtotime("+3 months", strtotime($effectiveDate)));
-			$doc->setValue('VALIDTO', $effectiveDate);
+			//There is curr address limit, if curr address >50, split into CURRADDRESS and CURRADDRESS2
+			if(strlen($d[0]['applicant_address_doc']) > 50)
+			{
+				$fiftyFirstSubString = substr($d[0]['applicant_address_doc'], 0, 49);
+				$nearestWhitespaceFromIndexFifty = strripos($fiftyFirstSubString, " ");
+				$doc->setValue( 'CURRADDRESS',  ucwords( substr($d[0]['applicant_address_doc'], 0, $nearestWhitespaceFromIndexFifty) ) );
+				$doc->setValue( 'CURRADDRESS2', ucwords( substr($d[0]['applicant_address_doc'], $nearestWhitespaceFromIndexFifty, strlen(substr($d[0]['applicant_address_doc']))) ) );
+			}
+			else
+			{
+				$doc->setValue('CURRADDRESS', ucwords($d[0]['applicant_address_doc']));
+				$doc->setValue('CURRADDRESS2', '');
+			}
+			$doc->setValue('ISSUINGDATE', date('d').' '.get_month_text(date('n')).' '.date('Y'));
+			$doc->setValue('VALIDFROM', date('d').' '.get_month_text(date('n')).' '.date('Y'));
+			$currDate = date('d').' '.get_month_text(date('n')).' '.date('Y');
+			$effectiveDate = date('d-n-Y', strtotime("+6 months", strtotime($currDate)));
+			$dt = explode("-", $effectiveDate);
+			
+			$doc->setValue('VALIDTO', $dt[0].' '.get_month_text($dt[1]).' '.$dt[2]);
 			
 			if($d[0]['applicant_citizenship'] == 'I')
+			{
 				$doc->setValue('NATIONALITY', 'WNI');
-			else
-				$doc->setValue('NATIONALITY', 'WNA');
+				$doc->setValue('STAYFROM', $birthdate[2].' '.get_month_text(intval($birthdate[1])).' '.$birthdate[0]);
 				
+			}
+			else
+			{
+				$doc->setValue('NATIONALITY', 'WNA');
+				$doc->setValue('STAYFROM','');
+			}
+			$doc->setValue('STAYTO',$currDate);	
 			
-			$doc->setValue('FINGER', $d[0]['applicant_rumussidikjari']);
-			$doc->setValue('PURPOSE', $d[0]['purpose_desc']);
-
 			
-			$doc->saveAs('temp/'.$id.'temp.docx');
+			
+			
+			$sidik = explode("#", $d[0]['applicant_rumussidikjari']);
+			if(count($sidik)>1)
+			{
+				$doc->setValue('FINGER', $sidik[0]);
+				$doc->setValue('FINGER2', $sidik[1]);
+			}
+			else
+			{
+				$doc->setValue('FINGER', '');
+				$doc->setValue('FINGER2', '');
+			}
+			$doc->setValue('PURPOSE', strtoupper($d[0]['purpose_desc']));
+			$doc->setValue('NO', $id);
+			$doc->setValue('BLN', get_romawi(date('n')));
+			$doc->setValue('THN', date('Y'));
+			
+			$doc->saveAs('/tmp/'.$id.'temp.docx');
 			
 			$this->load->helper('download');
-			$data = file_get_contents('temp/'.$id.'temp.docx');
-			$name = 'SKCK.docx';
+			$data = file_get_contents('/tmp/'.$id.'temp.docx');
+			$name = 'SKCK'.'_'.$d[0]['application_id'].'_'.$d[0]['applicant_name'].'.docx';
+			
+			if($d[0]['status_type'] != 'P')
+			{
+				$print_id = $this->pendaftaran_model->get_print_id();
+				$reg = array(
+					'status_type' => 'P',
+					'print_id' => $print_id
+				);
+			
+				$ret = $this->pendaftaran_model->update_reg($id, $reg);
+			}
+			
 
 			force_download($name, $data); 
-			@unlink('temp/'.$id.'temp.docx'); 
+			@unlink('/tmp/'.$id.'temp.docx'); 
 		}
 		
 		
@@ -164,15 +230,20 @@ class Registration extends CI_Controller {
 	{
 		$array = array('msg' => 'Data berhasil disimpan');
 		
+		$regNo = 'ND'.date("dm").rand(1000, 9999).rand(10, 99);
+		
 		//save table registration
 		$reg = array(
 			'applicant_id' => $this->input->post('applicant_id'),
 			'status_type' => $this->input->post('status_type'),
 			'purpose_desc' => $this->input->post('purpose_desc'),
+			'applicant_name' => $this->input->post('applicant_name'),
+			'applicant_email' => $this->input->post('applicant_email'),
 			'unit_type' => 'JATIM001C',
 			'reg_type' => '1',
 			'staff_id' => $this->session->userdata('id'),
-			'timestamps' => date('Y-m-d H:i:s')
+			'timestamps' => date('Y-m-d H:i:s'),
+			'application_id' => $regNo
 		);
 		
 		$reg_id = $this->pendaftaran_model->store_registration($reg);
@@ -184,17 +255,17 @@ class Registration extends CI_Controller {
 			$personaldata = array(
 				'id' => $reg_id,
 				'applicant_id' => $this->input->post('applicant_id'),
-				'applicant_name' => $this->input->post('applicant_name'),
+				'applicant_name' => ucword($this->input->post('applicant_name')),
 				'applicant_birthplace' => $this->input->post('applicant_birthplace'),
 				'applicant_birthdate' => $this->input->post('applicant_birthdate'),
 				'applicant_religion' => $this->input->post('applicant_religion'),
 				'applicant_citizenship' => $this->input->post('applicant_citizenship'),
 				'applicant_sex' => $this->input->post('applicant_sex'),
 				'applicant_occupation' => $this->input->post('applicant_occupation'),
-				'applicant_address_doc' => $this->input->post('applicant_address_doc'),
-				'applicant_address_now' => $this->input->post('applicant_address_now'),
+				'applicant_address_doc' => ucwords($this->input->post('applicant_address_doc')),
+				'applicant_address_now' => ucwords($this->input->post('applicant_address_now')),
 				'applicant_passport' => $this->input->post('applicant_passport'),
-				'applicant_kitaps' => $this->input->post('applicant_kitaps'),
+				//'applicant_kitaps' => $this->input->post('applicant_kitaps'),
 				'applicant_phone' => $this->input->post('applicant_phone')
 			);
 			$ret = $this->pendaftaran_model->store_personaldata($personaldata);
@@ -308,9 +379,9 @@ class Registration extends CI_Controller {
 				'applicant_mother_citizenship' => $this->input->post('applicant_mother_citizenship'),
 				'applicant_mother_occupation' => $this->input->post('applicant_mother_occupation'),
 				'applicant_mother_address' => $this->input->post('applicant_mother_address'),
-				'applicant_siblings_names' => $this->input->post('applicant_sibling1_name').','.$this->input->post('applicant_sibling2_name').','.$this->input->post('applicant_sibling3_name'),
-				'applicant_siblings_ages' => $this->input->post('applicant_sibling1_age').','.$this->input->post('applicant_sibling2_age').','.$this->input->post('applicant_sibling3_age'),
-				'applicant_siblings_addresses' => $this->input->post('applicant_sibling1_address').','.$this->input->post('applicant_sibling2_address').','.$this->input->post('applicant_sibling3_address'),
+				'applicant_siblings_names' => $this->input->post('applicant_sibling1_name').'#'.$this->input->post('applicant_sibling2_name').'#'.$this->input->post('applicant_sibling3_name').'#'.$this->input->post('applicant_sibling4_name').'#'.$this->input->post('applicant_sibling5_name').'#'.$this->input->post('applicant_sibling6_name'),
+				'applicant_siblings_ages' => $this->input->post('applicant_sibling1_age').'#'.$this->input->post('applicant_sibling2_age').'#'.$this->input->post('applicant_sibling3_age').'#'.$this->input->post('applicant_sibling4_age').'#'.$this->input->post('applicant_sibling5_age').'#'.$this->input->post('applicant_sibling6_age'),
+				'applicant_siblings_addresses' => $this->input->post('applicant_sibling1_address').'#'.$this->input->post('applicant_sibling2_address').'#'.$this->input->post('applicant_sibling3_address').'#'.$this->input->post('applicant_sibling4_address').'#'.$this->input->post('applicant_sibling5_address').'#'.$this->input->post('applicant_sibling6_address'),
 				
 			);
 			$ret = $this->pendaftaran_model->store_family($family);
@@ -346,6 +417,8 @@ class Registration extends CI_Controller {
 			'applicant_id' => $this->input->post('applicant_id'),
 			'status_type' => $this->input->post('status_type'),
 			'purpose_desc' => $this->input->post('purpose_desc'),
+			'applicant_email' => $this->input->post('applicant_email'),
+			'application_id' => $this->input->post('application_id')
 		);
 		
 		$ret = $this->pendaftaran_model->update_reg($id, $reg);
@@ -366,7 +439,7 @@ class Registration extends CI_Controller {
 			'applicant_address_doc' => $this->input->post('applicant_address_doc'),
 			'applicant_address_now' => $this->input->post('applicant_address_now'),
 			'applicant_passport' => $this->input->post('applicant_passport'),
-			'applicant_kitaps' => $this->input->post('applicant_kitaps'),
+			//'applicant_kitaps' => $this->input->post('applicant_kitaps'),
 			'applicant_phone' => $this->input->post('applicant_phone')
 		);
 		$ret = $this->pendaftaran_model->update_personaldata($id, $personaldata);
@@ -382,7 +455,7 @@ class Registration extends CI_Controller {
 			'applicant_tinggibadan' => $this->input->post('applicant_tinggibadan'),
 			'applicant_beratbadan' => $this->input->post('applicant_beratbadan'),
 			'applicant_tandakhusus' => $this->input->post('applicant_tandakhusus'),
-			'applicant_rumussidikjari' => $this->input->post('applicant_rumussidikjari')
+			'applicant_rumussidikjari' => $this->input->post('applicant_rumussidikjari').'#'.$this->input->post('applicant_rumussidikjari2')
 			
 		);
 		$ret = $this->pendaftaran_model->update_cirifisik($id, $cirifisik);
@@ -483,7 +556,14 @@ class Registration extends CI_Controller {
 		$ret = $this->pendaftaran_model->update_family($id, $family);
 		if(!$ret)
 			$array['msg'] = 'Data Keluarga gagal disimpan';	
-			
+		
+		//update docs
+		$docs = array(
+			'applicant_id' => $this->input->post('applicant_id')
+		);
+		$ret = $this->pendaftaran_model->update_documents($id, $docs);
+		if(!$ret)
+			$array['msg'] = 'Data Dokumen gagal disimpan';			
 		
 		echo json_encode($array);
 	}

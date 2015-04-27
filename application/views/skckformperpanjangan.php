@@ -1,4 +1,5 @@
 <?php if($success == 'true') { ?>
+<?php var_dump($skck_registration); ?>
 <div class="row">
     <div class="col-md-12">
         <h2>Formulir Aplikasi Perpanjangan SKCK</h2>
@@ -11,6 +12,27 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <p style="text-align:justify">Perhatikan, Bagian yg ditandai <font color="red">*</font> harus diisi dengan lengkap & jelas.</p>
+                        <hr/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="purpose_desc">Apakah tujuan/keperluan Saudara membuat aplikasi SKCK?<font color="red">*</font></label>
+                            <select class="form-control" name="purpose_desc" required data-parsley-group="block0">
+                                <option value="DAFTAR CPNS">Daftar CPNS</option>
+                                <option value="DAFTAR TNI/POLRI">Daftar TNI/POLRI</option>
+                                <option value="MENIKAH DGN ANGGOTA TNI/POLRI">Menikah dengan Anggota TNI/POLRI</option>
+                                <option value="DAFTAR BUMN/BUMD">Daftar BUMN/BUMD</option>
+                                <option value="PINDAH TEMPAT">Pindah Tempat</option>
+                                <option value="NUMPANG NIKAH">Numpang Nikah</option>
+                                <option value="DAFTAR PEJABAT PEMERINTAH">Daftar Pejabat Pemerintah</option>
+                                <option value="PINDAH TEMPAT">Pindah Tempat</option>
+                                <option value="ADOPSI">Adopsi</option>
+                                <option value="KERJA DI LUAR NEGERI">Kerja di Luar Negeri</option>
+                                <option value="LAIN-LAIN">Lain-Lain</option>
+                            </select>
+                        </div>
                         <hr/>
                     </div>
                 </div>
@@ -45,11 +67,8 @@
                             <input type="text" class="form-control" id="phone" name="phone" value="<?php echo ""; ?>" required data-parsley-group="block0" data-parsley-type="number">
                         </div>
                         <div class="form-group">
-                            <label for="marital_status">Status Perkawinan<font color="red">*</font></label>
-                            <select class="form-control" name="marital_status" data-parsley-group="block0" required>
-                                <?php echo '<option value="K"'; if(false) echo 'selected="selected"'; echo '>Kawin</option>';
-                                      echo '<option value="T"'; if(false) echo 'selected="selected"'; echo '>Tidak Kawin</option>'; ?>
-                            </select>
+                            <label for="email">Alamat E-mail</label>
+                            <input type="text" class="form-control" id="email" name="email" value="<?php echo ""; ?>" required data-parsley-group="block0" data-parsley-type="email">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -91,7 +110,24 @@
                         </div>
                         <div class="form-group">
                             <label for="occupation">Pekerjaan<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="occupation" name="occupation" value="<?php echo ""; ?>" required data-parsley-group="block0">
+                            <select class="form-control" name="occupation" data-parsley-group="block0" required>
+                                <?php echo '<option value="Tani"'; if(false) echo 'selected="selected"'; echo '>Petani/Peternak/Pekebun</option>';
+                                      echo '<option value="Swasta"'; if(false) echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>'; 
+                                      echo '<option value="Tentara Nasional Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota TNI</option>';
+                                      echo '<option value="Polisi Republik Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota POLRI</option>';
+                                      echo '<option value="Guru"'; if(false) echo 'selected="selected"'; echo '>Guru</option>';
+                                      echo '<option value="Pegawai Negeri Sipil"'; if(false) echo 'selected="selected"'; echo '>PNS Pemerintahan</option>'; 
+                                      echo '<option value="Ibu Rumah Tangga"'; if(false) echo 'selected="selected"'; echo '>Ibu Rumah Tangga</option>'; ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="marital_status">Status Perkawinan<font color="red">*</font></label>
+                            <select class="form-control" name="marital_status" data-parsley-group="block0" required>
+                                <?php echo '<option value="K"'; if(false) echo 'selected="selected"'; echo '>Kawin</option>';
+                                      echo '<option value="T"'; if(false) echo 'selected="selected"'; echo '>Tidak Kawin</option>'; 
+                                      echo '<option value="CH"'; if(false) echo 'selected="selected"'; echo '>Cerai Hidup</option>';
+                                      echo '<option value="CM"'; if(false) echo 'selected="selected"'; echo '>Cerai Mati</option>'; ?>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -110,7 +146,7 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label for="spouse_type">Pasangan<font color="red">*</font></label>
-                            <select class="form-control" name="spouse_type">
+                            <select class="form-control" name="spouse_type" data-parsley-group="block1" required>
                                 <?php
                                 echo '<option value="I" '; if(false) echo 'selected="selected"'; echo '>Istri</option>';
                                 echo '<option value="S" '; if(false) echo 'selected="selected"'; echo '>Suami</option>';
@@ -153,7 +189,15 @@
                         </div>
                         <div class="form-group">
                             <label for="spouse_occupation">Pekerjaan</label>
-                            <input type="text" class="form-control" id="spouse_occupation" name="spouse_occupation" value="<?php echo ""; ?>">
+                            <select class="form-control" name="spouse_occupation">
+                                <?php echo '<option value="Tani"'; if(false) echo 'selected="selected"'; echo '>Petani/Peternak/Pekebun</option>';
+                                      echo '<option value="Swasta"'; if(false) echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>'; 
+                                      echo '<option value="Tentara Nasional Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota TNI</option>';
+                                      echo '<option value="Polisi Republik Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota POLRI</option>';
+                                      echo '<option value="Guru"'; if(false) echo 'selected="selected"'; echo '>Guru</option>';
+                                      echo '<option value="Pegawai Negeri Sipil"'; if(false) echo 'selected="selected"'; echo '>PNS Pemerintahan</option>'; 
+                                      echo '<option value="Ibu Rumah Tangga"'; if(false) echo 'selected="selected"'; echo '>Ibu Rumah Tangga</option>'; ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="spouse_address">Alamat Domisili Sekarang</label>
@@ -201,7 +245,15 @@
                         </div>
                         <div class="form-group">
                             <label for="father_occupation">Pekerjaan<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="father_occupation" name="father_occupation" value="<?php echo ""; ?>" data-parsley-group="block1" required>
+                            <select class="form-control" name="father_occupation" data-parsley-group="block1" required>
+                                <?php echo '<option value="Tani"'; if(false) echo 'selected="selected"'; echo '>Petani/Peternak/Pekebun</option>';
+                                      echo '<option value="Swasta"'; if(false) echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>'; 
+                                      echo '<option value="Tentara Nasional Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota TNI</option>';
+                                      echo '<option value="Polisi Republik Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota POLRI</option>';
+                                      echo '<option value="Guru"'; if(false) echo 'selected="selected"'; echo '>Guru</option>';
+                                      echo '<option value="Pegawai Negeri Sipil"'; if(false) echo 'selected="selected"'; echo '>PNS Pemerintahan</option>'; 
+                                      echo '<option value="Ibu Rumah Tangga"'; if(false) echo 'selected="selected"'; echo '>Ibu Rumah Tangga</option>'; ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="father_address">Alamat Domisili Sekarang<font color="red">*</font></label>
@@ -249,7 +301,15 @@
                         </div>
                         <div class="form-group">
                             <label for="mother_occupation">Pekerjaan<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="mother_occupation" name="mother_occupation" placeholder="Cth. Wiraswasta" required data-parsley-group="block1">
+                            <select class="form-control" name="mother_occupation" data-parsley-group="block1" required>
+                                <?php echo '<option value="Tani"'; if(false) echo 'selected="selected"'; echo '>Petani/Peternak/Pekebun</option>';
+                                      echo '<option value="Swasta"'; if(false) echo 'selected="selected"'; echo '>Wiraswasta/Karyawan Swasta</option>'; 
+                                      echo '<option value="Tentara Nasional Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota TNI</option>';
+                                      echo '<option value="Polisi Republik Indonesia"'; if(false) echo 'selected="selected"'; echo '>Anggota POLRI</option>';
+                                      echo '<option value="Guru"'; if(false) echo 'selected="selected"'; echo '>Guru</option>';
+                                      echo '<option value="Pegawai Negeri Sipil"'; if(false) echo 'selected="selected"'; echo '>PNS Pemerintahan</option>'; 
+                                      echo '<option value="Ibu Rumah Tangga"'; if(false) echo 'selected="selected"'; echo '>Ibu Rumah Tangga</option>'; ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="mother_address">Alamat Domisili Sekarang<font color="red">*</font></label>
@@ -563,7 +623,7 @@
                         </div>
                         <div class="form-group">
                             <label for="beratbadan">Berat Badan Anda?<font color="red">*</font> (kg)</label>
-                            <input type="text" class="form-control" id="beratbadan" name="beratbadan" value="<?php echo ""; ?>" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[0, 2]">
+                            <input type="text" class="form-control" id="beratbadan" name="beratbadan" value="<?php echo ""; ?>" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[0, 3]">
                         </div>
                         <div class="form-group">
                             <label for="tandakhusus">Tanda Khusus di Badan Anda?</label>
@@ -572,19 +632,42 @@
                     </div>
                 </div>
                 <div class="row">
-                    <hr>
+                    <div class="col-lg-12">
+                        <hr>
+                        <label for="rumussidikjari1">Rumus Sidik Jari? (Abaikan ini bila belum ada/belum mengurus di Polres)</label>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="rumussidikjari1">Rumus Sidik Jari 1? (Abaikan ini bila belum ada/belum mengurus di Polres)</label>
-                            <input type="text" class="form-control" id="rumussidikjari1" name="rumussidikjari1" value="<?php echo ""; ?>">
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari1-1" name="rumussidikjari1-1" placeholder="Cth: 9"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari1-2" name="rumussidikjari1-2" placeholder="Cth: I"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari1-3" name="rumussidikjari1-3" placeholder="Cth: 6"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari1-4" name="rumussidikjari1-4" placeholder="Cth: L"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari1-5" name="rumussidikjari1-5" placeholder="Cth: 000"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari1-6" name="rumussidikjari1-6" placeholder="Cth: 2"></div>
                         </div>
                     </div>
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="rumussidikjari2">Rumus Sidik Jari 2? (Abaikan ini bila belum ada/belum mengurus di Polres)</label>
-                            <input type="text" class="form-control" id="rumussidikjari2" name="rumussidikjari2" value="<?php echo ""; ?>">
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari2-1" name="rumussidikjari2-1" placeholder="Cth: 9"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari2-2" name="rumussidikjari2-2" placeholder="Cth: O"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari2-3" name="rumussidikjari2-3" placeholder="Cth: 9"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari2-4" name="rumussidikjari2-4" placeholder="Cth: L"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari2-5" name="rumussidikjari2-5" placeholder="Cth: 000"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari2-6" name="rumussidikjari2-6" placeholder="Cth: 2 " ></div>
                         </div>
                     </div>
                 </div>
@@ -773,10 +856,6 @@
                         <div class="form-group">
                             <label for="hist_hobby">Apakah kegemaran/hobby saudara?</label>
                             <input type="text" class="form-control" id="hist_hobby" name="hist_hobby" value="<?php echo ""; ?>">
-                        </div>
-                        <div class="form-group">
-                            <label for="purpose_desc">Apakah tujuan/keperluan Saudara membuat aplikasi SKCK?<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="purpose_desc" name="purpose_desc" value="<?php echo ""; ?>" required data-parsley-group="block6">
                         </div>
                         <div class="form-group">
                             <p style="text-align:justify;">

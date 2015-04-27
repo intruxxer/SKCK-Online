@@ -32,7 +32,7 @@ class Skckmodel extends CI_Model {
             $this->db->select('id');
             $this->db->from('skck_registration');
             $this->db->where('applicant_id', $applicantid);
-            $this->db->or_where('application_id', $applicationid);
+            $this->db->where('application_id', $applicationid);
             return $this->db->get()->row();
     }
 
@@ -52,6 +52,11 @@ class Skckmodel extends CI_Model {
                 }
                 return true;
             }
+    }
+
+    function delete_skck_registration($id)
+    {
+        return $this->db->delete('skck_registration', array('id' => $id));
     }
 
     function add_skck_personaldata($data=array())

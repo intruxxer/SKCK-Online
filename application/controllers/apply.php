@@ -161,15 +161,15 @@ class Apply extends CI_Controller {
 				        $files[$i][$key] = $filename;
 				        break;
 				    case 5:
-				        $filename = "sponsor_".$val;
+				        $filename = "surat_polsek_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
 				    case 6:
-				        $filename = "nikah_".$val;
+				        $filename = "surat_desa_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
 				    case 7:
-				        $filename = "lapordiri_".$val;
+				        $filename = "surat_kecamatan_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
 				    default:
@@ -234,12 +234,14 @@ class Apply extends CI_Controller {
 			$data['skck_registration'] = array(
 				'applicant_id' => $this->input->post('id'),
 				'applicant_name' => ucwords($this->input->post('name')),
+				'applicant_email' => $this->input->post('email'),
 				'unit_type' => 'JATIM001C',
 				'reg_type' => 'N',
 				'status_type' => 'D',
 				'purpose_desc' => ucwords($this->input->post('purpose_desc')),
 				'staff_id' => NULL,
-				'application_id' => $regNo
+				'application_id' => $regNo,
+				'print_id' => NULL
 			);
 			$skck_id = $this->skck->create_skck_registration($data['skck_registration']);
 
@@ -256,8 +258,12 @@ class Apply extends CI_Controller {
 				'applicant_sex' => $this->input->post('sex'),
 				'applicant_marital_status' => $this->input->post('marital_status'),
 				'applicant_occupation' => ucwords($this->input->post('occupation')),
-				'applicant_address_doc' => ucwords($this->input->post('address_doc')),
-				'applicant_address_now' => ucwords($this->input->post('address_now')),
+				'applicant_address_doc' => ucwords( $this->input->post('address_doc_1')." "
+												   .$this->input->post('address_doc_2')." "
+												   .$this->input->post('address_doc_3') ),
+				'applicant_address_now' => ucwords( $this->input->post('address_now_1')." "
+												   .$this->input->post('address_now_2')." "
+												   .$this->input->post('address_now_3') ),
 				'applicant_passport' => strtoupper($this->input->post('passport')),
 				'applicant_phone' => $this->input->post('phone')
 			);
@@ -349,6 +355,13 @@ class Apply extends CI_Controller {
 			);
 			$pelanggaran = $this->skck->add_skck_pelanggaran($data['skck_pelanggaran']);
 
+			$fingerprintsatu = $this->input->post('rumussidikjari1-1')." ".$this->input->post('rumussidikjari1-2')." ".
+							   $this->input->post('rumussidikjari1-3')." ".$this->input->post('rumussidikjari1-4')." ".
+							   $this->input->post('rumussidikjari1-5')." ".$this->input->post('rumussidikjari1-6');
+			$fingerprintdua =  $this->input->post('rumussidikjari2-1')." ".$this->input->post('rumussidikjari2-2')." ".
+							   $this->input->post('rumussidikjari2-3')." ".$this->input->post('rumussidikjari2-4')." ".
+							   $this->input->post('rumussidikjari2-5')." ".$this->input->post('rumussidikjari2-6');
+
 			$data['skck_cirifisik'] = array(
 				'id' => $skck_id,
 				'applicant_id' => $this->input->post('id'),
@@ -358,7 +371,7 @@ class Apply extends CI_Controller {
 				'applicant_tinggibadan' => $this->input->post('tinggibadan'),
 				'applicant_beratbadan' => $this->input->post('beratbadan'),
 				'applicant_tandakhusus' => ucwords($this->input->post('tandakhusus')),
-				'applicant_rumussidikjari' => ucwords($this->input->post('rumussidikjari1'))."#".ucwords($this->input->post('rumussidikjari2'))
+				'applicant_rumussidikjari' => ucwords($fingerprintsatu)."#".ucwords($fingerprintdua)
 			);
 			$cirifisik = $this->skck->add_skck_cirifisik($data['skck_cirifisik']);
 
@@ -376,9 +389,9 @@ class Apply extends CI_Controller {
 					'skck_familycard' => $docs_uploaded_path[2]['file_name'],
 					'skck_birthcert' => $docs_uploaded_path[1]['file_name'],
 					'skck_fingerprint' => $docs_uploaded_path[3]['file_name'],
-					'skck_corp_sponsor' => $docs_uploaded_path[5]['file_name'],
-					'skck_marital_letter' => $docs_uploaded_path[6]['file_name'],
-					'skck_report_evidence' => $docs_uploaded_path[7]['file_name']
+					'skck_polsek' => $docs_uploaded_path[5]['file_name'],
+					'skck_desa' => $docs_uploaded_path[6]['file_name'],
+					'skck_kecamatan' => $docs_uploaded_path[7]['file_name']
 				);
 			}
 			$documents = $this->skck->add_skck_documents($data['skck_documents']);
@@ -409,6 +422,7 @@ class Apply extends CI_Controller {
 
 			*/
 			$data['skck_registration_no'] = $regNo;
+			$data['skck_registration_name'] = ucwords($this->input->post('name'));
 			$data['success'] = 'true';
 			$this->load->view('header');
 			$this->load->view('headertitle');
@@ -431,17 +445,19 @@ class Apply extends CI_Controller {
 	{
 		if($this->input->post('submitSKCKextend'))
 		{
-			$regNo = 'ND'.date("dm").rand(1000, 9999).rand(10, 99);
+			$regNo = 'ED'.date("dm").rand(1000, 9999).rand(10, 99);
 			$skck_id = $this->input->post('serialNumber');
 			$data['skck_registration'] = array(
 				'applicant_id' => $this->input->post('id'),
 				'applicant_name' => ucwords($this->input->post('name')),
+				'applicant_email' => $this->input->post('email'),
 				'unit_type' => 'JATIM001C',
-				'reg_type' => 'N',
+				'reg_type' => 'E',
 				'status_type' => 'D',
 				'purpose_desc' => ucwords($this->input->post('purpose_desc')),
 				'staff_id' => NULL,
-				'application_id' => $regNo
+				'application_id' => $regNo,
+				'print_id' => NULL
 			);
 			$registration = $this->skck->update_skck_registration($skck_id, $data['skck_registration']);
 
@@ -456,8 +472,12 @@ class Apply extends CI_Controller {
 				'applicant_sex' => $this->input->post('sex'),
 				'applicant_marital_status' => $this->input->post('marital_status'),
 				'applicant_occupation' => ucwords($this->input->post('occupation')),
-				'applicant_address_doc' => ucwords($this->input->post('address_doc')),
-				'applicant_address_now' => ucwords($this->input->post('address_now')),
+				'applicant_address_doc' => ucwords( $this->input->post('address_doc_1')." "
+												   .$this->input->post('address_doc_2')." "
+												   .$this->input->post('address_doc_3') ),
+				'applicant_address_now' => ucwords( $this->input->post('address_now_1')." "
+												   .$this->input->post('address_now_2')." "
+												   .$this->input->post('address_now_3') ),
 				'applicant_passport' => $this->input->post('passport'),
 				'applicant_phone' => $this->input->post('phone')
 			);
@@ -549,6 +569,12 @@ class Apply extends CI_Controller {
 			);
 			$pelanggaran = $this->skck->update_skck_pelanggaran($skck_id, $data['skck_pelanggaran']);
 
+			$fingerprintsatu = $this->input->post('rumussidikjari1-1')." ".$this->input->post('rumussidikjari1-2')." ".
+							   $this->input->post('rumussidikjari1-3')." ".$this->input->post('rumussidikjari1-4')." ".
+							   $this->input->post('rumussidikjari1-5')." ".$this->input->post('rumussidikjari1-6');
+			$fingerprintdua =  $this->input->post('rumussidikjari2-1')." ".$this->input->post('rumussidikjari2-2')." ".
+							   $this->input->post('rumussidikjari2-3')." ".$this->input->post('rumussidikjari2-4')." ".
+							   $this->input->post('rumussidikjari2-5')." ".$this->input->post('rumussidikjari2-6');
 			$data['skck_cirifisik'] = array(
 				'id' => $skck_id,
 				'applicant_id' => $this->input->post('id'),
@@ -558,7 +584,7 @@ class Apply extends CI_Controller {
 				'applicant_tinggibadan' => $this->input->post('tinggibadan'),
 				'applicant_beratbadan' => $this->input->post('beratbadan'),
 				'applicant_tandakhusus' => ucwords($this->input->post('tandakhusus')),
-				'applicant_rumussidikjari' => ucwords($this->input->post('rumussidikjari1'))."#".ucwords($this->input->post('rumussidikjari2'))
+				'applicant_rumussidikjari' => ucwords($fingerprintsatu)."#".ucwords($fingerprintdua)
 			);
 			$cirifisik = $this->skck->update_skck_cirifisik($skck_id, $data['skck_cirifisik']);
 
@@ -609,6 +635,7 @@ class Apply extends CI_Controller {
 
 			*/
 			$data['skck_registration_no'] = $regNo;
+			$data['skck_registration_name'] = ucwords($this->input->post('name'));
 			$data['success'] = 'true';
 			$this->load->view('header');
 			$this->load->view('headertitle');

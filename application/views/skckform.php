@@ -9,6 +9,26 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <p style="text-align:justify">Perhatikan, Bagian yg ditandai <font color="red">*</font> harus diisi dengan lengkap & jelas.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="purpose_desc">Apakah tujuan/keperluan Saudara membuat aplikasi SKCK?<font color="red">*</font></label>
+                            <select class="form-control" name="purpose_desc" required data-parsley-group="block0">
+                                <option value="DAFTAR CPNS">Daftar CPNS</option>
+                                <option value="DAFTAR TNI/POLRI">Daftar TNI/POLRI</option>
+                                <option value="MENIKAH DGN ANGGOTA TNI/POLRI">Menikah dengan Anggota TNI/POLRI</option>
+                                <option value="DAFTAR BUMN/BUMD">Daftar BUMN/BUMD</option>
+                                <option value="PINDAH TEMPAT">Pindah Tempat</option>
+                                <option value="NUMPANG NIKAH">Numpang Nikah</option>
+                                <option value="DAFTAR PEJABAT PEMERINTAH">Daftar Pejabat Pemerintah</option>
+                                <option value="PINDAH TEMPAT">Pindah Tempat</option>
+                                <option value="ADOPSI">Adopsi</option>
+                                <option value="KERJA DI LUAR NEGERI">Kerja di Luar Negeri</option>
+                                <option value="LAIN-LAIN">Lain-Lain</option>
+                            </select>
+                        </div>
                         <hr/>
                     </div>
                 </div>
@@ -24,29 +44,28 @@
                         </div>
                         <div class="form-group">
                             <label for="citizenship">Kewarganegaraan<font color="red">*</font></label>
-                            <select class="form-control" name="citizenship" data-parsley-group="block0" required>
+                            <select class="form-control" name="citizenship" data-parsley-group="block1" required>
                                 <option value="I">Warga Negara Indonesia</option>
                                 <option value="A">Warga Negara Asing</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="id">No. KTP/KITAP/KITAS<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="id" name="id" placeholder="No. KTP (WNI) atau KITAP/KITAS Anda" required data-parsley-group="block0">
+                            <label for="id">No. KTP/Identitas Lain<font color="red">*</font></label>
+                            <input type="text" class="form-control" id="id" name="id" placeholder="No. KTP atau Kartu Identitas Lain Anda" required data-parsley-group="block0">
                         </div>
                         <div class="form-group">
                             <label for="address_doc">Alamat sesuai KTP<font color="red">*</font></label>
-                            <textarea class="form-control" name="address_doc" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos" required rows="2" data-parsley-group="block0"></textarea>
+                            <input type="text" class="form-control" id="address_doc_1" name="address_doc_1" placeholder="Lengkap; Nama Jalan, No. RT, No. RW " required data-parsley-group="block0" data-parsley-maxlength="40">
+                            <input type="text" class="form-control" id="address_doc_2" name="address_doc_2" placeholder="Lengkap; Nama Desa/Kelurahan, Kecamatan" required data-parsley-group="block0" data-parsley-maxlength="35">
+                            <input type="text" class="form-control" id="address_doc_1" name="address_doc_3" placeholder="Lengkap; Nama Kota/Kab, Provinsi, Kode Pos" required data-parsley-group="block0" data-parsley-maxlength="25">
                         </div>
                         <div class="form-group">
                             <label for="phone">No. Telpon/Handphone<font color="red">*</font></label>
                             <input type="text" class="form-control" id="phone" name="phone" placeholder="Cth: 081246684578" required data-parsley-group="block0" data-parsley-type="number">
                         </div>
                         <div class="form-group">
-                            <label for="marital_status">Status Perkawinan<font color="red">*</font></label>
-                            <select class="form-control" name="marital_status" data-parsley-group="block0" required>
-                                <option value="K">Kawin</option>
-                                <option value="T">Tidak Kawin</option>
-                            </select>
+                            <label for="email">Alamat E-mail</label>
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Cth: agus.susanto@gmail.com">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -82,11 +101,31 @@
                         </div>
                         <div class="form-group">
                             <label for="address_now">Alamat Domisili Sekarang</label>
-                            <textarea class="form-control" name="address_now" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos. Kosongkan apabila sama dengan alamat di KTP." rows="2"></textarea>
+                            <input type="text" class="form-control" id="address_now_1" name="address_now_1" placeholder="Lengkap; Nama Jalan, No. RT, No. RW " data-parsley-maxlength="40">
+                            <input type="text" class="form-control" id="address_now_2" name="address_now_2" placeholder="Lengkap; Nama Desa/Kelurahan, Kecamatan" data-parsley-maxlength="35">
+                            <input type="text" class="form-control" id="address_now_1" name="address_now_3" placeholder="Lengkap; Nama Kota/Kab, Kode Pos" data-parsley-maxlength="25">
                         </div>
                         <div class="form-group">
                             <label for="occupation">Pekerjaan<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Cth: Wiraswasta" required data-parsley-group="block0">
+                            <select class="form-control" name="occupation" data-parsley-group="block0" required>
+                                <option value="Tani">Petani/Peternak/Pekebun</option>
+                                <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
+                                <option value="Tentara Nasional Indonesia">Anggota TNI</option>
+                                <option value="Polisi Republik Indonesia">Anggota POLRI</option>
+                                <option value="Guru">Guru</option>
+                                <option value="PNS">PNS</option>
+                                <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
+                                <option value="Ibu Rumah Tangga">Ibu Rumah Tangga</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="marital_status">Status Perkawinan<font color="red">*</font></label>
+                            <select class="form-control" name="marital_status" data-parsley-group="block0" required>
+                                <option value="K">Kawin</option>
+                                <option value="T">Tidak Kawin</option>
+                                <option value="CH">Cerai Hidup</option>
+                                <option value="CM">Cerai Mati</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -105,7 +144,7 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label for="spouse_type">Pasangan<font color="red">*</font></label>
-                            <select class="form-control" name="spouse_type">
+                            <select class="form-control" name="spouse_type" data-parsley-group="block1" required>
                                 <option value="I">Istri</option>
                                 <option value="S">Suami</option>
                                 <option value="N" selected="selected">Tidak Ada Pasangan</option>
@@ -118,7 +157,8 @@
                         <div class="form-group">
                             <label for="spouse_age">Umur</label>
                             <select class="form-control" name="spouse_age">
-                                <?php for($i=0; $i<80; $i++){ ?>
+                                ?php echo '<option value="0">0 - Sudah Meninggal Dunia</option>'; ?>
+                                <?php for($i=15; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -144,11 +184,20 @@
                         </div>
                         <div class="form-group">
                             <label for="spouse_occupation">Pekerjaan</label>
-                            <input type="text" class="form-control" id="spouse_occupation" name="spouse_occupation" placeholder="Cth. Wiraswasta">
+                            <select class="form-control" name="spouse_occupation">
+                                <option value="Tani">Petani/Peternak/Pekebun</option>
+                                <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
+                                <option value="Tentara Nasional Indonesia">Anggota TNI</option>
+                                <option value="Polisi Republik Indonesia">Anggota POLRI</option>
+                                <option value="Guru">Guru</option>
+                                <option value="PNS">PNS</option>
+                                <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
+                                <option value="Ibu Rumah Tangga">Ibu Rumah Tangga</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="spouse_address">Alamat Domisili Sekarang</label>
-                            <textarea class="form-control" name="spouse_address" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos." rows="2"></textarea>
+                            <textarea class="form-control" name="spouse_address" placeholder="Jalan, RT/RW, Desa/Kelurahan, Kecamatan, Kab/Kota, Kode Pos." rows="2"></textarea>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -163,7 +212,8 @@
                         <div class="form-group">
                             <label for="father_age">Umur<font color="red">*</font></label>
                             <select class="form-control" name="father_age" data-parsley-group="block1" required>
-                                <?php for($i=0; $i<80; $i++){ ?>
+                                <?php echo '<option value="0">0 - Sudah Meninggal Dunia</option>'; ?>
+                                <?php for($i=21; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -189,11 +239,20 @@
                         </div>
                         <div class="form-group">
                             <label for="father_occupation">Pekerjaan<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="father_occupation" name="father_occupation" placeholder="Cth: Wiraswasta" data-parsley-group="block1" required>
+                            <select class="form-control" name="father_occupation" data-parsley-group="block1" required>
+                                <option value="Tani">Petani/Peternak/Pekebun</option>
+                                <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
+                                <option value="Tentara Nasional Indonesia">Anggota TNI</option>
+                                <option value="Polisi Republik Indonesia">Anggota POLRI</option>
+                                <option value="Guru">Guru</option>
+                                <option value="PNS">PNS</option>
+                                <option value="Pensiunan">Pensiunan</option>
+                            </select>
+
                         </div>
                         <div class="form-group">
                             <label for="father_address">Alamat Domisili Sekarang<font color="red">*</font></label>
-                            <textarea class="form-control" name="father_address" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos." rows="2" data-parsley-group="block1" required></textarea>
+                            <textarea class="form-control" name="father_address" placeholder="Jalan, RT/RW, Desa/Kelurahan, Kecamatan, Kab/Kota, Kode Pos." rows="2" data-parsley-group="block1" required></textarea>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -208,7 +267,8 @@
                         <div class="form-group">
                             <label for="mother_age">Umur<font color="red">*</font></label>
                             <select class="form-control" name="mother_age" data-parsley-group="block1" required>
-                                <?php for($i=0; $i<80; $i++){ ?>
+                                <?php echo '<option value="0">0 - Sudah Meninggal Dunia</option>'; ?>
+                                <?php for($i=21; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -234,45 +294,53 @@
                         </div>
                         <div class="form-group">
                             <label for="mother_occupation">Pekerjaan<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="mother_occupation" name="mother_occupation" placeholder="Cth. Wiraswasta" required data-parsley-group="block1">
+                            <select class="form-control" name="mother_occupation" data-parsley-group="block1" required>
+                                <option value="Tani">Petani/Peternak/Pekebun</option>
+                                <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
+                                <option value="Tentara Nasional Indonesia">Anggota TNI</option>
+                                <option value="Polisi Republik Indonesia">Anggota POLRI</option>
+                                <option value="Guru">Guru</option>
+                                <option value="PNS">PNS</option>
+                                <option value="Ibu Rumah Tangga">Ibu Rumah Tangga</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="mother_address">Alamat Domisili Sekarang<font color="red">*</font></label>
-                            <textarea class="form-control" name="mother_address" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos." rows="2" data-parsley-group="block1" required></textarea>
+                            <textarea class="form-control" name="mother_address" placeholder="Jalan, RT/RW, Desa/Kelurahan, Kecamatan, Kab/Kota, Kode Pos." rows="2" data-parsley-group="block1" required></textarea>
                         </div>
                     </div>
                 </div>
-                <div class="row"><hr><p style="text-align:center;font-size:16px"><b><u>Saudara Terdekat</u><font color="red">*</font></b></p></div>
+                <div class="row"><hr><p style="text-align:center;font-size:16px"><b><u>Saudara Terdekat (Kandung/Tiri)</u><font color="red">*</font></b></p></div>
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                         <div class="form-group">
-                            <label for="siblings_names_1">Nama Saudara 1</label>
-                            <input type="text" class="form-control" id="siblings_names_1" name="siblings_names_1" placeholder="Saudara Kandung/Tiri">
+                            <label for="siblings_names_1">Saudara 1</label>
+                            <input type="text" class="form-control" id="siblings_names_1" name="siblings_names_1" placeholder="Nama Saudara">
                         </div>
                         <div class="form-group">
-                            <label for="siblings_names_2">Nama Saudara 2</label>
-                            <input type="text" class="form-control" id="siblings_names_2" name="siblings_names_2" placeholder="Saudara Kandung/Tiri">
+                            <label for="siblings_names_2">Saudara 2</label>
+                            <input type="text" class="form-control" id="siblings_names_2" name="siblings_names_2" placeholder="Nama Saudara">
                         </div>
                         <div class="form-group">
-                            <label for="siblings_names_3">Nama Saudara 3</label>
-                            <input type="text" class="form-control" id="siblings_names_3" name="siblings_names_3" placeholder="Saudara Kandung/Tiri">
+                            <label for="siblings_names_3">Saudara 3</label>
+                            <input type="text" class="form-control" id="siblings_names_3" name="siblings_names_3" placeholder="Nama Saudara">
                         </div>
                         <div class="form-group">
-                            <label for="siblings_names_4">Nama Saudara 4</label>
-                            <input type="text" class="form-control" id="siblings_names_4" name="siblings_names_4" placeholder="Saudara Kandung/Tiri">
+                            <label for="siblings_names_4">Saudara 4</label>
+                            <input type="text" class="form-control" id="siblings_names_4" name="siblings_names_4" placeholder="Nama Saudara">
                         </div>
                         <div class="form-group">
-                            <label for="siblings_names_5">Nama Saudara 5</label>
-                            <input type="text" class="form-control" id="siblings_names_5" name="siblings_names_5" placeholder="Saudara Kandung/Tiri">
+                            <label for="siblings_names_5">Saudara 5</label>
+                            <input type="text" class="form-control" id="siblings_names_5" name="siblings_names_5" placeholder="Nama Saudara">
                         </div>
                         <div class="form-group">
-                            <label for="siblings_names_6">Nama Saudara 6</label>
-                            <input type="text" class="form-control" id="siblings_names_6" name="siblings_names_6" placeholder="Saudara Kandung/Tiri">
+                            <label for="siblings_names_6">Saudara 6</label>
+                            <input type="text" class="form-control" id="siblings_names_6" name="siblings_names_6" placeholder="Nama Saudara">
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="form-group">
-                            <label for="siblings_ages_1">Umur Saudara 1</label>
+                            <label for="siblings_ages_1">Umur</label>
                             <select class="form-control" name="siblings_ages_1">
                                 <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
@@ -280,7 +348,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="siblings_ages_2">Umur Saudara 2</label>
+                            <label for="siblings_ages_2">Umur</label>
                             <select class="form-control" name="siblings_ages_2">
                                 <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
@@ -288,7 +356,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="siblings_ages_3">Umur Saudara 3</label>
+                            <label for="siblings_ages_3">Umur</label>
                             <select class="form-control" name="siblings_ages_3">
                                 <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
@@ -296,7 +364,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="siblings_ages_4">Umur Saudara 4</label>
+                            <label for="siblings_ages_4">Umur</label>
                             <select class="form-control" name="siblings_ages_4">
                                 <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
@@ -304,7 +372,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="siblings_ages_5">Umur Saudara 5</label>
+                            <label for="siblings_ages_5">Umur</label>
                             <select class="form-control" name="siblings_ages_5">
                                 <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
@@ -312,7 +380,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="siblings_ages_6">Umur Saudara 6</label>
+                            <label for="siblings_ages_6">Umur</label>
                             <select class="form-control" name="siblings_ages_6">
                                 <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
@@ -320,30 +388,30 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-7">
+                    <div class="col-lg-8">
                         <div class="form-group">
                             <label for="siblings_addresses_1">Alamat Saudara 1</label>
-                            <textarea class="form-control" rows="1" id="siblings_addresses_1" name="siblings_addresses_1" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos."></textarea>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_1" name="siblings_addresses_1" placeholder="Jalan, RT/RW, Desa/Kelurahan, Kecamatan, Kab/Kota, Kode Pos."></textarea>
                         </div>
                         <div class="form-group">
                             <label for="siblings_addresses_2">Alamat Saudara 2</label>
-                            <textarea class="form-control" rows="1" id="siblings_addresses_2" name="siblings_addresses_2" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos."></textarea>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_2" name="siblings_addresses_2" placeholder="Jalan, RT/RW, Desa/Kelurahan, Kecamatan, Kab/Kota, Kode Pos."></textarea>
                         </div>
                         <div class="form-group">
                             <label for="siblings_addresses_3">Alamat Saudara 3</label>
-                            <textarea class="form-control" rows="1" id="siblings_addresses_3" name="siblings_addresses_3" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos."></textarea>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_3" name="siblings_addresses_3" placeholder="Jalan, RT/RW, Desa/Kelurahan, Kecamatan, Kab/Kota, Kode Pos."></textarea>
                         </div>
                         <div class="form-group">
                             <label for="siblings_addresses_1">Alamat Saudara 4</label>
-                            <textarea class="form-control" rows="1" id="siblings_addresses_4" name="siblings_addresses_4" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos."></textarea>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_4" name="siblings_addresses_4" placeholder="Jalan, RT/RW, Desa/Kelurahan, Kecamatan, Kab/Kota, Kode Pos."></textarea>
                         </div>
                         <div class="form-group">
                             <label for="siblings_addresses_2">Alamat Saudara 5</label>
-                            <textarea class="form-control" rows="1" id="siblings_addresses_5" name="siblings_addresses_5" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos."></textarea>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_5" name="siblings_addresses_5" placeholder="Jalan, RT/RW, Desa/Kelurahan, Kecamatan, Kab/Kota, Kode Pos."></textarea>
                         </div>
                         <div class="form-group">
                             <label for="siblings_addresses_3">Alamat Saudara 6</label>
-                            <textarea class="form-control" rows="1" id="siblings_addresses_6" name="siblings_addresses_6" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Kode Pos."></textarea>
+                            <textarea class="form-control" rows="1" id="siblings_addresses_6" name="siblings_addresses_6" placeholder="Jalan, RT/RW, Desa/Kelurahan, Kecamatan, Kab/Kota, Kode Pos."></textarea>
                         </div>
                     </div>
                 </div>
@@ -485,7 +553,7 @@
                             <input type="text" class="form-control" id="pidana_sampaimana" name="pidana_sampaimana" placeholder="Cth: Persidangan/Penyidikan Polres">
                         </div>
                         <div class="form-group">
-                            <label for="pidana_putusansementara">Bila pernah, Bagaimana hasil/putusan sementara hingga kini?</label>
+                            <label for="pidana_putusansementara">Bila pernah, Bagaimana hasil putusan sementara terkini?</label>
                             <input type="text" class="form-control" id="pidana_putusansementara" name="pidana_putusansementara" placeholder="Cth: Penahanan Kota">
                         </div>
                     </div>
@@ -543,7 +611,7 @@
                         </div>
                         <div class="form-group">
                             <label for="beratbadan">Berat Badan Anda?<font color="red">*</font> (kg)</label>
-                            <input type="text" class="form-control" id="beratbadan" name="beratbadan" placeholder="Cth: 72" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[0, 2]">
+                            <input type="text" class="form-control" id="beratbadan" name="beratbadan" placeholder="Cth: 72" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[0, 3]">
                         </div>
                         <div class="form-group">
                             <label for="tandakhusus">Tanda Khusus di Badan Anda?</label>
@@ -552,19 +620,42 @@
                     </div>
                 </div>
                 <div class="row">
-                    <hr>
+                    <div class="col-lg-12">
+                        <hr>
+                        <label for="rumussidikjari1">Rumus Sidik Jari? (Abaikan ini bila belum ada/belum mengurus di Polres)</label>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="rumussidikjari1">Rumus Sidik Jari 1? (Abaikan ini bila belum ada/belum mengurus di Polres)</label>
-                            <input type="text" class="form-control" id="rumussidikjari1" name="rumussidikjari1" placeholder="Cth:9 I 2 4">
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari1-1" name="rumussidikjari1-1" placeholder="Cth: 9"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari1-2" name="rumussidikjari1-2" placeholder="Cth: I"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari1-3" name="rumussidikjari1-3" placeholder="Cth: 6"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari1-4" name="rumussidikjari1-4" placeholder="Cth: L"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari1-5" name="rumussidikjari1-5" placeholder="Cth: 000"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari1-6" name="rumussidikjari1-6" placeholder="Cth: 2"></div>
                         </div>
                     </div>
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="rumussidikjari2">Rumus Sidik Jari 2? (Abaikan ini bila belum ada/belum mengurus di Polres)</label>
-                            <input type="text" class="form-control" id="rumussidikjari2" name="rumussidikjari2" placeholder="Cth: 8 I 2 2">
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari2-1" name="rumussidikjari2-1" placeholder="Cth: 9"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari2-2" name="rumussidikjari2-2" placeholder="Cth: O"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari2-3" name="rumussidikjari2-3" placeholder="Cth: 9"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari2-4" name="rumussidikjari2-4" placeholder="Cth: L"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari2-5" name="rumussidikjari2-5" placeholder="Cth: 000"></div>
+                            <div class="col-xs-2">
+                                <input type="text" class="form-control" id="rumussidikjari2-6" name="rumussidikjari2-6" placeholder="Cth: 2 " ></div>
                         </div>
                     </div>
                 </div>
@@ -596,7 +687,7 @@
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=4x6.gif'); ?>">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=KTP_ID.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
@@ -607,7 +698,7 @@
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
-                                <p class="help-block" style="text-align:justify;">Unggah Gambar KTP/KITAP/KITAS</p>
+                                <p class="help-block" style="text-align:justify;">Unggah Gambar KTP/ID Lain</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -685,18 +776,18 @@
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=Surat Sponsor.gif'); ?>">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=Surat Polsek.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="userfiles[]" id="corp_sponsorfile">
+                                        <input type="file" name="userfiles[]" id="surat_polsekfile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
-                                <p class="help-block" style="text-align:justify;">Unggah File Sponsor</p>
+                                <p class="help-block" style="text-align:justify;">Unggah Surat Pengantar Polsek</p>
                             </div>
                         </div>
                     </div>
@@ -706,18 +797,18 @@
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=Surat Nikah.gif'); ?>">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=Surat Desa.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="userfiles[]" id="marital_letterfile">
+                                        <input type="file" name="userfiles[]" id="surat_desafile">
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
-                                <p class="help-block" style="text-align:justify;">Unggah Gambar Surat/Buku Nikah</p>
+                                <p class="help-block" style="text-align:justify;">Unggah Surat Pengantar Desa/Kelurahan</p>
                             </div>
                         </div>
                     </div>
@@ -725,18 +816,18 @@
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=Tanda Lapor.gif'); ?>">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=Surat Kecamatan.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
                                     <span class="btn btn-default btn-file">
                                         <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
                                         <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="userfiles[]" id="report_evidencefile" multiple>
+                                        <input type="file" name="userfiles[]" id="surat_kecamatanfile" multiple>
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
-                                <p class="help-block" style="text-align:justify;">Unggah File Tanda Lapor</p>
+                                <p class="help-block" style="text-align:justify;">Unggah Surat Pengantar Kecamatan</p>
                             </div>
                         </div>
                     </div>
@@ -753,10 +844,6 @@
                         <div class="form-group">
                             <label for="hist_hobby">Apakah kegemaran/hobby saudara?</label>
                             <input type="text" class="form-control" id="hist_hobby" name="hist_hobby" placeholder="Cth: Membaca, Bermain Bola, Mendaki Gunung.">
-                        </div>
-                        <div class="form-group">
-                            <label for="purpose_desc">Apakah tujuan/keperluan Saudara membuat aplikasi SKCK?<font color="red">*</font></label>
-                            <input type="text" class="form-control" id="purpose_desc" name="purpose_desc" placeholder="Cth: Melamar kerja, Mendaftar CPNS, dsb." required data-parsley-group="block6">
                         </div>
                         <div class="form-group">
                             <p style="text-align:justify;">
@@ -793,8 +880,6 @@
                 finishBtn: $('<input class="finish-btn sf-right sf-btn" type="submit" name="submitSKCK" value="AJUKAN SKCK"/>'),
                 onNext: function(i, wizard) {
                     var valid = $('form', wizard).parsley().validate('block' + i);
-                    /*console.log ( 'it is now form no' + (i + 1) + " & ");
-                      console.log ( 'block' + i + " is " + valid );*/
                     height: 'auto';
                     sfw.refresh();
                     return valid;

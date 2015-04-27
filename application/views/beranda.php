@@ -5,8 +5,8 @@
         <p>Selamat Datang di Sistem Aplikasi Online Pelayanan SKCK dari Polres Tulung Agung.</p>
         <p>Silakan menggunakan sistem ini untuk mengajukan aplikasi SKCK anda secara online, mudah, & cepat.</p>
         <p>
-          Segera <a class="btn btn-primary btn-lg" href="<?php echo base_url('apply'); ?>" role="button">Ajukan SKCK</a> atau
-          <a class="btn btn-primary btn-lg" href="<?php echo base_url('beranda/penggunaansitus'); ?>">Pelajari Sistem ini</a> terlebih dahulu.
+          Segera <a class="btn btn-primary" href="<?php echo base_url('apply'); ?>" role="button">Ajukan SKCK</a> atau
+          <a class="btn btn-primary" href="<?php echo base_url('beranda/penggunaansitus'); ?>">Pelajari Sistem ini</a> terlebih dahulu.
         </p>
       </div>
     </div>

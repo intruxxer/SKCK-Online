@@ -42,11 +42,8 @@
                             <input type="text" class="form-control" id="phone" name="phone" placeholder="Cth: 081246684578" required data-parsley-group="block0" data-parsley-type="number">
                         </div>
                         <div class="form-group">
-                            <label for="marital_status">Status Perkawinan<font color="red">*</font></label>
-                            <select class="form-control" name="marital_status" data-parsley-group="block0" required>
-                                <option value="K">Kawin</option>
-                                <option value="T">Tidak Kawin</option>
-                            </select>
+                            <label for="email">Alamat E-mail<font color="red">*</font></label>
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Cth: agus.susanto@gmail.com" required data-parsley-group="block0" data-parsley-type="email">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -87,6 +84,13 @@
                         <div class="form-group">
                             <label for="occupation">Pekerjaan<font color="red">*</font></label>
                             <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Cth: Wiraswasta" required data-parsley-group="block0">
+                        </div>
+                        <div class="form-group">
+                            <label for="marital_status">Status Perkawinan<font color="red">*</font></label>
+                            <select class="form-control" name="marital_status" data-parsley-group="block0" required>
+                                <option value="K">Kawin</option>
+                                <option value="T">Tidak Kawin</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -543,7 +547,7 @@
                         </div>
                         <div class="form-group">
                             <label for="beratbadan">Berat Badan Anda?<font color="red">*</font> (kg)</label>
-                            <input type="text" class="form-control" id="beratbadan" name="beratbadan" placeholder="Cth: 72" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[0, 2]">
+                            <input type="text" class="form-control" id="beratbadan" name="beratbadan" placeholder="Cth: 72" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[0, 3]">
                         </div>
                         <div class="form-group">
                             <label for="tandakhusus">Tanda Khusus di Badan Anda?</label>

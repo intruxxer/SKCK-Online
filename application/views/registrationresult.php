@@ -16,36 +16,35 @@
 				<tr>
 			  		<td><span class="label label-primary"><?= $skck_registration_no; ?></span></td>
 			  		<td>
-				  		<p style="text-align:justify">Selamat, anda telah berhasil melakukan pendaftaran permohonan SKCK di Polres Tulung Agung. Silakan <b><u>CATAT No. Aplikasi/Registrasi e-SKCK</u></b>
-				  		anda: <h2 class="text-center"><b><?= $skck_registration_no; ?></b></h2><div id="qrcode"></div><br/> atau silakan <b><u>PRINT halaman ini</u></b>. 
+				  		<p style="text-align:justify">Selamat <b><?= $skck_registration_name; ?>,</b> anda telah berhasil melakukan pendaftaran permohonan e-SKCK/SKCK Online di Polres Tulung Agung. Silakan <b><u>CATAT No. Aplikasi/Registrasi e-SKCK</u></b>
+				  		anda: <h3 class="text-center"><b><?= $skck_registration_no; ?></b></h3><div id="qrcode"></div><br/> atau silakan <b><u>PRINT halaman ini</u></b>. 
 				  		Selanjutnya silakan lengkapi persyaratan yg belum ada seperti pengambilan sidik jari di Polres, surat keterangan dari RT-RW-Kelurahan, dan sebagainya. 
 				  		Bila sudah ada, silakan bawa saat ingin mendapatkan SKCK anda sebagai syarat verifikasi. Semua dokumen diharap dibawa beserta versi File/Scan/Soft Copy 
 				  		masing-masing apabila belum mengunggah dokumen-dokumen tersebut secara online.</p>
-				  		<p style="text-align:justify"><strong>Dokumen yang dipersyaratkan untuk verifikasi permohonan SKCK secara <em>online</em> adalah sebagai berikut:</strong></p>
 						<blockquote>
-						<p style="text-align:justify">1. Pemohon Warga Negara Indonesia (WNI):</p>
+						<p style="text-align:justify"><strong>Dokumen yang dipersyaratkan untuk verifikasi permohonan SKCK secara <em>online</em> adalah sebagai berikut:</strong></p>
 							<ul>
-								<li style="text-align:justify"><em>Copy </em> KTP asli;</li>
-								<li style="text-align:justify"><em>Copy </em> Kartu Keluarga (KK) asli;</li>
-								<li style="text-align:justify"><em>Copy </em> Akte Kenal Lahir asli;</li>
-								<li style="text-align:justify"><em>Copy </em> identitas lain bagi pemohon yang belum memenuhi syarat memperoleh KTP;</li>
-								<li style="text-align:justify"><em>Copy </em> foto diri ukuran 4 x 6 berwarna latar belakang merah, berpakaian sopan, tampak muka. Bagi pemohon yang mengenakan jilbab harus tampak muka;</li>
-								<li style="text-align:justify"><em>Copy </em> Paspor bagi WNI yang akan keluar negeri dalam rangka sekolah/kunjungan/penerbitan VISA;</li>
+								<li style="text-align:justify"><em>Copy Scan</em> <b>KTP</b> Asli;</li>
+								<li style="text-align:justify"><em>Copy Scan</em> <b>Kartu Keluarga (KK)</b> asli;</li>
+								<li style="text-align:justify"><em>Copy Scan</em> <b>Akte Kenal Lahir</b> Asli;</li>
+								<li style="text-align:justify"><em>Copy Scan</em> Surat Pengantar dari <b>Desa/Kelurahan</b>;</li>
+								<li style="text-align:justify"><em>Copy Scan</em> Surat Pengantar dari <b>Kecamatan</b>;</li>
+								<li style="text-align:justify"><em>Copy Scan</em> Surat Pengantar dari <b>Polsek</b>;</li>
+								<li style="text-align:justify"><em>Copy Scan</em> <b>Identitas lain</b> bagi pemohon yang <u>belum</u> memenuhi syarat memperoleh KTP;</li>
+								<li style="text-align:justify"><em>Copy Scan</em> <b>Foto diri ukuran 4 x 6</b> (bukan foto selfie) berwarna latar belakang merah, berpakaian sopan, tampak muka. Bagi pemohon yang mengenakan jilbab harus tampak muka;</li>
+								<li style="text-align:justify"><em>Copy Scan</em> <b>Paspor,</b> bagi WNI yang akan keluar negeri dalam rangka sekolah/kunjungan/penerbitan VISA;</li>
 							</ul>
 						</blockquote>
-						<blockquote>
-						<p style="text-align:justify">2. Pemohon Warga Negara Asing (WNA):</p>
-							<ul>
-								<li style="text-align:justify"><em>Copy</em> Surat permohonan (asli) sponsor, perusahaan, lembaga yang mempekerjakan, menggunakan atau yang bertanggung jawab terhadap WNA;</li>
-								<li style="text-align:justify"><em>Copy</em> Paspor asli;</li>
-								<li style="text-align:justify"><em>Copy</em> Kartu Izin Tinggal Terbatas (KITAS) asli atau Kartu Izin Tinggal Tetap (KITAP) asli;</li>
-								<li style="text-align:justify"><em>Copy</em> foto diri ukuran 4 x 6 berwarna latar belakang kuning, berpakaian sopan, tampak muka. Bagi pemohon yang mengenakan jilbab harus tampak muka;</li>
-								<li style="text-align:justify"><em>Copy</em> Surat Nikah asli dan KTP asli suami/istri bagi WNA yang mendapat sponsor dari WNI.</li>
-							</ul>
-						</blockquote>
-						<p style="margin-left:20px; text-align:justify">Pada saat pengambilan SKCK di loket pelayanan, pemohon WAJIB menunjukkan dokumen asli yang dipersyaratkan kepada petugas guna keperluan verifikasi.</p>
+						<p style="margin-left:20px; text-align:justify">Pada saat pengambilan SKCK di loket pelayanan, pemohon <b>WAJIB akan 4 Hal:</b></p>
+						<p style="margin-left:20px; text-align:justify">(1) Menunjukkan <b>slip tanda terima/menyebutkan no. registrasi e-SKCK</b> (Print Di sini),</p>
+						<p style="margin-left:20px; text-align:justify">(2) Menyerahkan <b>daftar pertanyaan dan jawaban e-SKCK</b> (sudah ditanda tangani oleh aplikan) yang telah dijawab saat aplikasi (Print Di sini), dan</p>
+						<p style="margin-left:20px; text-align:justify">(3) Menunjukkan <b>dokumen-dokumen asli yang dipersyaratkan</b>, kepada petugas, guna keperluan verifikasi.</p>
+						<p style="margin-left:20px; text-align:justify">(4) Menyerahkan <b>pas foto 4x6</b> sebanyak <b>6 lembar.</b></p>
 			  			<a style="margin-left:20px; text-align:right" href="#" class="btn btn-success" onClick="window.print()">
 			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Tanda Terima
+			  			</a>
+			  			<a style="margin-left:20px; text-align:right" href="#" class="btn btn-success" onClick="window.print()">
+			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Daftar Pertanyaan e-SKCK
 			  			</a>
 			  		</td>
 		  		</tr>
