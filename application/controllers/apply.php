@@ -955,7 +955,7 @@ class Apply extends CI_Controller {
       $doc->setValue('FISIK_ISTIMEWA', ucwords($d[0]['applicant_tandakhusus']));
 
       $doc->setValue('FISIK_HOBI', ucwords($d[0]['applicant_hist_hobby']));
-      $doc->setValue('ISSUING_DATE', date('d F Y'));
+      $doc->setValue('ISSUING_DATE', date('d').' '.get_month_text(date('n')).' '.date('Y'));
 
 
       $doc->saveAs('/tmp/'.$id.'surat_pernyataan.docx');
@@ -1036,7 +1036,7 @@ class Apply extends CI_Controller {
       $doc->setValue('FISIK_TANDA', ucwords($d[0]['applicant_tandakhusus']));
 
       $doc->setValue('HOBBY', ucwords($d[0]['applicant_hist_hobby']));
-      $doc->setValue('ISSUINGDATE', date('d F Y'));
+      $doc->setValue('ISSUINGDATE', date('d').' '.get_month_text(date('n')).' '.date('Y'));
 
       $doc->saveAs('/tmp/'.$id.'kartu_tik.docx');
 

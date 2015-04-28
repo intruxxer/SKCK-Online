@@ -36,7 +36,6 @@
 |  $autoload['packages'] = array(APPPATH.'third_party', '/usr/local/shared');
 |
 */
-
 $autoload['packages'] = array();
 
 
@@ -52,7 +51,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'session', 'pagination');
+$autoload['libraries'] = array('session', 'database', 'pagination','user_agent', 'form_validation');
 
 
 /*
@@ -64,7 +63,7 @@ $autoload['libraries'] = array('database', 'session', 'pagination');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'flash', 'form', 'date');
+$autoload['helper'] = array('url','form','myutil', 'flash', 'date');
 
 
 /*
