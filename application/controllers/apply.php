@@ -141,35 +141,39 @@ class Apply extends CI_Controller {
 		        foreach( $all as $i => $val )
 		        {
 		        	switch ($i) {
-				    case 0:
-				    	$filename = "ktp_".$val;
+		        	case 0:
+		        		$filename = "pasfoto_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
 				    case 1:
-				        $filename = "akte_".$val;
+				    	$filename = "ktp_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
 				    case 2:
-				        $filename = "kk_".$val;
+				        $filename = "akte_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
 				    case 3:
-				    	$filename = "sidikjari_".$val;
+				        $filename = "kk_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
 				    case 4:
-				        $filename = "paspor_".$val;
+				    	$filename = "sidikjari_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
 				    case 5:
-				        $filename = "surat_polsek_".$val;
+				        $filename = "paspor_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
 				    case 6:
-				        $filename = "surat_desa_".$val;
+				        $filename = "surat_polsek_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
 				    case 7:
+				        $filename = "surat_desa_".$val;
+				        $files[$i][$key] = $filename;
+				        break;
+				    case 8:
 				        $filename = "surat_kecamatan_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
@@ -184,7 +188,7 @@ class Apply extends CI_Controller {
 		    		$files[$i][$key] = $val;
 		    	}
 		    }
-
+		//print_r($files);
 	    $files_uploaded = array();
 	    for ($i=0; $i < count($files); $i++) {
 	        $_FILES[$field] = $files[$i];
@@ -193,6 +197,7 @@ class Apply extends CI_Controller {
 	        else
 	            $files_uploaded[$i] = null;
 	    }
+	    //print_r($files_uploaded);
 	    return $files_uploaded;
 	}
 
@@ -200,7 +205,7 @@ class Apply extends CI_Controller {
 	{
 		$docs_uploaded_path = array();
 		$config = array();
-		//$files = $_FILES['userfiles'];
+		$files = $_FILES['userfiles'];
 		if($skck_id == 0)
 			$skck_id = 'ND'.date("dm").rand(1000, 9999).rand(10, 99);
 		$path = './staff/uploads/'.$skck_id;
@@ -385,14 +390,15 @@ class Apply extends CI_Controller {
 					'id' => $skck_id,
 					'applicant_id' => $this->input->post('id'),
 					'applicant_docs_exist' => $this->input->post('docs_exist'),
-					'skck_ktp' => $docs_uploaded_path[0]['file_name'],
-					'skck_passport' => $docs_uploaded_path[4]['file_name'],
-					'skck_familycard' => $docs_uploaded_path[2]['file_name'],
-					'skck_birthcert' => $docs_uploaded_path[1]['file_name'],
-					'skck_fingerprint' => $docs_uploaded_path[3]['file_name'],
-					'skck_surat_polsek' => $docs_uploaded_path[5]['file_name'],
-					'skck_surat_desa' => $docs_uploaded_path[6]['file_name'],
-					'skck_surat_kecamatan' => $docs_uploaded_path[7]['file_name']
+					'skck_ktp' => $docs_uploaded_path[1]['file_name'],
+					'skck_pas_foto' => $docs_uploaded_path[0]['file_name'],
+					'skck_passport' => $docs_uploaded_path[5]['file_name'],
+					'skck_familycard' => $docs_uploaded_path[3]['file_name'],
+					'skck_birthcert' => $docs_uploaded_path[2]['file_name'],
+					'skck_fingerprint' => $docs_uploaded_path[4]['file_name'],
+					'skck_surat_polsek' => $docs_uploaded_path[6]['file_name'],
+					'skck_surat_desa' => $docs_uploaded_path[7]['file_name'],
+					'skck_surat_kecamatan' => $docs_uploaded_path[8]['file_name']
 				);
 			}
 			$documents = $this->skck->add_skck_documents($data['skck_documents']);
@@ -599,14 +605,15 @@ class Apply extends CI_Controller {
 					'id' => $skck_id,
 					'applicant_id' => $this->input->post('id'),
 					'applicant_docs_exist' => $this->input->post('docs_exist'),
-					'skck_ktp' => $docs_uploaded_path[0]['file_name'],
-					'skck_passport' => $docs_uploaded_path[4]['file_name'],
-					'skck_familycard' => $docs_uploaded_path[2]['file_name'],
-					'skck_birthcert' => $docs_uploaded_path[1]['file_name'],
-					'skck_fingerprint' => $docs_uploaded_path[3]['file_name'],
-					'skck_surat_polsek' => $docs_uploaded_path[5]['file_name'],
-					'skck_surat_desa' => $docs_uploaded_path[6]['file_name'],
-					'skck_surat_kecamatan' => $docs_uploaded_path[7]['file_name']
+					'skck_pas_foto' => $docs_uploaded_path[0]['file_name'],
+					'skck_ktp' => $docs_uploaded_path[1]['file_name'],
+					'skck_passport' => $docs_uploaded_path[5]['file_name'],
+					'skck_familycard' => $docs_uploaded_path[3]['file_name'],
+					'skck_birthcert' => $docs_uploaded_path[2]['file_name'],
+					'skck_fingerprint' => $docs_uploaded_path[4]['file_name'],
+					'skck_surat_polsek' => $docs_uploaded_path[6]['file_name'],
+					'skck_surat_desa' => $docs_uploaded_path[7]['file_name'],
+					'skck_surat_kecamatan' => $docs_uploaded_path[8]['file_name']
 				);
 			}
 			$documents = $this->skck->update_skck_documents($skck_id, $data['skck_documents']);

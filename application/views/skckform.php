@@ -12,8 +12,28 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="form-group">
+                    <div class="col-lg-6">
+                        
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group text-center">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=4x6.gif'); ?>">
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
+                                <div>
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
+                                        <span class="fileinput-exists" lang="id">Ganti</span>
+                                        <input type="file" name="userfiles[]" id="pas_fotofile" required data-parsley-group="block0">
+                                    </span>
+                                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
+                                </div>
+                                <p class="help-block" style="text-align:justify;">Unggah Pas Foto Resmi<font color="red">*</font></p>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
                             <label for="purpose_desc">Apakah tujuan/keperluan Saudara membuat aplikasi SKCK?<font color="red">*</font></label>
                             <select class="form-control" name="purpose_desc" required data-parsley-group="block0">
                                 <option value="DAFTAR CPNS">Daftar CPNS</option>
@@ -29,7 +49,6 @@
                                 <option value="LAIN-LAIN">Lain-Lain</option>
                             </select>
                         </div>
-                        <hr/>
                     </div>
                 </div>
                 <div class="row">

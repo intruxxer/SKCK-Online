@@ -15,7 +15,7 @@
 		  	<tbody>
 				<tr>
 			  		<td>
-			  			<span><?php  echo date("d F Y"); ?></span><br/>
+			  			<span><?php  echo date("d F Y"); ?></span><br/>&nbsp;&nbsp;
 			  			<span class="label label-primary"><?= $skck_registration_no; ?></span></td>
 			  		<td>
 				  		<p style="text-align:justify">Selamat <b><?= $skck_registration_name; ?>,</b> anda telah berhasil melakukan pendaftaran permohonan e-SKCK/SKCK Online di Polres Tulung Agung. Silakan <b><u>CATAT No. Aplikasi/Registrasi e-SKCK</u></b>
