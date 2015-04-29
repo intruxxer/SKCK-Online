@@ -130,7 +130,7 @@
                                 <option value="Tani">Petani/Peternak/Pekebun</option>
                                 <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
                                 <option value="Tentara Nasional Indonesia">Anggota TNI</option>
-                                <option value="Polisi Republik Indonesia">Anggota POLRI</option>
+                                <option value="POLRI">Anggota POLRI</option>
                                 <option value="Guru">Guru</option>
                                 <option value="PNS">PNS</option>
                                 <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
@@ -210,7 +210,7 @@
                                 <option value="Tani">Petani/Peternak/Pekebun</option>
                                 <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
                                 <option value="Tentara Nasional Indonesia">Anggota TNI</option>
-                                <option value="Polisi Republik Indonesia">Anggota POLRI</option>
+                                <option value="POLRI">Anggota POLRI</option>
                                 <option value="Guru">Guru</option>
                                 <option value="PNS">PNS</option>
                                 <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
@@ -268,7 +268,7 @@
                                 <option value="Tani">Petani/Peternak/Pekebun</option>
                                 <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
                                 <option value="Tentara Nasional Indonesia">Anggota TNI</option>
-                                <option value="Polisi Republik Indonesia">Anggota POLRI</option>
+                                <option value="POLRI">Anggota POLRI</option>
                                 <option value="Guru">Guru</option>
                                 <option value="PNS">PNS</option>
                                 <option value="Pensiunan">Pensiunan</option>
@@ -326,7 +326,7 @@
                                 <option value="Tani">Petani/Peternak/Pekebun</option>
                                 <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
                                 <option value="Tentara Nasional Indonesia">Anggota TNI</option>
-                                <option value="Polisi Republik Indonesia">Anggota POLRI</option>
+                                <option value="POLRI">Anggota POLRI</option>
                                 <option value="Guru">Guru</option>
                                 <option value="PNS">PNS</option>
                                 <option value="Ibu Rumah Tangga">Ibu Rumah Tangga</option>
@@ -556,7 +556,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="pidana_apa">Bila pernah, dalam perkara apa?</label>
+                            <label for="pidana_apa">Bila pernah, dalam perkara pidana apa?</label>
                             <input type="text" class="form-control" id="pidana_apa" name="pidana_apa" placeholder="Cth: Pencurian/Penipuan">
                         </div>
                         <div class="form-group">
@@ -567,13 +567,13 @@
                             <label for="pidana_proses">Apakah Saudara saat ini sedang dalam proses perkara pidana?</label>
                             <select class="form-control" name="pidana_proses">
                                 <option value="TP">Tidak Dalam Proses</option>
-                                <option value="DP">Sedang Proses</option>
+                                <option value="DP">Sedang Dalam Proses</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="pidana_kasus">Bila pernah, dalam perkara apa?</label>
+                            <label for="pidana_kasus">Bila dalam proses, dalam kasus apa?</label>
                             <input type="text" class="form-control" id="pidana_kasus" name="pidana_kasus" placeholder="Cth: Penipuan">
                         </div>
                         <div class="form-group">
