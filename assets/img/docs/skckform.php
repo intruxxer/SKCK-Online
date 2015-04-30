@@ -12,31 +12,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
-                        
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="form-group text-center">
-                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=4x6.gif'); ?>">
-                                </div>
-                                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
-                                <div>
-                                    <span class="btn btn-default btn-file">
-                                        <span class="fileinput-new" lang="id">Pilih Gambar/Scan</span>
-                                        <span class="fileinput-exists" lang="id">Ganti</span>
-                                        <input type="file" name="userfiles[]" id="pas_fotofile" required data-parsley-group="block0">
-                                    </span>
-                                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
-                                </div>
-                                <p class="help-block" style="text-align:justify;">Unggah Pas Foto Resmi<font color="red">*</font></p>
-                            </div>
-                        </div>
-                        <div class="form-group text-center">
+                    <div class="col-lg-12">
+                        <div class="form-group">
                             <label for="purpose_desc">Apakah tujuan/keperluan Saudara membuat aplikasi SKCK?<font color="red">*</font></label>
                             <select class="form-control" name="purpose_desc" required data-parsley-group="block0">
-                                <option value="">--Silakan Pilih--</option>
                                 <option value="DAFTAR CPNS">Daftar CPNS</option>
                                 <option value="DAFTAR TNI/POLRI">Daftar TNI/POLRI</option>
                                 <option value="MENIKAH DGN ANGGOTA TNI/POLRI">Menikah dengan Anggota TNI/POLRI</option>
@@ -50,6 +29,7 @@
                                 <option value="LAIN-LAIN">Lain-Lain</option>
                             </select>
                         </div>
+                        <hr/>
                     </div>
                 </div>
                 <div class="row">
@@ -92,7 +72,6 @@
                         <div class="form-group">
                             <label for="sex">Jenis Kelamin<font color="red">*</font></label>
                             <select class="form-control" name="sex" data-parsley-group="block0" required>
-                                <option value="">--Silakan Pilih--</option>
                                 <option value="M">Laki-Laki</option>
                                 <option value="F">Perempuan</option>
                             </select>
@@ -107,7 +86,6 @@
                         <div class="form-group">
                             <label for="religion">Agama<font color="red">*</font></label>
                             <select class="form-control" name="religion" data-parsley-group="block0" required>
-                                <option value="">--Silakan Pilih--</option>
                                 <option value="Islam">Islam</option>
                                 <option value="Katolik">Katolik</option>
                                 <option value="Protestan">Protestan</option>
@@ -130,11 +108,10 @@
                         <div class="form-group">
                             <label for="occupation">Pekerjaan<font color="red">*</font></label>
                             <select class="form-control" name="occupation" data-parsley-group="block0" required>
-                                <option value="">--Silakan Pilih--</option>
                                 <option value="Tani">Petani/Peternak/Pekebun</option>
                                 <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
                                 <option value="Tentara Nasional Indonesia">Anggota TNI</option>
-                                <option value="POLRI">Anggota POLRI</option>
+                                <option value="Polisi Republik Indonesia">Anggota POLRI</option>
                                 <option value="Guru">Guru</option>
                                 <option value="PNS">PNS</option>
                                 <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
@@ -144,7 +121,6 @@
                         <div class="form-group">
                             <label for="marital_status">Status Perkawinan<font color="red">*</font></label>
                             <select class="form-control" name="marital_status" data-parsley-group="block0" required>
-                                <option value="">--Silakan Pilih--</option>
                                 <option value="K">Kawin</option>
                                 <option value="T">Tidak Kawin</option>
                                 <option value="CH">Cerai Hidup</option>
@@ -181,8 +157,7 @@
                         <div class="form-group">
                             <label for="spouse_age">Umur</label>
                             <select class="form-control" name="spouse_age">
-                                <?php echo '<option value="-">0 - Sudah Meninggal Dunia/Cerai</option>'; ?>
-                                <?php for($i=15; $i<80; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -190,7 +165,6 @@
                         <div class="form-group">
                             <label for="spouse_religion">Agama</label>
                             <select class="form-control" name="spouse_religion">
-                                <option value="-">--Silakan Pilih--</option>
                                 <option value="Islam">Islam</option>
                                 <option value="Katolik">Katolik</option>
                                 <option value="Protestan">Protestan</option>
@@ -203,7 +177,6 @@
                         <div class="form-group">
                             <label for="spouse_citizenship">Kewarganegaraan</label>
                             <select class="form-control" name="spouse_citizenship">
-                                <option value="-">--Silakan Pilih--</option>
                                 <option value="I">Warga Negara Indonesia</option>
                                 <option value="A">Warga Negara Asing</option>
                             </select>
@@ -211,11 +184,10 @@
                         <div class="form-group">
                             <label for="spouse_occupation">Pekerjaan</label>
                             <select class="form-control" name="spouse_occupation">
-                                <option value="-">--Silakan Pilih--</option>
                                 <option value="Tani">Petani/Peternak/Pekebun</option>
                                 <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
                                 <option value="Tentara Nasional Indonesia">Anggota TNI</option>
-                                <option value="POLRI">Anggota POLRI</option>
+                                <option value="Polisi Republik Indonesia">Anggota POLRI</option>
                                 <option value="Guru">Guru</option>
                                 <option value="PNS">PNS</option>
                                 <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
@@ -237,9 +209,9 @@
                             <input type="text" class="form-control" id="father_name" name="father_name" placeholder="Nama Ayah Anda" data-parsley-group="block1" required>
                         </div>
                         <div class="form-group">
-                            <label for="father_age">Umur<font color="red">*</font></label>
+                            <label for="father_age">Umur<font color="red">*</font> ('0' = Meninggal Dunia)</label>
                             <select class="form-control" name="father_age" data-parsley-group="block1" required>
-                                <?php echo '<option value="Alm">0 - Sudah Meninggal Dunia</option>'; ?>
+                                <?php echo '<option value="0">0 - Sudah Meninggal Dunia</option>'; ?>
                                 <?php for($i=21; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
@@ -248,7 +220,6 @@
                         <div class="form-group">
                             <label for="father_religion">Agama<font color="red">*</font></label>
                             <select class="form-control" name="father_religion" data-parsley-group="block1" required>
-                                <option value="-">--Silakan Pilih--</option>
                                 <option value="Islam">Islam</option>
                                 <option value="Katolik">Katolik</option>
                                 <option value="Protestan">Protestan</option>
@@ -261,7 +232,6 @@
                         <div class="form-group">
                             <label for="father_citizenship">Kewarganegaraan<font color="red">*</font></label>
                             <select class="form-control" name="father_citizenship" data-parsley-group="block1" required>
-                                <option value="-">--Silakan Pilih--</option>
                                 <option value="I">Warga Negara Indonesia</option>
                                 <option value="A">Warga Negara Asing</option>
                             </select>
@@ -269,11 +239,10 @@
                         <div class="form-group">
                             <label for="father_occupation">Pekerjaan<font color="red">*</font></label>
                             <select class="form-control" name="father_occupation" data-parsley-group="block1" required>
-                                <option value="-">--Silakan Pilih--</option>
                                 <option value="Tani">Petani/Peternak/Pekebun</option>
                                 <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
                                 <option value="Tentara Nasional Indonesia">Anggota TNI</option>
-                                <option value="POLRI">Anggota POLRI</option>
+                                <option value="Polisi Republik Indonesia">Anggota POLRI</option>
                                 <option value="Guru">Guru</option>
                                 <option value="PNS">PNS</option>
                                 <option value="Pensiunan">Pensiunan</option>
@@ -297,7 +266,7 @@
                         <div class="form-group">
                             <label for="mother_age">Umur<font color="red">*</font></label>
                             <select class="form-control" name="mother_age" data-parsley-group="block1" required>
-                                <?php echo '<option value="Alm">0 - Sudah Meninggal Dunia</option>'; ?>
+                                <?php echo '<option value="0">0 - Sudah Meninggal Dunia</option>'; ?>
                                 <?php for($i=21; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
@@ -306,7 +275,6 @@
                         <div class="form-group">
                             <label for="mother_religion">Agama<font color="red">*</font></label>
                             <select class="form-control" name="mother_religion" data-parsley-group="block1" required>
-                                <option value="-">--Silakan Pilih--</option>
                                 <option value="Islam">Islam</option>
                                 <option value="Katolik">Katolik</option>
                                 <option value="Protestan">Protestan</option>
@@ -319,7 +287,6 @@
                         <div class="form-group">
                             <label for="mother_citizenship">Kewarganegaraan<font color="red">*</font></label>
                             <select class="form-control" name="mother_citizenship" data-parsley-group="block1" required>
-                                <option value="-">--Silakan Pilih--</option>
                                 <option value="I">Warga Negara Indonesia</option>
                                 <option value="A">Warga Negara Asing</option>
                             </select>
@@ -327,11 +294,10 @@
                         <div class="form-group">
                             <label for="mother_occupation">Pekerjaan<font color="red">*</font></label>
                             <select class="form-control" name="mother_occupation" data-parsley-group="block1" required>
-                                <option value="-">--Silakan Pilih--</option>
                                 <option value="Tani">Petani/Peternak/Pekebun</option>
                                 <option value="Swasta">Wiraswasta/Karyawan Swasta</option>
                                 <option value="Tentara Nasional Indonesia">Anggota TNI</option>
-                                <option value="POLRI">Anggota POLRI</option>
+                                <option value="Polisi Republik Indonesia">Anggota POLRI</option>
                                 <option value="Guru">Guru</option>
                                 <option value="PNS">PNS</option>
                                 <option value="Ibu Rumah Tangga">Ibu Rumah Tangga</option>
@@ -375,8 +341,7 @@
                         <div class="form-group">
                             <label for="siblings_ages_1">Umur</label>
                             <select class="form-control" name="siblings_ages_1">
-                                <option value="-">--Silakan Pilih--</option>
-                                <?php for($i=1; $i<80; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -384,8 +349,7 @@
                         <div class="form-group">
                             <label for="siblings_ages_2">Umur</label>
                             <select class="form-control" name="siblings_ages_2">
-                                <option value="-">--Silakan Pilih--</option>
-                                <?php for($i=1; $i<80; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -393,8 +357,7 @@
                         <div class="form-group">
                             <label for="siblings_ages_3">Umur</label>
                             <select class="form-control" name="siblings_ages_3">
-                                <option value="-">--Silakan Pilih--</option>
-                                <?php for($i=1; $i<80; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -402,8 +365,7 @@
                         <div class="form-group">
                             <label for="siblings_ages_4">Umur</label>
                             <select class="form-control" name="siblings_ages_4">
-                                <option value="-">--Silakan Pilih--</option>
-                                <?php for($i=1; $i<80; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -411,8 +373,7 @@
                         <div class="form-group">
                             <label for="siblings_ages_5">Umur</label>
                             <select class="form-control" name="siblings_ages_5">
-                                <option value="-">--Silakan Pilih--</option>
-                                <?php for($i=1; $i<80; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -420,8 +381,7 @@
                         <div class="form-group">
                             <label for="siblings_ages_6">Umur</label>
                             <select class="form-control" name="siblings_ages_6">
-                                <option value="-">--Silakan Pilih--</option>
-                                <?php for($i=1; $i<80; $i++){ ?>
+                                <?php for($i=0; $i<80; $i++){ ?>
                                 <?php echo '<option value="'.$i.'">'.$i.'</option>'; ?>
                                 <?php } ?>
                             </select>
@@ -567,7 +527,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="pidana_apa">Bila pernah, dalam perkara pidana apa?</label>
+                            <label for="pidana_apa">Bila pernah, dalam perkara apa?</label>
                             <input type="text" class="form-control" id="pidana_apa" name="pidana_apa" placeholder="Cth: Pencurian/Penipuan">
                         </div>
                         <div class="form-group">
@@ -578,13 +538,13 @@
                             <label for="pidana_proses">Apakah Saudara saat ini sedang dalam proses perkara pidana?</label>
                             <select class="form-control" name="pidana_proses">
                                 <option value="TP">Tidak Dalam Proses</option>
-                                <option value="DP">Sedang Dalam Proses</option>
+                                <option value="DP">Sedang Proses</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="pidana_kasus">Bila dalam proses, dalam kasus apa?</label>
+                            <label for="pidana_kasus">Bila pernah, dalam perkara apa?</label>
                             <input type="text" class="form-control" id="pidana_kasus" name="pidana_kasus" placeholder="Cth: Penipuan">
                         </div>
                         <div class="form-group">
@@ -646,11 +606,11 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="tinggibadan">Tinggi Badan Anda?<font color="red">*</font> (cm)</label>
-                            <input type="text" class="form-control" id="tinggibadan" name="tinggibadan" placeholder="Cth: 168" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[2, 3]">
+                            <input type="text" class="form-control" id="tinggibadan" name="tinggibadan" placeholder="Cth: 168" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[0, 3]">
                         </div>
                         <div class="form-group">
                             <label for="beratbadan">Berat Badan Anda?<font color="red">*</font> (kg)</label>
-                            <input type="text" class="form-control" id="beratbadan" name="beratbadan" placeholder="Cth: 72" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[2, 3]">
+                            <input type="text" class="form-control" id="beratbadan" name="beratbadan" placeholder="Cth: 72" required data-parsley-group="block4" data-parsley-type="number" data-parsley-length="[0, 3]">
                         </div>
                         <div class="form-group">
                             <label for="tandakhusus">Tanda Khusus di Badan Anda?</label>
@@ -726,7 +686,7 @@
                         <div class="form-group">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=KTP_ID.gif'); ?>">
+                                    <img src="<?php echo base_url('assets/img/docs/150x150&text=4x6.gif'); ?>">
                                 </div>
                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 150px; max-height: 200px;"></div>
                                 <div>
@@ -847,7 +807,7 @@
                                     </span>
                                     <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput" lang="id">Hapus</a>
                                 </div>
-                                <p class="help-block" style="text-align:justify;">Unggah Surat Pengantar Desa</p>
+                                <p class="help-block" style="text-align:justify;">Unggah Surat Pengantar Desa/Kelurahan</p>
                             </div>
                         </div>
                     </div>
@@ -925,7 +885,6 @@
                 },
                 onFinish: function(i, wizard) {
                     var valid = $('form', wizard).parsley().validate();
-                    if(!valid){ alert("Masih ada kesalahan dalam formulir pengajuan. Silakan pastikan kembali dari awal bahwa semua informasi anda telah sesuai ketentuan.");}
                     height: 'auto';
                     sfw.refresh();
                     return valid;

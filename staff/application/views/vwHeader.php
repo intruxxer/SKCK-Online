@@ -38,7 +38,7 @@
 	
 	<link href="<?php echo HTTP_CSS_PATH; ?>ui.jqgrid.css" rel="stylesheet">
 	<link href="<?php echo HTTP_CSS_PATH; ?>ui.jqgrid-bootstarp.css" rel="stylesheet">
-	<link href="<?php echo HTTP_CSS_PATH; ?>bootstrap.css" rel="stylesheet">
+	<link href="<?php echo HTTP_CSS_PATH; ?>bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo HTTP_CSS_PATH; ?>bootstrap-theme.css" rel="stylesheet">
     <link href="<?php echo HTTP_CSS_PATH; ?>arkadmin.css" rel="stylesheet">
 	
@@ -58,7 +58,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <a class="navbar-brand" href="<?php echo base_url(); ?>"><img src="<?=base_url()?>assets/images/logo_polri.png" style="max-width:45px;margin-top: -10px;"/></a>
+            <a class="navbar-brand" href="<?php echo base_url(); ?>"><!--<img src="<?=base_url()?>assets/images/logo_polri_ori.png" style="max-width:35px;margin-top: -10px;"/>--></a>
         </div>
  <?php 
 // Define a default Page
@@ -68,19 +68,19 @@
         <div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-left navbar-user">
 				<li class="dropdown user-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>Data <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list-alt"></span>&nbsp; Data <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="<?php echo base_url(); ?>registration/data_reg"><i class="fa fa-user"></i> Pendaftaran</a></li>
+                <li><a href="<?php echo base_url(); ?>registration/data_reg"><span class="glyphicon glyphicon-import"></span>&nbsp; Pendaftaran</a></li>
                 
               </ul>
             </li>
 			</ul>
             <ul class="nav navbar-nav navbar-right navbar-user">
             <li class="dropdown user-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('staff_username') ?> <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Selamat Datang, <?php echo ucfirst($this->session->userdata('staff_username')); ?> <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <!--<li><a href="#"><i class="fa fa-user"></i> Profile</a></li>-->
-                <li><a href="<?php echo base_url(); ?>home/logout"><i class="fa fa-power-off"></i> Log Out</a></li>
+                <li><a href="<?php echo base_url(); ?>home/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Log Out</a></li>
               </ul>
             </li>
           </ul>

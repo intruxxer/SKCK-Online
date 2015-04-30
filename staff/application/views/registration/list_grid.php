@@ -1,5 +1,13 @@
+    <!--<div style="text-align: center;">
+    &nbsp;
+    </div>-->
+    <br/>
+    <div style="text-align: center;">
+          <img style="text-align: center;" src="<?php echo base_url('assets/images/logo_polri.png'); ?>" width="75" height="75" >
+          <h3>Panel Administrasi e-SKCK</h3>
+    </div>
+    <!--<div style="text-align: center;"><p class="text-center"></p></div>-->
     <div id="page-wrapper">
-     <br />
       <ul class="breadcrumb">
         <li>
           <a href="<?php echo site_url("home"); ?>">
@@ -16,13 +24,17 @@
         </li>
       </ul>
       <div class="page-header">
-        <h3>
+        <h4>
          Pendaftaran
-        </h3>
+        </h4>
       </div>
 	  
 	  <div id="dialog-form">
-		<form class="reg_form" id="regForm" method="post" enctype="multipart/form-data">
+		
+		<?php
+		$attributes = array('class' => 'reg_form', 'id' => 'regForm');
+		echo form_open_multipart('profile/edit', $attributes);
+		?>
 			<div class="row">
 				<div id="tabs">
 				  <ul>
@@ -44,10 +56,17 @@
 							<input type="text" class="form-control" id="applicant_id" name="applicant_id">
 							<input type="hidden" id="id" name="id">
 						  </div>
-						   <div class="form-group">
-								<label for="text">Tujuan:</label>
-								<textarea class="form-control" rows="3" id="purpose_desc" name="purpose_desc"></textarea>
-							  </div>
+						  <div class="form-group">
+							<label for="ktp">Application ID:</label>
+							<input type="text" class="form-control" id="application_id" name="application_id">
+							
+						  </div>
+						  
+						  <div class="row">
+								<div class="col-xs-3">
+									<img id="photo" style="width:160px;height:160px" class="form-control" src=""/>
+								</div>
+						  </div>
 					  </div>
 					  <div class="col-xs-5">
 						  <div class="form-group">
@@ -62,6 +81,10 @@
 							<label for="applicant_name">Email:</label>
 							<input type="text" class="form-control" id="applicant_email" name="applicant_email">
 						  </div>
+						  <div class="form-group">
+								<label for="text">Tujuan:</label>
+								<textarea class="form-control" rows="3" id="purpose_desc" name="purpose_desc"></textarea>
+							  </div>
 					  </div>
 					  
 					</div>
@@ -865,6 +888,11 @@
 									<td class="mytable"><div id="kecamatan_file"></div></td>
 									<td class="mytable"><button class="btn btn-info btn-xs" id="btn_download_kecamatan">Download</button>&nbsp;<button class="btn btn-danger btn-xs" id="btn_del_kecamatan">Hapus</button></td>
 								  </tr>
+								  <tr>
+									<td class="mytable">Pas Foto</td>
+									<td class="mytable"><div id="foto_file"></div></td>
+									<td class="mytable"><button class="btn btn-info btn-xs" id="btn_download_foto">Download</button>&nbsp;<button class="btn btn-danger btn-xs" id="btn_del_foto">Hapus</button></td>
+								  </tr>
 								 </tbody>
 							</table>
 						</div>
@@ -885,6 +913,7 @@
 										<option value="6">Surat Polsek</option>
 										<option value="7">Surat Desa</option>
 										<option value="8">Surat Kecamatan</option>
+										<option value="9">Pas Foto</option>
 									</select>
 									<input type="file" class="form-control form-inline" id="myfile" name="myfile" title=" ">
 									<div id="progress" class="progress">
@@ -922,6 +951,7 @@
 				<button type="button" class="btn btn-info btn-sm" id="btn_print">Print SKCK</button>
 				<button type="button" class="btn btn-info btn-sm" id="btn_print2">Print Pertanyaan</button>
 				<button type="button" class="btn btn-info btn-sm" id="btn_print3">Print Kartu Tik</button>
+				<!--<button type="button" class="btn btn-info btn-sm" id="btn_refresh">Refresh</button>-->
 			</div>
 		</div>	
 		 

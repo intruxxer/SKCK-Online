@@ -19,7 +19,7 @@ class Apply extends CI_Controller {
 		$this->load->view('header');
 		$this->load->view('headertitle');
 		$this->load->view('navigation');
-		$this->load->view('skckformexperiment');
+		$this->load->view('skckform');
 		$this->load->view('footer');
 	}
 
@@ -141,39 +141,35 @@ class Apply extends CI_Controller {
 		        foreach( $all as $i => $val )
 		        {
 		        	switch ($i) {
-		        	case 0:
-		        		$filename = "pasfoto_".$val;
-				        $files[$i][$key] = $filename;
-				        break;
-				    case 1:
+				    case 0:
 				    	$filename = "ktp_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
-				    case 2:
+				    case 1:
 				        $filename = "akte_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
-				    case 3:
+				    case 2:
 				        $filename = "kk_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
-				    case 4:
+				    case 3:
 				    	$filename = "sidikjari_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
-				    case 5:
+				    case 4:
 				        $filename = "paspor_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
-				    case 6:
+				    case 5:
 				        $filename = "surat_polsek_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
-				    case 7:
+				    case 6:
 				        $filename = "surat_desa_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
-				    case 8:
+				    case 7:
 				        $filename = "surat_kecamatan_".$val;
 				        $files[$i][$key] = $filename;
 				        break;
@@ -188,7 +184,7 @@ class Apply extends CI_Controller {
 		    		$files[$i][$key] = $val;
 		    	}
 		    }
-		//print_r($files);
+
 	    $files_uploaded = array();
 	    for ($i=0; $i < count($files); $i++) {
 	        $_FILES[$field] = $files[$i];
@@ -197,7 +193,6 @@ class Apply extends CI_Controller {
 	        else
 	            $files_uploaded[$i] = null;
 	    }
-	    //print_r($files_uploaded);
 	    return $files_uploaded;
 	}
 
@@ -205,7 +200,7 @@ class Apply extends CI_Controller {
 	{
 		$docs_uploaded_path = array();
 		$config = array();
-		$files = $_FILES['userfiles'];
+		//$files = $_FILES['userfiles'];
 		if($skck_id == 0)
 			$skck_id = 'ND'.date("dm").rand(1000, 9999).rand(10, 99);
 		$path = './staff/uploads/'.$skck_id;
@@ -390,15 +385,14 @@ class Apply extends CI_Controller {
 					'id' => $skck_id,
 					'applicant_id' => $this->input->post('id'),
 					'applicant_docs_exist' => $this->input->post('docs_exist'),
-					'skck_ktp' => $docs_uploaded_path[1]['file_name'],
-					'skck_pas_foto' => $docs_uploaded_path[0]['file_name'],
-					'skck_passport' => $docs_uploaded_path[5]['file_name'],
-					'skck_familycard' => $docs_uploaded_path[3]['file_name'],
-					'skck_birthcert' => $docs_uploaded_path[2]['file_name'],
-					'skck_fingerprint' => $docs_uploaded_path[4]['file_name'],
-					'skck_surat_polsek' => $docs_uploaded_path[6]['file_name'],
-					'skck_surat_desa' => $docs_uploaded_path[7]['file_name'],
-					'skck_surat_kecamatan' => $docs_uploaded_path[8]['file_name']
+					'skck_ktp' => $docs_uploaded_path[0]['file_name'],
+					'skck_passport' => $docs_uploaded_path[4]['file_name'],
+					'skck_familycard' => $docs_uploaded_path[2]['file_name'],
+					'skck_birthcert' => $docs_uploaded_path[1]['file_name'],
+					'skck_fingerprint' => $docs_uploaded_path[3]['file_name'],
+					'skck_surat_polsek' => $docs_uploaded_path[5]['file_name'],
+					'skck_surat_desa' => $docs_uploaded_path[6]['file_name'],
+					'skck_surat_kecamatan' => $docs_uploaded_path[7]['file_name']
 				);
 			}
 			$documents = $this->skck->add_skck_documents($data['skck_documents']);
@@ -605,15 +599,14 @@ class Apply extends CI_Controller {
 					'id' => $skck_id,
 					'applicant_id' => $this->input->post('id'),
 					'applicant_docs_exist' => $this->input->post('docs_exist'),
-					'skck_pas_foto' => $docs_uploaded_path[0]['file_name'],
-					'skck_ktp' => $docs_uploaded_path[1]['file_name'],
-					'skck_passport' => $docs_uploaded_path[5]['file_name'],
-					'skck_familycard' => $docs_uploaded_path[3]['file_name'],
-					'skck_birthcert' => $docs_uploaded_path[2]['file_name'],
-					'skck_fingerprint' => $docs_uploaded_path[4]['file_name'],
-					'skck_surat_polsek' => $docs_uploaded_path[6]['file_name'],
-					'skck_surat_desa' => $docs_uploaded_path[7]['file_name'],
-					'skck_surat_kecamatan' => $docs_uploaded_path[8]['file_name']
+					'skck_ktp' => $docs_uploaded_path[0]['file_name'],
+					'skck_passport' => $docs_uploaded_path[4]['file_name'],
+					'skck_familycard' => $docs_uploaded_path[2]['file_name'],
+					'skck_birthcert' => $docs_uploaded_path[1]['file_name'],
+					'skck_fingerprint' => $docs_uploaded_path[3]['file_name'],
+					'skck_surat_polsek' => $docs_uploaded_path[5]['file_name'],
+					'skck_surat_desa' => $docs_uploaded_path[6]['file_name'],
+					'skck_surat_kecamatan' => $docs_uploaded_path[7]['file_name']
 				);
 			}
 			$documents = $this->skck->update_skck_documents($skck_id, $data['skck_documents']);
@@ -664,7 +657,6 @@ class Apply extends CI_Controller {
 		}
 	}
 
-	/*
 	public function print_word()
 	{
 		$this->load->library('word');
@@ -706,7 +698,6 @@ class Apply extends CI_Controller {
       {
         $doc->setValue('CURR_ADDRESS', strtoupper($d[0]['applicant_address_doc']));
       }*/
-      /*
       $doc->setValue('CURR_ADDRESS', ucwords($d[0]['applicant_address_doc']));
 
       $doc->setValue('OCCUPATION', ucwords($d[0]['applicant_occupation']));
@@ -792,18 +783,11 @@ class Apply extends CI_Controller {
     }
 	}
 
-  */
-  
-  public function print_pertanyaan()
+	public function print_pertanyaan()
   {
-  	$id = $this->uri->segment(3);
-  	$noreg = $this->uri->segment(4);
-  	if( !($this->skck->matching_noreg_to_id($id, $noreg)) )
-  	{
-  		die();
-  	}	
     $this->load->library('word');
     $phpWord = new \PhpOffice\PhpWord\PhpWord();
+    $id = $this->uri->segment(3);
     $d = $this->pendaftaran->get_pendaftaran_by_id($id);
     if(count($d) > 0)
     {
@@ -815,10 +799,8 @@ class Apply extends CI_Controller {
       $doc->setValue('BDATE', $birthdate[2].'-'.$birthdate[1].'-'.$birthdate[0]);
       if($d[0]['applicant_citizenship'] == 'I')
         $doc->setValue('NATIONALITY', 'WNI');
-      else if($d[0]['applicant_citizenship'] == 'A')
-      	$doc->setValue('NATIONALITY', 'WNA');
-      //else
-      //  $doc->setValue('NATIONALITY', '-');
+      else
+        $doc->setValue('NATIONALITY', 'WNA');
 
       if($d[0]['applicant_sex']=='M')
         $doc->setValue('JENIS_KELAMIN', 'Laki-Laki');
@@ -970,7 +952,6 @@ class Apply extends CI_Controller {
       $doc->setValue('FISIK_MUKA', ucwords($d[0]['applicant_wajah']));
       $doc->setValue('FISIK_KULIT', ucwords($d[0]['applicant_kulit']));
       $doc->setValue('FISIK_TINGGIBADAN', ucwords($d[0]['applicant_tinggibadan']));
-      $doc->setValue('FISIK_BERATBADAN', ucwords($d[0]['applicant_beratbadan']));
       $doc->setValue('FISIK_ISTIMEWA', ucwords($d[0]['applicant_tandakhusus']));
 
       $doc->setValue('FISIK_HOBI', ucwords($d[0]['applicant_hist_hobby']));
@@ -990,14 +971,10 @@ class Apply extends CI_Controller {
 
   public function print_kartu()
   {
-  	$id = $this->uri->segment(3);
-  	$noreg = $this->uri->segment(4);
-  	if( !($this->skck->matching_noreg_to_id($id, $noreg)) )
-  	{
-  		die();
-  	}	
     $this->load->library('word');
+
     $phpWord = new \PhpOffice\PhpWord\PhpWord();
+    $id = $this->uri->segment(3);
     $d = $this->pendaftaran->get_pendaftaran_by_id($id);
     if(count($d) > 0)
     {
@@ -1056,7 +1033,6 @@ class Apply extends CI_Controller {
       $doc->setValue('FISIK_MUKA', ucwords($d[0]['applicant_wajah']));
       $doc->setValue('FISIK_KULIT', ucwords($d[0]['applicant_kulit']));
       $doc->setValue('FISIK_TINGGI', ucwords($d[0]['applicant_tinggibadan']));
-      $doc->setValue('FISIK_BERAT', ucwords($d[0]['applicant_beratbadan']));
       $doc->setValue('FISIK_TANDA', ucwords($d[0]['applicant_tandakhusus']));
 
       $doc->setValue('HOBBY', ucwords($d[0]['applicant_hist_hobby']));

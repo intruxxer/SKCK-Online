@@ -17,12 +17,13 @@
 			  		<td>
 			  			<span><?php  echo date("d F Y"); ?></span><br/>&nbsp;&nbsp;
 			  			<span class="label label-primary"><?= $skck_registration_no; ?></span></td>
-			  		<td>
+			  		<td id="no-link-show">
 				  		<p style="text-align:justify">Selamat <b><?= $skck_registration_name; ?>,</b> anda telah berhasil melakukan pendaftaran permohonan e-SKCK/SKCK Online di Polres Tulung Agung. Silakan <b><u>CATAT No. Aplikasi/Registrasi e-SKCK</u></b>
 				  		anda: <h3 class="text-center"><b><?= $skck_registration_no; ?></b></h3><div id="qrcode"></div><br/> atau silakan <b><u>PRINT halaman ini</u></b>.
 				  		Selanjutnya silakan lengkapi persyaratan yg belum ada seperti pengambilan sidik jari di Polres, surat keterangan dari RT-RW-Kelurahan, dan sebagainya.
 				  		Bila sudah ada, silakan bawa saat ingin mendapatkan SKCK anda sebagai syarat verifikasi. Semua dokumen diharap dibawa beserta versi File/Scan/Soft Copy
-				  		masing-masing apabila belum mengunggah dokumen-dokumen tersebut secara online. Apabila semua lengkap & terverifikasi, dalam 1x 24 jam, SKCK anda dapat diterbitkan.</p>
+				  		masing-masing apabila belum mengunggah dokumen-dokumen tersebut secara online. Apabila semua lengkap & terverifikasi, setelah ini dalam 1x 24 jam kerja, SKCK anda dapat diterbitkan.
+				  		Silakan datang ke Polres Tulung Agung hari ini apabila aplikasi dibuat sebelum pukul 8.00 WIB pagi hari ini.</p>
 						<blockquote>
 						<p style="text-align:justify"><strong>Dokumen yang dipersyaratkan untuk verifikasi permohonan SKCK secara <em>online</em> adalah sebagai berikut:</strong></p>
 							<ul>
@@ -37,7 +38,7 @@
 								<li style="text-align:justify"><em>Copy Scan</em> <b>Paspor,</b> bagi WNI yang akan keluar negeri dalam rangka sekolah/kunjungan/penerbitan VISA;</li>
 							</ul>
 						</blockquote>
-						<p style="margin-left:20px; text-align:justify">Pada saat pengambilan SKCK di loket pelayanan, pemohon <b>WAJIB membawa 4 Hal </b> (print (1) & (2) di sini) yaitu:</p>
+						<p style="margin-left:20px; text-align:justify">Pada saat pengambilan SKCK di loket pelayanan, pemohon <b>WAJIB membawa 4 jenis dokumen:</b></p>
 						<p style="margin-left:20px; text-align:justify">(1) Menunjukkan <b>slip tanda terima/menyebutkan no. registrasi e-SKCK</b>,</p>
 						<p style="margin-left:20px; text-align:justify">(2) Menyerahkan <b>daftar pertanyaan dan jawaban e-SKCK & Kartu TIK</b> (yg sudah ditanda tangani oleh aplikan) yang telah dijawab saat aplikasi, dan</p>
 						<p style="margin-left:20px; text-align:justify">(3) Menunjukkan <b>dokumen-dokumen asli yang dipersyaratkan</b>, kepada petugas, guna keperluan verifikasi.</p>
@@ -45,10 +46,10 @@
 			  			<a style="margin-left:20px; text-align:right" href="#" class="btn btn-success" onClick="window.print()">
 			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Tanda Terima e-SKCK
 			  			</a>
-			  			<a style="margin-left:20px; text-align:right" href="<?php echo base_url("apply/print_pertanyaan")."/".$skck_id; ?>" target="_blank" class="btn btn-success">
+			  			<a style="margin-left:20px; text-align:right" href="<?php echo base_url("apply/print_pertanyaan")."/".$skck_id."/".$skck_registration_no; ?>" target="_blank" class="btn btn-success">
 			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Daftar Pertanyaan e-SKCK
 			  			</a>
-			  			<a style="margin-left:20px; text-align:right" href="<?php echo base_url("apply/print_kartu")."/".$skck_id; ?>" target="_blank" class="btn btn-success">
+			  			<a style="margin-left:20px; text-align:right" href="<?php echo base_url("apply/print_kartu")."/".$skck_id."/".$skck_registration_no; ?>" target="_blank" class="btn btn-success">
 			  				 <span class="glyphicon glyphicon-print"></span> &nbsp;Print Kartu TIK e-SKCK
 			  			</a>
 			  		</td>
@@ -64,6 +65,7 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
+	#no-link-show a:link:after, #no-link-show a:visited:after { display:none; }
 </style>
 <script type="text/javascript">
 	var qrcode = new QRCode(document.getElementById("qrcode"), {

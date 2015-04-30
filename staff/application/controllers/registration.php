@@ -118,11 +118,21 @@ class Registration extends CI_Controller {
 			else
 				$doc->setValue('JENIS_KELAMIN', 'Perempuan');
 			
-			$doc->setValue('CURRADDRESS', ucwords($d[0]['applicant_address_doc']));
-			$doc->setValue('CURRADDRESS2', '');
+			if(strlen($d[0]['applicant_address_doc']) > 50)
+			{
+				$fiftyFirstSubString = substr($d[0]['applicant_address_doc'], 0, 49);
+				$nearestWhitespaceFromIndexFifty = strripos($fiftyFirstSubString, " ");
+				$doc->setValue( 'CURRADDRESS',  ucwords( substr($d[0]['applicant_address_doc'], 0, $nearestWhitespaceFromIndexFifty) ) );
+				$doc->setValue( 'CURRADDRESS2', ucwords( trim(substr($d[0]['applicant_address_doc'], $nearestWhitespaceFromIndexFifty, strlen($d[0]['applicant_address_doc'])) )) );
+			}
+			else
+			{
+				$doc->setValue('CURRADDRESS', ucwords($d[0]['applicant_address_doc']));
+				$doc->setValue('CURRADDRESS2', '');
+			}
 			$doc->setValue('OCCUPATION', ucwords($d[0]['applicant_occupation']));
 			$doc->setValue('NOKTP', ucwords($d[0]['applicant_id']));
-			$doc->setValue('EMAIL', ucwords($d[0]['applicant_email']));
+			$doc->setValue('EMAIL', $d[0]['applicant_email']);
 			$doc->setValue('NO_HP', ucwords($d[0]['applicant_phone']));
 			
 			if($d[0]['applicant_spouse_type']=='I' || $d[0]['applicant_spouse_type']=='S')
@@ -137,8 +147,10 @@ class Registration extends CI_Controller {
 			
 			if($d[0]['applicant_spouse_citizenship'] == 'I')
 				$doc->setValue('SPOUSE_NATIONALITY', 'WNI');
-			else
-				$doc->setValue('SPOUSE_NATIONALITY', 'WNA');
+			else if($d[0]['applicant_spouse_citizenship'] == 'A')
+				$doc->setValue('SPOUSE_NATIONALITY', 'WNI');
+			else	
+				$doc->setValue('SPOUSE_NATIONALITY', $d[0]['applicant_spouse_citizenship']);
 			$doc->setValue('SPOUSE_OCCUPATION', ucwords($d[0]['applicant_spouse_occupation']));
 			
 			//father
@@ -246,16 +258,33 @@ class Registration extends CI_Controller {
 			$doc->setValue('UNIV_CITY', ucwords($d[0]['applicant_edu_bachelor_city']));
 			$doc->setValue('UNIV_YEAR', $d[0]['applicant_edu_bachelor_year']);
 			
-			
-			$doc->setValue('PIDANA', ucwords($d[0]['applicant_pidana']));
+			if($d[0]['applicant_pidana']=='TP')
+			{
+				$doc->setValue('PIDANA', 'Tidak Pernah');
+			}
+			else
+			{
+				$doc->setValue('PIDANA', 'Pernah');
+			}
 			$doc->setValue('PIDANA_DALAM', ucwords($d[0]['applicant_pidana_apa']));
 			$doc->setValue('PIDANA_PUTUSAN', ucwords($d[0]['applicant_pidana_putusansementara']));
-			$doc->setValue('PIDANA_PROSES', ucwords($d[0]['applicant_pidana_proses']));
+			if($d[0]['applicant_pidana_proses']=='TP')
+			{
+					$doc->setValue('PIDANA_PROSES', 'Tidak Pernah');
+			}	
+			else 
+			{
+					$doc->setValue('PIDANA_PROSES', 'Pernah');
+			}
 			$doc->setValue('PIDANA_KASUS', ucwords($d[0]['applicant_pidana_kasus']));
 			$doc->setValue('PIDANA_HUKUM', ucwords($d[0]['applicant_pidana_sampaimana']));
 			$doc->setValue('PIDANA_HASIL_AKHIR', ucwords($d[0]['applicant_pidana_putusanakhir']));
 			
-			$doc->setValue('PELANGGARAN_SOSIAL', ucwords($d[0]['applicant_pelanggaran']));
+			if($d[0]['applicant_pelanggaran'] == 'TP')
+				$doc->setValue('PELANGGARAN_SOSIAL', 'Tidak Pernah');
+			else
+				$doc->setValue('PELANGGARAN_SOSIAL', 'Pernah');
+			
 			$doc->setValue('PELANGGARAN_SOSIAL_APA', ucwords($d[0]['applicant_pelanggaran_apa']));
 			$doc->setValue('PELANGGARAN_SOSIAL_PROSES', ucwords($d[0]['applicant_pelanggaran_proses']));
 			
@@ -265,6 +294,7 @@ class Registration extends CI_Controller {
 			$doc->setValue('FISIK_MUKA', ucwords($d[0]['applicant_wajah']));
 			$doc->setValue('FISIK_KULIT', ucwords($d[0]['applicant_kulit']));
 			$doc->setValue('FISIK_TINGGIBADAN', ucwords($d[0]['applicant_tinggibadan']));
+			$doc->setValue('FISIK_BERATBADAN', ucwords($d[0]['applicant_beratbadan']));
 			$doc->setValue('FISIK_ISTIMEWA', ucwords($d[0]['applicant_tandakhusus']));
 			
 			$doc->setValue('FISIK_HOBI', ucwords($d[0]['applicant_hist_hobby']));
@@ -363,7 +393,7 @@ class Registration extends CI_Controller {
 			
 			$this->load->helper('download');
 			$data = file_get_contents('/tmp/'.$id.'kartu_tik.docx');
-			$name = 'Kartu_Tik'.'_'.$d[0]['application_id'].'_'.$d[0]['applicant_name'].'.docx';
+			$name = 'Kartu_TIK'.'_'.$d[0]['application_id'].'_'.$d[0]['applicant_name'].'.docx';
 			
 			
 			
@@ -437,7 +467,7 @@ class Registration extends CI_Controller {
 				$fiftyFirstSubString = substr($d[0]['applicant_address_doc'], 0, 49);
 				$nearestWhitespaceFromIndexFifty = strripos($fiftyFirstSubString, " ");
 				$doc->setValue( 'CURRADDRESS',  ucwords( substr($d[0]['applicant_address_doc'], 0, $nearestWhitespaceFromIndexFifty) ) );
-				$doc->setValue( 'CURRADDRESS2', ucwords( substr($d[0]['applicant_address_doc'], $nearestWhitespaceFromIndexFifty, strlen($d[0]['applicant_address_doc'])) ) );
+				$doc->setValue( 'CURRADDRESS2', ucwords( trim(substr($d[0]['applicant_address_doc'], $nearestWhitespaceFromIndexFifty, strlen($d[0]['applicant_address_doc'])) )) );
 			}
 			else
 			{
@@ -458,10 +488,15 @@ class Registration extends CI_Controller {
 				$doc->setValue('STAYFROM', $birthdate[2].' '.get_month_text(intval($birthdate[1])).' '.$birthdate[0]);
 				
 			}
-			else
+			else if($d[0]['applicant_citizenship'] == 'A')
 			{
 				$doc->setValue('NATIONALITY', 'WNA');
 				$doc->setValue('STAYFROM','');
+			}
+			else
+			{
+				$doc->setValue('NATIONALITY', '-');
+				$doc->setValue('STAYFROM','-');
 			}
 			$doc->setValue('STAYTO',$currDate);	
 			
@@ -479,7 +514,22 @@ class Registration extends CI_Controller {
 				$doc->setValue('FINGER', '');
 				$doc->setValue('FINGER2', '');
 			}
-			$doc->setValue('PURPOSE', strtoupper($d[0]['purpose_desc']));
+			//$doc->setValue('PURPOSE', strtoupper($d[0]['purpose_desc']));
+			
+			if(strlen($d[0]['purpose_desc']) > 50)
+			{
+				$fiftyFirstSubString = substr($d[0]['purpose_desc'], 0, 49);
+				$nearestWhitespaceFromIndexFifty = strripos($fiftyFirstSubString, " ");
+				$doc->setValue( 'PURPOSE',  ucwords( substr($d[0]['purpose_desc'], 0, $nearestWhitespaceFromIndexFifty) ) );
+				$doc->setValue( 'PURPOSE2', ucwords( trim(substr($d[0]['purpose_desc'], $nearestWhitespaceFromIndexFifty, strlen($d[0]['purpose_desc'])) )) );
+			}
+			else
+			{
+				$doc->setValue('PURPOSE', ucwords($d[0]['purpose_desc']));
+				$doc->setValue('PURPOSE2', '');
+			}
+			
+			
 			$doc->setValue('NO', $id);
 			$doc->setValue('BLN', get_romawi(date('n')));
 			$doc->setValue('THN', date('Y'));
@@ -546,7 +596,7 @@ class Registration extends CI_Controller {
 			'applicant_id' => $this->input->post('applicant_id'),
 			'status_type' => $this->input->post('status_type'),
 			'purpose_desc' => $this->input->post('purpose_desc'),
-			'applicant_name' => $this->input->post('applicant_name'),
+			'applicant_name' => ucwords($this->input->post('applicant_name')),
 			'applicant_email' => $this->input->post('applicant_email'),
 			'unit_type' => 'JATIM001C',
 			'reg_type' => '1',
@@ -727,7 +777,8 @@ class Registration extends CI_Controller {
 			'status_type' => $this->input->post('status_type'),
 			'purpose_desc' => $this->input->post('purpose_desc'),
 			'applicant_email' => $this->input->post('applicant_email'),
-			'application_id' => $this->input->post('application_id')
+			'applicant_name' => ucwords($this->input->post('applicant_name')),
+			//'application_id' => $this->input->post('application_id')
 		);
 		
 		$ret = $this->pendaftaran_model->update_reg($id, $reg);
@@ -912,7 +963,9 @@ class Registration extends CI_Controller {
 			case '8':
 				$this->pendaftaran_model->update_documents($id, array('skck_surat_kecamatan'=>''));
 				break;
-				
+			case '9':
+				$this->pendaftaran_model->update_documents($id, array('skck_pas_foto'=>''));
+				break;	
 		}
 		
 		
@@ -943,8 +996,16 @@ class Registration extends CI_Controller {
 		if(isset($_FILES["myfile"]))
 		{
 			$ret = array();
+			$ret['msg'] = 'Upload berhasil';
 			$type = $this->input->post('file_type');
 			$id = $this->input->post('id');
+			
+			if($id == '')
+			{
+				$ret['msg'] = 'Gambar gagal diupload, silakan simpan data terlebih dahulu';
+				echo json_encode($ret);
+				return;
+			}
 
 			$error =$_FILES["myfile"]["error"];
 			
@@ -998,6 +1059,11 @@ class Registration extends CI_Controller {
 				{
 					$fileName = "sk_".$fileName;
 					$this->pendaftaran_model->update_documents($id, array('skck_report_evidence'=>$fileName));
+				}
+				elseif($type == '9')
+				{
+					$fileName = "pas_foto_".$fileName;
+					$this->pendaftaran_model->update_documents($id, array('skck_pas_foto'=>$fileName));
 				}
 								
 				move_uploaded_file($_FILES["myfile"]["tmp_name"],$output_dir.$fileName);

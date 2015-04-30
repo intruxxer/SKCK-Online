@@ -19,7 +19,7 @@ $this->load->view('vwHeader');
       </div><!-- /#page-wrapper -->
 
 
-<!--  PAge Code Ends here -->
+<!--  Page Code Ends here -->
 <?php
 $this->load->view('vwFooter');
 ?>

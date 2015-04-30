@@ -7,6 +7,15 @@ class Skckmodel extends CI_Model {
         parent::__construct();
     }
 
+    function matching_noreg_to_id($id, $noreg)
+    {
+        $this->db->select('id');
+        $theId = $this->db->get_where('skck_registration', array('application_id' => $noreg))->row();
+        if($theId->id == $id) return true;
+        else if(count($theId) < 0) return false;
+        else return false;
+    }
+
     function search_skck_registration($id)
     {
         return $this->db->get_where('skck_registration', array('application_id' => $id))->result();
