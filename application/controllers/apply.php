@@ -798,6 +798,7 @@ class Apply extends CI_Controller {
   {
   	$id = $this->uri->segment(3);
   	$noreg = $this->uri->segment(4);
+  	if($id == '' || $noreg == '') die();
   	if( !($this->skck->matching_noreg_to_id($id, $noreg)) )
   	{
   		die();
@@ -992,6 +993,7 @@ class Apply extends CI_Controller {
   {
   	$id = $this->uri->segment(3);
   	$noreg = $this->uri->segment(4);
+  	if($id == '' || $noreg == '') die();
   	if( !($this->skck->matching_noreg_to_id($id, $noreg)) )
   	{
   		die();
